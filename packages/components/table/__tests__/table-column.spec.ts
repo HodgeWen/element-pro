@@ -1,5 +1,5 @@
 import { nextTick } from 'vue'
-import { triggerEvent } from '@element-plus/test-utils'
+import { triggerEvent } from '@element-pro/test-utils'
 import ElTable from '../src/table.vue'
 import ElTableColumn from '../src/table-column/index'
 import { mount, getTestData } from './table-test-common'

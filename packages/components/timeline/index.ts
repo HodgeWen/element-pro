@@ -1,4 +1,4 @@
-import { withInstall, withNoopInstall } from '@element-plus/utils/with-install'
+import { withInstall, withNoopInstall } from '@element-pro/utils/with-install'
 import Timeline from './src/index.vue'
 import TimelineItem from './src/item.vue'
 

@@ -1,4 +1,4 @@
-import { buildProps, definePropType } from '@element-plus/utils/props'
+import { buildProps, definePropType } from '@element-pro/utils/props'
 
 import type { ExtractPropTypes, StyleValue } from 'vue'
 

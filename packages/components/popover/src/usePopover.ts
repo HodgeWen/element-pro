@@ -1,10 +1,10 @@
 import { computed, ref, watch } from 'vue'
-import { isString } from '@element-plus/utils/util'
-import { usePopper } from '@element-plus/components/popper'
-import PopupManager from '@element-plus/utils/popup-manager'
+import { isString } from '@element-pro/utils/util'
+import { usePopper } from '@element-pro/components/popper'
+import PopupManager from '@element-pro/utils/popup-manager'
 
 import type { SetupContext } from 'vue'
-import type { IPopperOptions, EmitType } from '@element-plus/components/popper'
+import type { IPopperOptions, EmitType } from '@element-pro/components/popper'
 export interface IUsePopover extends IPopperOptions {
   width: number | string
 }

@@ -1,6 +1,8 @@
-import { withInstall } from '@element-plus/utils/with-install'
-import NewTable from './src/table.vue'
+import NewTable from './src/index.vue'
+import type { App } from 'vue'
 
-export const ElNewTable = withInstall(NewTable)
+NewTable.install = (app: App): void => {
+  app.component(NewTable.name, NewTable)
+}
 
-export default ElNewTable
+export default NewTable

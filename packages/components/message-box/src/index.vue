@@ -127,26 +127,26 @@ import {
   ref,
   toRefs,
 } from 'vue'
-import ElButton from '@element-plus/components/button'
-import { TrapFocus } from '@element-plus/directives'
+import ElButton from '@element-pro/components/button'
+import { TrapFocus } from '@element-pro/directives'
 import {
   useModal,
   useLockscreen,
   useLocale,
   useRestoreActive,
   usePreventGlobal,
-} from '@element-plus/hooks'
-import ElInput from '@element-plus/components/input'
-import { ElOverlay } from '@element-plus/components/overlay'
-import PopupManager from '@element-plus/utils/popup-manager'
-import { on, off } from '@element-plus/utils/dom'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import { isValidComponentSize } from '@element-plus/utils/validators'
-import { ElIcon } from '@element-plus/components/icon'
-import { TypeComponents, TypeComponentsMap } from '@element-plus/utils/icon'
+} from '@element-pro/hooks'
+import ElInput from '@element-pro/components/input'
+import { ElOverlay } from '@element-pro/components/overlay'
+import PopupManager from '@element-pro/utils/popup-manager'
+import { on, off } from '@element-pro/utils/dom'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import { isValidComponentSize } from '@element-pro/utils/validators'
+import { ElIcon } from '@element-pro/components/icon'
+import { TypeComponents, TypeComponentsMap } from '@element-pro/utils/icon'
 
 import type { ComponentPublicInstance, PropType } from 'vue'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 import type {
   Action,
   MessageBoxState,

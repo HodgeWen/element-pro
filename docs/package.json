@@ -1,5 +1,5 @@
 {
-  "name": "@element-plus/docs",
+  "name": "@element-pro/docs",
   "version": "0.0.1",
   "scripts": {
     "dev": "pnpm gen-locale && vitepress dev .",
@@ -12,7 +12,7 @@
     "@vueuse/core": "7.1.2",
     "axios": "0.24.0",
     "clipboard-copy": "4.0.1",
-    "element-plus": "npm:element-plus@latest",
+    "element-pro": "workspace:*",
     "normalize.css": "8.0.1",
     "nprogress": "0.2.0"
   },

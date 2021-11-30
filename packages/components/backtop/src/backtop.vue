@@ -19,10 +19,10 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, shallowRef } from 'vue'
 import { useEventListener, useThrottleFn } from '@vueuse/core'
-import { ElIcon } from '@element-plus/components/icon'
-import { easeInOutCubic } from '@element-plus/utils/animation'
-import { throwError } from '@element-plus/utils/error'
 import { CaretTop } from '@element-plus/icons'
+import { ElIcon } from '@element-pro/components/icon'
+import { easeInOutCubic } from '@element-pro/utils/animation'
+import { throwError } from '@element-pro/utils/error'
 
 import { backtopEmits, backtopProps } from './backtop'
 

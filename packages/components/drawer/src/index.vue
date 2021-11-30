@@ -59,15 +59,15 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
-import { ElOverlay } from '@element-plus/components/overlay'
+import { Close } from '@element-plus/icons'
+import { ElOverlay } from '@element-pro/components/overlay'
 import {
   useDialog,
   dialogProps,
   dialogEmits,
-} from '@element-plus/components/dialog'
-import ElIcon from '@element-plus/components/icon'
-import { TrapFocus } from '@element-plus/directives'
-import { Close } from '@element-plus/icons'
+} from '@element-pro/components/dialog'
+import ElIcon from '@element-pro/components/icon'
+import { TrapFocus } from '@element-pro/directives'
 
 import type { PropType, SetupContext } from 'vue'
 

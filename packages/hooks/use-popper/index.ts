@@ -14,17 +14,17 @@ import {
 } from 'vue'
 import { NOOP } from '@vue/shared'
 import { createPopper } from '@popperjs/core'
-import { ClickOutside } from '@element-plus/directives'
+import { ClickOutside } from '@element-pro/directives'
 import {
   generateId,
   isHTMLElement,
   isString,
   refAttacher,
-} from '@element-plus/utils/util'
-import { getFirstValidNode } from '@element-plus/utils/vnode'
-import { stop } from '@element-plus/utils/dom'
-import PopupManager from '@element-plus/utils/popup-manager'
-import { throwError } from '@element-plus/utils/error'
+} from '@element-pro/utils/util'
+import { getFirstValidNode } from '@element-pro/utils/vnode'
+import { stop } from '@element-pro/utils/dom'
+import PopupManager from '@element-pro/utils/popup-manager'
+import { throwError } from '@element-pro/utils/error'
 
 import { useTeleport } from '../use-teleport'
 import { useTimeout } from '../use-timeout'
@@ -43,7 +43,7 @@ import type {
   Instance as PopperInstance,
   StrictModifiers,
 } from '@popperjs/core'
-import type { RefElement, Nullable } from '@element-plus/utils/types'
+import type { RefElement, Nullable } from '@element-pro/utils/types'
 import type { Trigger } from './use-target-events'
 
 export type PopperEffect = 'light' | 'dark'

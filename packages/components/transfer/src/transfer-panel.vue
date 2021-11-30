@@ -60,11 +60,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive, toRefs } from 'vue'
-import { useLocale } from '@element-plus/hooks'
-import { ElCheckbox, ElCheckboxGroup } from '@element-plus/components/checkbox'
-import ElIcon from '@element-plus/components/icon'
-import ElInput from '@element-plus/components/input'
 import { CircleClose, Search } from '@element-plus/icons'
+import { useLocale } from '@element-pro/hooks'
+import { ElCheckbox, ElCheckboxGroup } from '@element-pro/components/checkbox'
+import ElIcon from '@element-pro/components/icon'
+import ElInput from '@element-pro/components/input'
 import { useCheck, useCheckProps, CHECKED_CHANGE_EVENT } from './useCheck'
 
 export default defineComponent({

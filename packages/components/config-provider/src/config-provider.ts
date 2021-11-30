@@ -1,6 +1,6 @@
-import { useLocaleProps } from '@element-plus/hooks'
-import { buildProp, definePropType, mutable } from '@element-plus/utils/props'
-import type { ButtonConfigContext } from '@element-plus/components/button'
+import { useLocaleProps } from '@element-pro/hooks'
+import { buildProp, definePropType, mutable } from '@element-pro/utils/props'
+import type { ButtonConfigContext } from '@element-pro/components/button'
 
 export const configProviderProps = {
   ...useLocaleProps,

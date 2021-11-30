@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
-import ElCheckbox from '@element-plus/components/checkbox'
-import { triggerEvent } from '@element-plus/test-utils'
+import ElCheckbox from '@element-pro/components/checkbox'
+import { triggerEvent } from '@element-pro/test-utils'
 import ElTable from '../src/table.vue'
 import ElTableColumn from '../src/table-column/index'
 import { mount, getTestData } from './table-test-common'

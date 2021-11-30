@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useLocale } from '@element-plus/hooks'
+import { useLocale } from '@element-pro/hooks'
 import ImgEmpty from './img-empty.vue'
 import { emptyProps } from './empty'
 

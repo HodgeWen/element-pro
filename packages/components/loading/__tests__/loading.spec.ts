@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { sleep } from '@element-plus/test-utils'
+import { sleep } from '@element-pro/test-utils'
 import Loading from '../src/index'
 import ElInput from '../../input'
 import vLoading from '../src/directive'

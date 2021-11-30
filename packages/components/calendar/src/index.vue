@@ -50,9 +50,9 @@
 import { ref, computed, defineComponent } from 'vue'
 import dayjs from 'dayjs'
 
-import ElButton from '@element-plus/components/button'
-import { useLocale } from '@element-plus/hooks'
-import { debugWarn } from '@element-plus/utils/error'
+import ElButton from '@element-pro/components/button'
+import { useLocale } from '@element-pro/hooks'
+import { debugWarn } from '@element-pro/utils/error'
 import DateTable from './date-table.vue'
 import type { PropType, ComputedRef } from 'vue'
 
@@ -149,7 +149,7 @@ export default defineComponent({
       }
     })
 
-    // https://github.com/element-plus/element-plus/issues/3155
+    // https://github.com/element-pro/element-pro/issues/3155
     // Calculate the validate date range according to the start and end dates
     const calculateValidatedDateRange = (
       startDayjs: dayjs.Dayjs,

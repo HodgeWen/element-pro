@@ -1,2 +1,2 @@
-import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-card.css'
+import '@element-pro/components/base/style/css'
+import '@element-pro/theme-chalk/el-card.css'

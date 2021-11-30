@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { useThrottleRender } from '@element-plus/hooks'
+import { useThrottleRender } from '@element-pro/hooks'
 import SkeletonItem from './skeleton-item.vue'
 import { skeletonProps } from './skeleton'
 

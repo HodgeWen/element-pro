@@ -13,12 +13,12 @@ import {
 import {
   addResizeListener,
   removeResizeListener,
-} from '@element-plus/utils/resize-event'
-import { elFormItemKey, elFormKey } from '@element-plus/tokens'
-import type { ResizableElement } from '@element-plus/utils/resize-event'
+} from '@element-pro/utils/resize-event'
+import { elFormItemKey, elFormKey } from '@element-pro/tokens'
+import type { ResizableElement } from '@element-pro/utils/resize-event'
 
 import type { CSSProperties } from 'vue'
-import type { Nullable } from '@element-plus/utils/types'
+import type { Nullable } from '@element-pro/utils/types'
 
 export default defineComponent({
   name: 'ElLabelWrap',

@@ -6,7 +6,7 @@ export async function ElementPlusAlias(): Promise<Plugin> {
   const pkgs = await getDistPackages()
 
   return {
-    name: 'element-plus-alias-plugin',
+    name: 'element-pro-alias-plugin',
     resolveId(id, importer, options) {
       if (!id.startsWith(EP_PREFIX)) return
 

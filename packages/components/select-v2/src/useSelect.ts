@@ -11,17 +11,17 @@ import {
 import { isArray, isFunction, isObject } from '@vue/shared'
 import isEqual from 'lodash/isEqual'
 import lodashDebounce from 'lodash/debounce'
-import { elFormKey, elFormItemKey } from '@element-plus/tokens'
-import { useLocale } from '@element-plus/hooks'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
+import { ArrowUp } from '@element-plus/icons'
+import { elFormKey, elFormItemKey } from '@element-pro/tokens'
+import { useLocale } from '@element-pro/hooks'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-pro/utils/constants'
 import {
   addResizeListener,
   removeResizeListener,
-} from '@element-plus/utils/resize-event'
-import { getValueByPath, useGlobalConfig } from '@element-plus/utils/util'
-import { Effect } from '@element-plus/components/popper'
+} from '@element-pro/utils/resize-event'
+import { getValueByPath, useGlobalConfig } from '@element-pro/utils/util'
+import { Effect } from '@element-pro/components/popper'
 
-import { ArrowUp } from '@element-plus/icons'
 import { useAllowCreate } from './useAllowCreate'
 
 import { flattenOptions } from './util'
@@ -29,7 +29,7 @@ import { flattenOptions } from './util'
 import { useInput } from './useInput'
 import type { SelectProps } from './defaults'
 import type { ExtractPropTypes, CSSProperties } from 'vue'
-import type { ElFormContext, ElFormItemContext } from '@element-plus/tokens'
+import type { ElFormContext, ElFormItemContext } from '@element-pro/tokens'
 import type { OptionType, Option } from './select.types'
 
 const DEFAULT_INPUT_PLACEHOLDER = ''

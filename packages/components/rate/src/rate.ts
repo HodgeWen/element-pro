@@ -1,6 +1,6 @@
 import { Star, StarFilled } from '@element-plus/icons'
-import { UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
-import { buildProps, definePropType, mutable } from '@element-plus/utils/props'
+import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
+import { buildProps, definePropType, mutable } from '@element-pro/utils/props'
 import type { Component, ExtractPropTypes } from 'vue'
 
 export const rateProps = buildProps({

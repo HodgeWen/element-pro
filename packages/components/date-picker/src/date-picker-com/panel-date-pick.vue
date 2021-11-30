@@ -164,24 +164,24 @@
 <script lang="ts">
 import { computed, defineComponent, inject, ref, watch } from 'vue'
 import dayjs from 'dayjs'
-import ElButton from '@element-plus/components/button'
-import { ClickOutside } from '@element-plus/directives'
-import { useLocale } from '@element-plus/hooks'
-import ElInput from '@element-plus/components/input'
-import {
-  extractDateFormat,
-  extractTimeFormat,
-  TimePickPanel,
-} from '@element-plus/components/time-picker'
-import { ElIcon } from '@element-plus/components/icon'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import { isValidDatePickType } from '@element-plus/utils/validators'
 import {
   DArrowLeft,
   ArrowLeft,
   DArrowRight,
   ArrowRight,
 } from '@element-plus/icons'
+import ElButton from '@element-pro/components/button'
+import { ClickOutside } from '@element-pro/directives'
+import { useLocale } from '@element-pro/hooks'
+import ElInput from '@element-pro/components/input'
+import {
+  extractDateFormat,
+  extractTimeFormat,
+  TimePickPanel,
+} from '@element-pro/components/time-picker'
+import { ElIcon } from '@element-pro/components/icon'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import { isValidDatePickType } from '@element-pro/utils/validators'
 import DateTable from './basic-date-table.vue'
 import MonthTable from './basic-month-table.vue'
 import YearTable from './basic-year-table.vue'

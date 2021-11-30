@@ -1,2 +1,2 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/row.scss'
+import '@element-pro/components/base/style'
+import '@element-pro/theme-chalk/src/row.scss'

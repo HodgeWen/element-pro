@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { NOOP } from '@vue/shared'
-import { sleep } from '@element-plus/test-utils'
+import { sleep } from '@element-pro/test-utils'
 
 import Autocomplete from '../src/index.vue'
 

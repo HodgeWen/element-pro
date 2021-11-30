@@ -4,12 +4,11 @@ import { PREFERRED_LANG_KEY } from '../constant'
 
 import langs from '../../i18n/lang.json'
 import translationLocale from '../../i18n/component/translation.json'
-import { useLang } from './lang'
 
 export const useTranslation = () => {
   const route = useRoute()
   const router = useRouter()
-  const lang = useLang()
+  const lang = 'zh-CN'
 
   const languageMap = {
     'en-US': 'English',
@@ -19,9 +18,9 @@ export const useTranslation = () => {
     'ja-JP': '日本語',
   }
 
-  const helpTranslate = computed(() => translationLocale[lang.value].help)
+  const helpTranslate = computed(() => translationLocale[lang].help)
   const langsRef = computed(() => {
-    const currentLang = lang.value
+    const currentLang = lang
 
     // When there is no zh-CN in the list, meaning this is the PR preview
     // so we simply return the current list which contains only en-US
@@ -38,7 +37,7 @@ export const useTranslation = () => {
   })
 
   const switchLang = (targetLang: string) => {
-    if (lang.value === targetLang) return
+    if (lang === targetLang) return
     localStorage.setItem(PREFERRED_LANG_KEY, targetLang)
     const firstSlash = route.path.indexOf('/', 1)
 

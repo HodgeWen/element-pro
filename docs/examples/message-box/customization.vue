@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent, h } from 'vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-pro'
 export default defineComponent({
   setup() {
     const open = () => {

@@ -7,7 +7,7 @@ import {
   ref,
   h,
 } from 'vue'
-import ElCheckbox from '@element-plus/components/checkbox'
+import ElCheckbox from '@element-pro/components/checkbox'
 import FilterPanel from '../filter-panel.vue'
 import useLayoutObserver from '../layout-observer'
 import { hColgroup } from '../h-helper'

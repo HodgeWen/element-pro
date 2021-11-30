@@ -15,8 +15,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue'
-import ElIcon from '@element-plus/components/icon'
-import { buildProps, definePropType } from '@element-plus/utils/props'
+import ElIcon from '@element-pro/components/icon'
+import { buildProps, definePropType } from '@element-pro/utils/props'
 import { useDropdown } from './useDropdown'
 import type { Component } from 'vue'
 

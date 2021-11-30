@@ -1,122 +1,67 @@
-<p align="center">
-  <img width="300px" src="https://user-images.githubusercontent.com/10731096/95823103-9ce15780-0d5f-11eb-8010-1bd1b5910d4f.png">
-</p>
+<p align="center">Element Pro - 基于 element-pro 的增强版</p>
 
-<p align="center">
-  <a href="https://www.npmjs.org/package/element-plus">
-    <img src="https://img.shields.io/npm/v/element-plus.svg">
-  </a>
-  <a href="https://npmcharts.com/compare/element-plus?minimal=true">
-    <img src="http://img.shields.io/npm/dm/element-plus.svg">
-  </a>
-  <br>
-</p>
+- 💪 使用 Vue 3 Composition API 开发
+- 🔥 使用 TypeScript 开发
 
-<p align="center">Element Plus - A Vue.js 3 UI library</p>
+## 历史文档
 
-- 💪 Vue 3 Composition API
-- 🔥 Written in TypeScript
+没有
 
-## Archived website
+## 状态: 内部可用, 全力开发中
 
-If you are looking for previous version website, here is the link.
+正处于全力开发和长期维护状态中
 
-[Element Plus Documentation Archived](https://github.com/element-plus/doc-archive)
+### 在线运行
 
-The new website is launched at 17th Sep 2021.
+#### Try it with code sandbox (element-pro 在 sandbox 上的)
 
-## Status: Beta
+[![Edit element-pro](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/element-pro-demo-dxtcr)
 
-This project is still under heavy development. Feel free to join us and make your first pull request.
+#### Try it with our built-in playground (element-plus 官方的)
 
-### Playground
+[Playground](https://play.element-pro.org/)
 
-#### Try it with code sandbox
+## 文档
 
-[![Edit element-plus](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/element-plus-demo-dxtcr)
+纯中文文档, 没有任何其他国家
 
-#### Try it with our built-in playground
+## 破坏性改动列表
 
-[Playground](https://play.element-plus.org/)
+先看看 element-plus 的破坏性更改 [Breaking Change List](https://github.com/element-pro/element-pro/issues/162).
 
-<p align="center">
-  <b>Special thanks to the generous sponsorship by:</b>
-</p>
-<br/>
-<table align="center" cellspacing="0" cellpadding="0">
-  <tbody>
-    <tr>
-      <td align="center" valign="middle">
-        <a href="https://www.jnpfsoft.com/index.html?from=elementUI" target="_blank">
-          <img width="150px" src="https://user-images.githubusercontent.com/17680888/140337374-59b3cb43-c1d3-449e-9757-2503de56f8e2.png">
-        </a>
-      </td>
-      <td align="center" valign="middle">
-        <a href="https://bit.dev/?from=element-ui" target="_blank">
-          <img width="150px" src="https://user-images.githubusercontent.com/10095631/41342907-e44e7196-6f2f-11e8-92f2-47702dc8f059.png">
-        </a>
-      </td>
-      <td align="center" valign="middle">
-        <a href="https://www.renren.io/?from=element-ui" target="_blank">
-          <img width="150px" src="https://user-images.githubusercontent.com/82012629/126620778-0d8ab509-018a-45d7-b8de-a5bac2ad519a.png">
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+## 启动项目
 
----
-
-## Translations
-
-Element Plus is translated to multiple languages, you can click the badge to help up update the translation or apply to become
-a proofreader [![Crowdin](https://badges.crowdin.net/element-plus/localized.svg)](https://crowdin.com/project/element-plus)
-
-## Documentation
-
-You can find for more details, API, and other docs on [https://element-plus.org](https://element-plus.org/)
-
-国内[加速镜像站点](https://element-plus.gitee.io/)
-
-Join our [Discord](https://discord.link/ElementPlus) to start communicating with everybody.
-
-## Breaking change list
-
-You can find the breaking change list here: [Breaking Change List](https://github.com/element-plus/element-plus/issues/162).
-
-## Bootstrap project
-
-With command
+命令
 
 ```bash
 $ pnpm i
 ```
 
-the project will install all dependencies
+安装所有依赖
 
-## Website preview
+## 网站预览
 
-With command
+命令
 
 ```bash
 $ pnpm docs:dev
 ```
 
-the project will launch website for you to preview all existing component
+启动文档网站, 可以在这里看到所有的组件
 
-## Local development
+## 本地开发
 
-1. With command
+1. 命令
 
 ```shell
 $ pnpm dev
 ```
 
-will start the local development environment
+启动本地开发环境
 
-2. Add your component into `play/src/App.vue`
+2. 引入你的组件到 `play/src/App.vue` 文件中
 
-> App.vue
+> App.vue 文件
 
 ```vue
 <template>
@@ -124,42 +69,33 @@ will start the local development environment
 </template>
 
 <script setup lang="ts">
-// make sure this component is registered in @element-plus/components
-import { ComponentYouAreDeveloping } from '@element-plus/components'
+// 确保你开发的组件在 @element-pro/components/index.ts 被导出
+import { ComponentYouAreDeveloping } from '@element-pro/components'
 </script>
 ```
 
-Modify `App.vue` file per your needs to get things work.
+开发你的组件
 
-## Component migration process
+## 生成新的组件
 
-1. Convert the item in https://github.com/element-plus/element-plus/projects/1 to an issue
-2. Assign yourself to the issue
-3. Author your component by generating new component command below
-4. Migrate tests and docs
-5. Open a new pull request, fill in the component issue link in 1
-
-## Generate new component
-
-With command
+通过命令快捷生成
 
 ```bash
 $ pnpm gen component-name
 ```
 
-Note the `component-name` must be in `kebab-case`, combining words by replacing each space with a dash.
+注意你的组件名应该用中划线拼接小写单词来命名.
+组件类型也必须加到 `typings/global.d.ts` 文件中
 
-And component type must be added to `typings/global.d.ts`.
+## 提交模板
 
-## Commit template
-
-With command
+命令检查
 
 ```bash
 pnpm cz
 ```
 
-Example
+示例
 
 ```
 # [TYPE](SCOPE): [el-component-name] DESCRIPTION#[ISSUE]
@@ -168,13 +104,11 @@ Example
 
 ## Licence
 
+必须是 MIT
 Element Plus is open source software licensed as
-[MIT](https://github.com/element-plus/element-plus/blob/master/LICENSE).
+[MIT](https://github.com/element-pro/element-pro/blob/master/LICENSE).
 
-## Contributors
+## 贡献者
 
-This project wouldn't exist without our amazing contributors
-
-<a href="https://github.com/element-plus/element-plus/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=element-plus/element-plus" />
-</a>
+人人都是贡献者
+特别感谢 element-plus 的贡献者们

@@ -2,13 +2,12 @@
 import { computed, ref } from 'vue'
 import { hyphenate } from '@vue/shared'
 import clipboardCopy from 'clipboard-copy'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-pro'
 import * as Icons from '@element-plus/icons'
-import { useLang } from '../../composables/lang'
 import localeData from '../../../i18n/component/icons.json'
 
-const lang = useLang()
-const locale = computed(() => localeData[lang.value])
+const lang = 'zh-CN'
+const locale = computed(() => localeData[lang])
 const copyIcon = ref(true)
 
 const copyContent = async (content) => {
@@ -50,8 +49,8 @@ const copySvgIcon = async (name, refs) => {
   </div>
   <ul class="demo-icon-list">
     <li
-      v-for="component in Icons"
-      :key="component"
+      v-for="(component, i) in Icons"
+      :key="i"
       :ref="component.name"
       class="icon-item"
       @click="copySvgIcon(component.name, $refs)"

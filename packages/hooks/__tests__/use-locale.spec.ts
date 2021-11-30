@@ -1,7 +1,7 @@
 import { inject, h, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import Chinese from '@element-plus/locale/lang/zh-cn'
-import English from '@element-plus/locale/lang/en'
+import Chinese from '@element-pro/locale/lang/zh-cn'
+import English from '@element-pro/locale/lang/en'
 import { provideLocale, useLocaleProps, localeContextKey } from '../use-locale'
 
 const TestComp = {

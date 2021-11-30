@@ -1,4 +1,4 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/calendar.scss'
-import '@element-plus/components/button/style/index'
-import '@element-plus/components/button-group/style/index'
+import '@element-pro/components/base/style'
+import '@element-pro/theme-chalk/src/calendar.scss'
+import '@element-pro/components/button/style/index'
+import '@element-pro/components/button-group/style/index'

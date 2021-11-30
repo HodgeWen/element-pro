@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { isNumber, isString } from '@element-plus/utils/util'
+import { isNumber, isString } from '@element-pro/utils/util'
 import { iconProps } from './icon'
 
 import type { CSSProperties } from 'vue'

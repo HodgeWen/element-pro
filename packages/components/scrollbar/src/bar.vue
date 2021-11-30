@@ -26,8 +26,8 @@ import {
   toRef,
 } from 'vue'
 import { useEventListener } from '@vueuse/core'
-import { scrollbarContextKey } from '@element-plus/tokens'
-import { throwError } from '@element-plus/utils/error'
+import { scrollbarContextKey } from '@element-pro/tokens'
+import { throwError } from '@element-pro/utils/error'
 import { BAR_MAP, renderThumbStyle } from './util'
 
 import { barProps } from './bar'

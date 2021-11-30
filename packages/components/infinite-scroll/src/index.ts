@@ -4,8 +4,8 @@ import throttle from 'lodash/throttle'
 import {
   getScrollContainer,
   getOffsetTopDistance,
-} from '@element-plus/utils/dom'
-import { throwError } from '@element-plus/utils/error'
+} from '@element-pro/utils/dom'
+import { throwError } from '@element-pro/utils/error'
 
 import type { ObjectDirective, ComponentPublicInstance } from 'vue'
 

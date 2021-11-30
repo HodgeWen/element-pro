@@ -15,7 +15,7 @@ import {
   watch,
 } from 'vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
-import { getScrollContainer } from '@element-plus/utils/dom'
+import { getScrollContainer } from '@element-pro/utils/dom'
 import { affixEmits, affixProps } from './affix'
 
 import type { CSSProperties } from 'vue'

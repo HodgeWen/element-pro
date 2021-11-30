@@ -6,7 +6,7 @@ const isBool = (val: unknown): val is boolean => {
   return typeof val === 'boolean'
 }
 
-export const useToggle = (getToggled?: Ref<boolean>) => {
+export const useToggle = (getToggled?: Ref<boolean> | boolean) => {
   const val = isRef(getToggled)
     ? getToggled
     : ref(isBool(getToggled) ? getToggled : false)

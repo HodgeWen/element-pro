@@ -10,13 +10,13 @@ import {
   PatchFlags,
   isFragment,
   isValidElementNode,
-} from '@element-plus/utils/vnode'
-import { isArray, isNumber } from '@element-plus/utils/util'
+} from '@element-pro/utils/vnode'
+import { isArray, isNumber } from '@element-pro/utils/util'
 import {
   buildProps,
   componentSize,
   definePropType,
-} from '@element-plus/utils/props'
+} from '@element-pro/utils/props'
 import Item from './item.vue'
 import { useSpace } from './use-space'
 

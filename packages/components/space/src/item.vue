@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { buildProps } from '@element-plus/utils/props'
+import { buildProps } from '@element-pro/utils/props'
 
 const spaceItem = buildProps({
   prefixCls: {

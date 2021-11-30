@@ -1,6 +1,6 @@
 import { ref, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { tick, defineGetter, makeScroll } from '@element-plus/test-utils'
+import { tick, defineGetter, makeScroll } from '@element-pro/test-utils'
 import InfiniteScroll, { SCOPE, DEFAULT_DELAY } from '../src/index'
 
 const CONTAINER_HEIGHT = 200

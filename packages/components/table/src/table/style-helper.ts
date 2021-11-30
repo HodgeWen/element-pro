@@ -12,12 +12,12 @@ import throttle from 'lodash/throttle'
 import {
   addResizeListener,
   removeResizeListener,
-} from '@element-plus/utils/resize-event'
-import { useGlobalConfig } from '@element-plus/utils/util'
-import { on, off } from '@element-plus/utils/dom'
+} from '@element-pro/utils/resize-event'
+import { useGlobalConfig } from '@element-pro/utils/util'
+import { on, off } from '@element-pro/utils/dom'
 import { parseHeight } from '../util'
 
-import type { ResizableElement } from '@element-plus/utils/resize-event'
+import type { ResizableElement } from '@element-pro/utils/resize-event'
 import type { Table, TableProps } from './defaults'
 import type { Store } from '../store'
 import type TableLayout from '../table-layout'

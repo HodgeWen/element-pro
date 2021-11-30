@@ -1,19 +1,15 @@
 import { computed } from 'vue'
 import { useData } from 'vitepress'
-import { useLang } from '../composables/lang'
 import { useLocale } from '../composables/locale'
-import { defaultLang } from '../constant'
 import { createGitHubUrl, createCrowdinUrl } from '../utils'
 import editLinkLocale from '../../i18n/component/edit-link.json'
 
 export function useEditLink() {
   const { page, theme, frontmatter } = useData()
-  const lang = useLang()
+  const lang = 'zh-CN'
   const editLink = useLocale(editLinkLocale)
 
-  const canEditSource = computed(() => {
-    return lang.value === defaultLang
-  })
+  const canEditSource = computed(() => false)
 
   const url = computed(() => {
     if (canEditSource.value) {
@@ -42,7 +38,7 @@ export function useEditLink() {
       )
     }
 
-    return createCrowdinUrl(lang.value)
+    return createCrowdinUrl(lang)
   })
   const text = computed(() => {
     return canEditSource.value

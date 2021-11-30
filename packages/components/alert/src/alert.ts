@@ -1,5 +1,5 @@
-import { TypeComponentsMap } from '@element-plus/utils/icon'
-import { buildProps, keyOf } from '@element-plus/utils/props'
+import { TypeComponentsMap } from '@element-pro/utils/icon'
+import { buildProps, keyOf } from '@element-pro/utils/props'
 import type { ExtractPropTypes } from 'vue'
 
 export type AlertEffect = 'light' | 'dark'

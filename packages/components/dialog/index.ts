@@ -1,4 +1,4 @@
-import { withInstall } from '@element-plus/utils/with-install'
+import { withInstall } from '@element-pro/utils/with-install'
 import Dialog from './src/dialog.vue'
 
 export const ElDialog = withInstall(Dialog)

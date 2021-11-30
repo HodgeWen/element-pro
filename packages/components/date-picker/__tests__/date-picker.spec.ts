@@ -1,11 +1,11 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import dayjs from 'dayjs'
-import ConfigProvider from '@element-plus/components/config-provider'
-import { CommonPicker } from '@element-plus/components/time-picker'
-import Input from '@element-plus/components/input'
-import zhCn from '@element-plus/locale/lang/zh-cn'
-import enUs from '@element-plus/locale/lang/en'
+import ConfigProvider from '@element-pro/components/config-provider'
+import { CommonPicker } from '@element-pro/components/time-picker'
+import Input from '@element-pro/components/input'
+import zhCn from '@element-pro/locale/lang/zh-cn'
+import enUs from '@element-pro/locale/lang/en'
 import 'dayjs/locale/zh-cn'
 import DatePicker from '../src/date-picker'
 
@@ -278,7 +278,7 @@ describe('DatePicker', () => {
     it('with literal string', async () => {
       const day = dayjs()
       const format = 'YYYY-MM-DD'
-      const valueFormat = '[Element-Plus] DD/MM YYYY'
+      const valueFormat = '[Element-Pro] DD/MM YYYY'
       const value = day.format(valueFormat)
       const wrapper = _mount(
         `
@@ -298,7 +298,7 @@ describe('DatePicker', () => {
         {
           methods: {
             changeValue() {
-              this.value = '[Element-Plus] 31/05 2021'
+              this.value = '[Element-Pro] 31/05 2021'
             },
           },
         }
@@ -314,7 +314,7 @@ describe('DatePicker', () => {
       await nextTick()
       expect(vm.value).toBe(
         dayjs(
-          `[Element-Plus] 01/${`0${day.month() + 1}`.slice(-2)} ${day.year()}`,
+          `[Element-Pro] 01/${`0${day.month() + 1}`.slice(-2)} ${day.year()}`,
           valueFormat
         ).format(valueFormat)
       )
@@ -446,7 +446,7 @@ describe('MonthPicker', () => {
   })
 
   it('value-format', async () => {
-    const valueFormat = '[Element-Plus] YYYY.MM'
+    const valueFormat = '[Element-Pro] YYYY.MM'
     const wrapper = _mount(
       `
       <el-date-picker
@@ -512,7 +512,7 @@ describe('YearPicker', () => {
   })
 
   it('value-format', async () => {
-    const valueFormat = '[Element-Plus] YYYY'
+    const valueFormat = '[Element-Pro] YYYY'
     const wrapper = _mount(
       `
       <el-date-picker

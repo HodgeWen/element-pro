@@ -66,13 +66,13 @@ import {
   onUpdated,
 } from 'vue'
 
-import { ElIcon } from '@element-plus/components/icon'
-import { RepeatClick } from '@element-plus/directives'
-import { useFormItem } from '@element-plus/hooks'
-import ElInput from '@element-plus/components/input'
-import { isNumber } from '@element-plus/utils/util'
-import { debugWarn } from '@element-plus/utils/error'
 import { ArrowUp, ArrowDown, Plus, Minus } from '@element-plus/icons'
+import { ElIcon } from '@element-pro/components/icon'
+import { RepeatClick } from '@element-pro/directives'
+import { useFormItem } from '@element-pro/hooks'
+import ElInput from '@element-pro/components/input'
+import { isNumber } from '@element-pro/utils/util'
+import { debugWarn } from '@element-pro/utils/error'
 import { inputNumberProps, inputNumberEmits } from './input-number'
 
 import type { ComponentPublicInstance } from 'vue'

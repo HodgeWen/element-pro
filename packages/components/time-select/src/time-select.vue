@@ -31,12 +31,12 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
-import ElSelect from '@element-plus/components/select'
-import ElIcon from '@element-plus/components/icon'
 import { CircleClose, Clock } from '@element-plus/icons'
+import ElSelect from '@element-pro/components/select'
+import ElIcon from '@element-pro/components/icon'
 
 import type { PropType, Component } from 'vue'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 const { Option: ElOption } = ElSelect
 

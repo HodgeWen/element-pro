@@ -36,7 +36,7 @@ async function main() {
 
   // loop through en-US
 
-  const enUS = path.resolve(componentLocaleRoot, 'en-US')
+  const zhCN = path.resolve(componentLocaleRoot, 'zh-CN')
   // we do not include en-US since we are currently using it as template
   const languagePaths = langWithoutEn.map((l) => {
     return {
@@ -46,7 +46,7 @@ async function main() {
   })
 
   console.log(languagePaths)
-  await traverseDir(enUS, languagePaths, localeOutput)
+  await traverseDir(zhCN, languagePaths, localeOutput)
 }
 
 async function traverseDir(dir, paths, targetPath) {
@@ -74,7 +74,7 @@ async function traverseDir(dir, paths, targetPath) {
         const content = require(path.resolve(dir, c.name))
 
         const contentToWrite = {
-          'en-US': content,
+          'zh-CN': content,
         }
 
         await Promise.all(

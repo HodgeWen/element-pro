@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
 import { reactive, toRefs } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-pro'
 
 export default {
   setup() {

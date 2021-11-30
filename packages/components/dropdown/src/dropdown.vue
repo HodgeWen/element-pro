@@ -61,19 +61,19 @@ import {
   watch,
   onMounted,
 } from 'vue'
-import ElButton from '@element-plus/components/button'
-import ElPopper, { Effect } from '@element-plus/components/popper'
-import ElScrollbar from '@element-plus/components/scrollbar'
-import ElIcon from '@element-plus/components/icon'
-import { on, addClass, removeClass } from '@element-plus/utils/dom'
-import { addUnit } from '@element-plus/utils/util'
 import { ArrowDown } from '@element-plus/icons'
+import ElButton from '@element-pro/components/button'
+import ElPopper, { Effect } from '@element-pro/components/popper'
+import ElScrollbar from '@element-pro/components/scrollbar'
+import ElIcon from '@element-pro/components/icon'
+import { on, addClass, removeClass } from '@element-pro/utils/dom'
+import { addUnit } from '@element-pro/utils/util'
 import { useDropdown } from './useDropdown'
 
-import type { Placement } from '@element-plus/components/popper'
+import type { Placement } from '@element-pro/components/popper'
 import type { PropType, ComponentPublicInstance, CSSProperties } from 'vue'
-import type { TriggerType } from '@element-plus/hooks/use-popper/use-target-events'
-import type { ButtonType } from '@element-plus/components/button/src/types'
+import type { TriggerType } from '@element-pro/hooks/use-popper/use-target-events'
+import type { ButtonType } from '@element-pro/components/button/src/types'
 
 type Nullable<T> = null | T
 const { ButtonGroup: ElButtonGroup } = ElButton

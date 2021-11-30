@@ -1,12 +1,11 @@
 import { computed } from 'vue'
 import { useRoute, useData } from 'vitepress'
 import { isArray, ensureStartingSlash, removeExtention } from '../utils'
-import { useLang } from './lang'
 
 export const useSidebar = () => {
   const route = useRoute()
   const { site, page } = useData()
-  const lang = useLang()
+  const lang = 'zh-CN'
   if (!page.value) {
     return {
       sidebars: computed(() => []),
@@ -18,7 +17,7 @@ export const useSidebar = () => {
     const sidebars = getSidebarConfig(
       site.value.themeConfig.sidebars,
       route.data.relativePath,
-      lang.value
+      lang
     )
     return sidebars
   })

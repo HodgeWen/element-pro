@@ -11,17 +11,17 @@ import {
 import { isObject, toRawType } from '@vue/shared'
 import lodashDebounce from 'lodash/debounce'
 import isEqual from 'lodash/isEqual'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import { useLocale } from '@element-plus/hooks'
-import isServer from '@element-plus/utils/isServer'
-import scrollIntoView from '@element-plus/utils/scroll-into-view'
-import { isKorean } from '@element-plus/utils/isDef'
-import { getValueByPath, useGlobalConfig } from '@element-plus/utils/util'
-import { elFormKey, elFormItemKey } from '@element-plus/tokens'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-pro/utils/constants'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import { useLocale } from '@element-pro/hooks'
+import isServer from '@element-pro/utils/isServer'
+import scrollIntoView from '@element-pro/utils/scroll-into-view'
+import { isKorean } from '@element-pro/utils/isDef'
+import { getValueByPath, useGlobalConfig } from '@element-pro/utils/util'
+import { elFormKey, elFormItemKey } from '@element-pro/tokens'
 
 import type { QueryChangeCtx, SelectOptionProxy } from './token'
-import type { ElFormContext, ElFormItemContext } from '@element-plus/tokens'
+import type { ElFormContext, ElFormItemContext } from '@element-pro/tokens'
 
 export function useSelectStates(props) {
   const { t } = useLocale()

@@ -65,10 +65,10 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import ElCheckbox from '@element-plus/components/checkbox'
-import ElRadio from '@element-plus/components/radio'
-import ElIcon from '@element-plus/components/icon'
 import { Check, Loading, ArrowRight } from '@element-plus/icons'
+import ElCheckbox from '@element-pro/components/checkbox'
+import ElRadio from '@element-pro/components/radio'
+import ElIcon from '@element-pro/components/icon'
 import NodeContent from './node-content'
 import { CASCADER_PANEL_INJECTION_KEY } from './types'
 import type { default as CascaderNode } from './node'

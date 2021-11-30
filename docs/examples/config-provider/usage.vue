@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-// import { ConfigProvider } from 'element-plus'
+// import { ConfigProvider } from 'element-pro'
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({

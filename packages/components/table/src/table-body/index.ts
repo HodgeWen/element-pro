@@ -6,8 +6,8 @@ import {
   onUnmounted,
   onUpdated,
 } from 'vue'
-import { addClass, removeClass } from '@element-plus/utils/dom'
-import isServer from '@element-plus/utils/isServer'
+import { addClass, removeClass } from '@element-pro/utils/dom'
+import isServer from '@element-pro/utils/isServer'
 import { hColgroup } from '../h-helper'
 import useLayoutObserver from '../layout-observer'
 import { removePopper } from '../util'

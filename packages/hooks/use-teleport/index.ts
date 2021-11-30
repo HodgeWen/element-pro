@@ -4,7 +4,7 @@ import { isClient } from '@vueuse/core'
 import {
   createGlobalNode,
   removeGlobalNode,
-} from '@element-plus/utils/global-nodes'
+} from '@element-pro/utils/global-nodes'
 
 import type { VNode, Ref } from 'vue'
 

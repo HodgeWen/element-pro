@@ -1,6 +1,6 @@
 import { inject } from 'vue'
-import { configProviderContextKey } from '@element-plus/tokens'
-import type { ConfigProvdierContext } from '@element-plus/tokens'
+import { configProviderContextKey } from '@element-pro/tokens'
+import type { ConfigProvdierContext } from '@element-pro/tokens'
 
 const defaultConfig: ConfigProvdierContext = {
   button: {

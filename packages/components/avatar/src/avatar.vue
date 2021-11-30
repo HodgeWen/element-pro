@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref, watch } from 'vue'
-import { ElIcon } from '@element-plus/components/icon'
+import { ElIcon } from '@element-pro/components/icon'
 import { avatarEmits, avatarProps } from './avatar'
 
 import type { CSSProperties } from 'vue'

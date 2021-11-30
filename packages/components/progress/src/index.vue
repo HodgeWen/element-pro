@@ -77,7 +77,6 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { ElIcon } from '@element-plus/components/icon'
 import {
   WarningFilled,
   CircleCheck,
@@ -85,6 +84,7 @@ import {
   Check,
   Close,
 } from '@element-plus/icons'
+import { ElIcon } from '@element-pro/components/icon'
 
 import type { PropType, SVGAttributes } from 'vue'
 

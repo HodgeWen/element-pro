@@ -1,6 +1,6 @@
-import { isValidWidthUnit } from '@element-plus/utils/validators'
-import { buildProps, definePropType } from '@element-plus/utils/props'
-import { UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
+import { isValidWidthUnit } from '@element-pro/utils/validators'
+import { buildProps, definePropType } from '@element-pro/utils/props'
+import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
 
 import type { ExtractPropTypes } from 'vue'
 

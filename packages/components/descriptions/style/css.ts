@@ -1,3 +1,3 @@
-import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-descriptions.css'
-import '@element-plus/components/descriptions-item/style/css'
+import '@element-pro/components/base/style/css'
+import '@element-pro/theme-chalk/el-descriptions.css'
+import '@element-pro/components/descriptions-item/style/css'

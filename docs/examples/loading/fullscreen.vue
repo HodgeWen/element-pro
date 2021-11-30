@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { ElLoading } from 'element-plus'
+import { ElLoading } from 'element-pro'
 
 export default defineComponent({
   setup() {

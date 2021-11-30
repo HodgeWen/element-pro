@@ -1,9 +1,9 @@
-import { isValidComponentSize } from '@element-plus/utils/validators'
 import { CircleClose } from '@element-plus/icons'
+import { isValidComponentSize } from '@element-pro/utils/validators'
 
 import type { PropType, Component } from 'vue'
 import type { Options } from '@popperjs/core'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 export const timePickerDefaultProps = {
   name: {

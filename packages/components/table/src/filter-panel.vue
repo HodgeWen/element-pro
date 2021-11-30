@@ -83,14 +83,14 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, getCurrentInstance, watch } from 'vue'
-import ElCheckbox from '@element-plus/components/checkbox'
-import { ElIcon } from '@element-plus/components/icon'
 import { ArrowDown, ArrowUp } from '@element-plus/icons'
-import { ClickOutside } from '@element-plus/directives'
-import { useLocale } from '@element-plus/hooks'
-import ElPopper, { Effect } from '@element-plus/components/popper'
-import ElScrollbar from '@element-plus/components/scrollbar'
-import type { Placement } from '@element-plus/components/popper'
+import ElCheckbox from '@element-pro/components/checkbox'
+import { ElIcon } from '@element-pro/components/icon'
+import { ClickOutside } from '@element-pro/directives'
+import { useLocale } from '@element-pro/hooks'
+import ElPopper, { Effect } from '@element-pro/components/popper'
+import ElScrollbar from '@element-pro/components/scrollbar'
+import type { Placement } from '@element-pro/components/popper'
 
 import type { WritableComputedRef, PropType } from 'vue'
 import type { TableColumnCtx } from './table-column/defaults'

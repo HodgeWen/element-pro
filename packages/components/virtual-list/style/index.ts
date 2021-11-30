@@ -1,3 +1,3 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/virtual-list.scss'
-import '@element-plus/components/scrollbar/style/index'
+import '@element-pro/components/base/style'
+import '@element-pro/theme-chalk/src/virtual-list.scss'
+import '@element-pro/components/scrollbar/style/index'

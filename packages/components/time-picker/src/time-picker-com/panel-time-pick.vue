@@ -43,8 +43,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed, inject } from 'vue'
 import dayjs from 'dayjs'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import { useLocale } from '@element-plus/hooks'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import { useLocale } from '@element-pro/hooks'
 import TimeSpinner from './basic-time-spinner.vue'
 import { getAvailableArrs, useOldValue } from './useTimePicker'
 

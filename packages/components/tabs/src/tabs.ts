@@ -12,14 +12,14 @@ import {
   watch,
 } from 'vue'
 import { isPromise, NOOP } from '@vue/shared'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import ElIcon from '@element-plus/components/icon'
 import { Plus } from '@element-plus/icons'
-import { buildProps, definePropType } from '@element-plus/utils/props'
-import { INPUT_EVENT, UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
-import { tabsRootContextKey } from '@element-plus/tokens'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import ElIcon from '@element-pro/components/icon'
+import { buildProps, definePropType } from '@element-pro/utils/props'
+import { INPUT_EVENT, UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
+import { tabsRootContextKey } from '@element-pro/tokens'
 import TabNav from './tab-nav'
-import type { TabsPaneContext } from '@element-plus/tokens'
+import type { TabsPaneContext } from '@element-pro/tokens'
 
 import type {
   Component,

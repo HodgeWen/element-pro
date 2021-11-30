@@ -12,8 +12,8 @@ import {
 } from 'vue'
 import { hasOwn } from '@vue/shared'
 
-import { isNumber, isString } from '@element-plus/utils/util'
-import isServer from '@element-plus/utils/isServer'
+import { isNumber, isString } from '@element-pro/utils/util'
+import isServer from '@element-pro/utils/isServer'
 
 import { useCache } from '../hooks/use-cache'
 import useWheel from '../hooks/use-wheel'

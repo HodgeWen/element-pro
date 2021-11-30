@@ -1,4 +1,4 @@
-import { withInstall, withNoopInstall } from '@element-plus/utils/with-install'
+import { withInstall, withNoopInstall } from '@element-pro/utils/with-install'
 
 import Radio from './src/radio.vue'
 import RadioButton from './src/radio-button.vue'

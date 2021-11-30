@@ -1,9 +1,9 @@
 import { ref, computed, watchEffect } from 'vue'
-import { isNumber } from '@element-plus/utils/util'
+import { isNumber } from '@element-pro/utils/util'
 import type { SpaceProps } from './space'
 
 import type { CSSProperties, StyleValue } from 'vue'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 const SIZE_MAP: Record<ComponentSize, number> = {
   mini: 4,
