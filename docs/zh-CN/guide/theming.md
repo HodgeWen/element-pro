@@ -161,7 +161,7 @@ export default defineConfig({
 
 CSS 变量是一个非常有用的特性，几乎所有的浏览器都支持它。 （IE：啊这？)
 
-> 从这里学习更多关于[使用 CSS 自定义属性(变量) | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+> 从这里学习更多关于[使用 CSS 自定义属性(变量) | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
 
 我们用 css 变量来改造了几乎所有组件的样式系统。 (自版本 `1.0.2-beta-70` [#2242](https://github.com/element-pro/element-pro/issues/2242) 开始)
 
@@ -355,4 +355,4 @@ createApp(App).use(ElementPro)
 }
 ```
 
-如果不清楚 `babel-plugin-component` 是什么，请参考 [快速上手](/en-US/guide/quickstart.html) 一节。 更多 `element-theme` 用法请参考[项目仓库](https://github.com/ElementUI/element-theme)。
+如果不清楚 `babel-plugin-component` 是什么，请参考 [快速上手](/zh-CN/guide/quickstart.html) 一节。 更多 `element-theme` 用法请参考[项目仓库](https://github.com/ElementUI/element-theme)。

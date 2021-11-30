@@ -79,7 +79,7 @@ lang: zh-CN
 
 ## 基础用法
 
-:::demo 可通过`fit`确定图片如何适应到容器框，同原生 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)。
+:::demo 可通过`fit`确定图片如何适应到容器框，同原生 [object-fit](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit)。
 
 image/basic-usage
 
@@ -122,7 +122,7 @@ image/image-preview
 | 属性                | 说明                                                                                                     | 类型                 | 可选值                                     | 默认值                                         |
 | ------------------- | -------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ | ---------------------------------------------- |
 | alt                 | 原生 alt                                                                                                 | string               | -                                          | -                                              |
-| fit                 | 确定图片如何适应容器框，同原生 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) | string               | fill / contain / cover / none / scale-down | -                                              |
+| fit                 | 确定图片如何适应容器框，同原生 [object-fit](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit) | string               | fill / contain / cover / none / scale-down | -                                              |
 | hide-on-click-modal | 当开启 preview 功能时，是否可以通过点击遮罩层关闭 preview                                                | boolean              | true / false                               | false                                          |
 | initial-index       | 初始预览图像索引，小于 `url-list` 的长度                                                                 | number               | int                                        | 0                                              |
 | lazy                | 是否使用懒加载                                                                                           | boolean              | —                                          | false                                          |

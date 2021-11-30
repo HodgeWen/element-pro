@@ -89,7 +89,7 @@ space/vnode-type-spacer
 
 ## 对齐方式
 
-设置该值可以调整所有子节点在容器内的对齐方式, 可设置的值与 [align-items ](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)一致
+设置该值可以调整所有子节点在容器内的对齐方式, 可设置的值与 [align-items ](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)一致
 
 :::demo 使用 `alignment` 属性来对齐
 
@@ -123,7 +123,7 @@ space/fill-ratio
 
 | 属性       | 说明                      | 类型                               | 可选值                                                                      | 默认值     |
 | ---------- | ------------------------- | ---------------------------------- | --------------------------------------------------------------------------- | ---------- | --- |
-| alignment  | 对齐的方式                | string                             | [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) | 'center'   |
+| alignment  | 对齐的方式                | string                             | [align-items](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) | 'center'   |
 | class      | 类名                      | string / Array<Object \\           | String> / Object                                                            | -          | -   |
 | direction  | 排列的方向                | string                             | vertical/horizontal                                                         | horizontal |
 | prefix-cls | 给 space-items 的类名前缀 | string                             | el-space                                                                    | -          |

@@ -57,7 +57,7 @@ tooltip/advanced-usage
 
 Tooltip 内不支持 `router-link` 组件，请使用 `vm.$router.push` 代替。
 
-Tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozilla.org/en-US/docs/Web/Events/mouseenter)， 请在 disabled form 元素外层添加一层包裹元素。
+Tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozilla.org/zh-CN/docs/Web/Events/mouseenter)， 请在 disabled form 元素外层添加一层包裹元素。
 
 :::
 
@@ -81,7 +81,7 @@ Tooltip 内不支持 disabled form 元素，参考[MDN](https://developer.mozill
 | manual                | 手动控制模式， 设置为 true 后，mouseenter 和 mouseleave 事件将不会生效                                  | boolean | —                                                                                                         | false                                                   |
 | popper-class          | 为 Tooltip 的 popper 添加类名                                                                           | string  | —                                                                                                         | —                                                       |
 | enterable             | 鼠标是否可进入到 tooltip 中                                                                             | Boolean | —                                                                                                         | true                                                    |
-| tabindex              | Tooltip 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | number  | —                                                                                                         | 0                                                       |
+| tabindex              | Tooltip 组件的 [tabindex](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex) | number  | —                                                                                                         | 0                                                       |
 
 ## 插槽
 

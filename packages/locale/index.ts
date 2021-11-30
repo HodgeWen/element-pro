@@ -57,7 +57,7 @@ export const use = (l: Language): void => {
     `:
       The previous i18n usage is deprecated please update to
       the new one to get reactive i18n translations, refer to:
-      https://element-pro.org/#/en-US/component/i18n
+      https://element-pro.org/#/zh-CN/component/i18n
     `
   )
 

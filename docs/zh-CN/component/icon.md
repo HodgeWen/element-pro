@@ -40,7 +40,7 @@ $ pnpm install @element-plus/icons
 
 :::warning
 
-Because HTML standard has already defined a tag named [menu](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu), so you need to use an alias in order to render the icon, if you register `Menu` directly it will not work.
+Because HTML standard has already defined a tag named [menu](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu), so you need to use an alias in order to render the icon, if you register `Menu` directly it will not work.
 
 :::
 

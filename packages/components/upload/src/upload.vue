@@ -80,7 +80,7 @@ export default defineComponent({
       type: Boolean as PropType<Nullable<boolean>>,
       default: null,
     },
-    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers
+    // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers
     accept: {
       type: String,
       default: '',

@@ -12,7 +12,7 @@ const reComponentName: InstallOptions['reComponentName'] = (title: string) =>
     .toLowerCase()}`
 
 const reDocUrl: InstallOptions['reDocUrl'] = (fileName, header) => {
-  const docs = 'https://element-pro.org/en-US/component/'
+  const docs = 'https://element-pro.org/zh-CN/component/'
   const _header = header ? header.replaceAll(/\s+/g, '-').toLowerCase() : ''
 
   return `${docs}${fileName}.html${_header ? '#' : ''}${_header}`
@@ -81,7 +81,7 @@ export const buildHelper: TaskFunction = (done) => {
     version: _version,
     entry: `${path.resolve(
       projRoot,
-      'docs/en-US/component'
+      'docs/zh-CN/component'
     )}/!(datetime-picker|message-box|message).md`,
     outDir: epOutput,
     reComponentName,

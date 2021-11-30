@@ -21,7 +21,7 @@ async function main() {
     withFileTypes: true,
   })
   const languages = dirs.map((dir) => dir.name)
-  const langWithoutEn = languages.filter((l) => l !== 'en-US')
+  const langWithoutEn = languages.filter((l) => l !== 'zh-CN')
 
   await fs.promises.mkdir(localeOutput)
 
@@ -34,10 +34,10 @@ async function main() {
     }
   )
 
-  // loop through en-US
+  // loop through zh-CN
 
   const zhCN = path.resolve(componentLocaleRoot, 'zh-CN')
-  // we do not include en-US since we are currently using it as template
+  // we do not include zh-CN since we are currently using it as template
   const languagePaths = langWithoutEn.map((l) => {
     return {
       name: l,

@@ -54,7 +54,7 @@ popover/nested-operation
 | show-after                | 延迟出现，单位毫秒                                                                                      | number          | —                                                                                                         | 0                                                       |
 | hide-after                | 延迟关闭，单位毫秒                                                                                      | number          | —                                                                                                         | 200                                                     |
 | auto-close                | Tooltip 出现后自动隐藏延时，单位毫秒，为 0 则不会自动隐藏                                               | number          | —                                                                                                         | 0                                                       |
-| tabindex                  | Popover 组件的 [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) | number          | —                                                                                                         | —                                                       |
+| tabindex                  | Popover 组件的 [tabindex](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex) | number          | —                                                                                                         | —                                                       |
 
 ## 插槽
 

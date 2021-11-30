@@ -39,7 +39,7 @@ avatar/fallback
 
 ## 图片如何适应容器
 
-当使用图片作为用户头像时，设置该图片如何在容器中展示。与[ object-fit ](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) 属性一致
+当使用图片作为用户头像时，设置该图片如何在容器中展示。与[ object-fit ](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit) 属性一致
 
 :::demo
 
