@@ -6,7 +6,7 @@
       extends: ['config:js-app'],
     },
     {
-      matchPaths: ['packages/element-plus/package.json'],
+      matchPaths: ['packages/element-pro/package.json'],
       extends: ['config:base', ':preserveSemverRanges'],
     },
   ],

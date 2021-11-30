@@ -2,7 +2,6 @@
 import { computed, toRef, ref, getCurrentInstance } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { useToggle } from '../composables/toggle'
-import { useLang } from '../composables/lang'
 import { useSourceCode } from '../composables/source-code'
 
 import demoBlockLocale from '../../i18n/component/demo-block.json'
@@ -66,7 +65,7 @@ const { copy, isSupported } = useClipboard({
 })
 
 const [sourceVisible, setSourceVisible] = useToggle()
-const lang = useLang()
+const lang = 'zh-CN'
 const demoSourceUrl = useSourceCode(toRef(props, 'path'))
 
 const formatPathDemos = computed(() => {
@@ -81,14 +80,17 @@ const formatPathDemos = computed(() => {
 })
 
 const codepenRef = ref()
-const locale = computed(() => demoBlockLocale[lang.value])
-const decodedDescription = computed(() => decodeURIComponent(props.description))
+const locale = computed(() => demoBlockLocale[lang])
+const decodedDescription = computed(() =>
+  props.description ? decodeURIComponent(props.description) : ''
+)
 
 const onCodepenClicked = () => {
   codepenRef.value.submit?.()
 }
 
 const copyCode = async () => {
+  if (!vm) return
   const { $message } = vm.appContext.config.globalProperties
   if (!isSupported) {
     $message.error(locale.value['copy-error'])
@@ -96,7 +98,7 @@ const copyCode = async () => {
   try {
     await copy()
     $message.success(locale.value['copy-success'])
-  } catch (e: Error) {
+  } catch (e: any) {
     $message.error(e.message)
   }
 }

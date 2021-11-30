@@ -1,11 +1,11 @@
 import { computed, ref, watch, nextTick, onMounted } from 'vue'
 import { useTimeoutFn } from '@vueuse/core'
 
-import { useLockscreen, useRestoreActive, useModal } from '@element-plus/hooks'
-import { UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
-import isServer from '@element-plus/utils/isServer'
-import PopupManager from '@element-plus/utils/popup-manager'
-import { isNumber } from '@element-plus/utils/util'
+import { useLockscreen, useRestoreActive, useModal } from '@element-pro/hooks'
+import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
+import isServer from '@element-pro/utils/isServer'
+import PopupManager from '@element-pro/utils/popup-manager'
+import { isNumber } from '@element-pro/utils/util'
 
 import type { CSSProperties, Ref, SetupContext } from 'vue'
 import type { DialogEmits, DialogProps } from './dialog'

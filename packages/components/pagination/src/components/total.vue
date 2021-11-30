@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useLocale } from '@element-plus/hooks'
+import { useLocale } from '@element-pro/hooks'
 
 import type { ExtractPropTypes } from 'vue'
 

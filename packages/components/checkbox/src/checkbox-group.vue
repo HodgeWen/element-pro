@@ -13,12 +13,12 @@ import {
   nextTick,
   toRefs,
 } from 'vue'
-import { UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
-import { isValidComponentSize } from '@element-plus/utils/validators'
+import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
+import { isValidComponentSize } from '@element-pro/utils/validators'
 import { useCheckboxGroup } from './useCheckbox'
 
 import type { PropType } from 'vue'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 export default defineComponent({
   name: 'ElCheckboxGroup',

@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { ElNotification } from 'element-plus'
+import { ElNotification } from 'element-pro'
 
 export default defineComponent({
   setup() {

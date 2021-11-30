@@ -3,7 +3,6 @@ import '@docsearch/css'
 import { watch, onMounted, getCurrentInstance } from 'vue'
 import { useRouter, useRoute } from 'vitepress'
 import docsearch from '@docsearch/js'
-import { useLang } from '../../composables/lang'
 // import type { DefaultTheme } from '../config'
 import type { DocSearchHit } from '@docsearch/react/dist/esm/types'
 
@@ -51,17 +50,17 @@ function update(options: any) {
   }
 }
 
-const lang = useLang()
+const lang = 'zh-CN'
 
 function initialize(userOptions: any) {
   // if the user has multiple locales, the search results should be filtered
   // based on the language
-  const facetFilters = props.multilang ? [`language:${lang.value}`] : []
+  const facetFilters = props.multilang ? [`language:${lang}`] : []
 
   docsearch(
     Object.assign({}, userOptions, {
       container: '#docsearch',
-      indexName: 'element-plus',
+      indexName: 'element-pro',
       searchParameters: Object.assign({}, userOptions.searchParameters, {
         // pass a custom lang facetFilter to allow multiple language search
         // https://github.com/algolia/docsearch-configs/pull/3942

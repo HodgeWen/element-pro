@@ -7,8 +7,8 @@ import esbuild from 'rollup-plugin-esbuild'
 import replace from '@rollup/plugin-replace'
 import filesize from 'rollup-plugin-filesize'
 import { parallel } from 'gulp'
-import { version } from '../packages/element-plus/version'
-import { ElementPlusAlias } from './plugins/element-plus-alias'
+import { version } from '../packages/element-pro/version'
+import { ElementPlusAlias } from './plugins/element-pro-alias'
 import { epRoot, epOutput } from './utils/paths'
 import { generateExternal, writeBundles } from './utils/rollup'
 
@@ -48,7 +48,7 @@ export const buildFull = (minify: boolean) => async () => {
       format: 'umd',
       file: path.resolve(epOutput, `dist/index.full${minify ? '.min' : ''}.js`),
       exports: 'named',
-      name: 'ElementPlus',
+      name: 'ElementPro',
       globals: {
         vue: 'Vue',
       },

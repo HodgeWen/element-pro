@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { sleep, defineGetter } from '@element-plus/test-utils'
+import { sleep, defineGetter } from '@element-pro/test-utils'
 import Tree from '../src/tree.vue'
 
 const ALL_NODE_COUNT = 9

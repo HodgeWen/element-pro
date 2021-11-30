@@ -35,10 +35,10 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
-import ElButton from '@element-plus/components/button'
-import ElIcon from '@element-plus/components/icon'
-import ElPopper, { Effect } from '@element-plus/components/popper'
-import { useLocale } from '@element-plus/hooks'
+import ElButton from '@element-pro/components/button'
+import ElIcon from '@element-pro/components/icon'
+import ElPopper, { Effect } from '@element-pro/components/popper'
+import { useLocale } from '@element-pro/hooks'
 import { popconfirmProps, popconfirmEmits } from './popconfirm'
 
 export default defineComponent({

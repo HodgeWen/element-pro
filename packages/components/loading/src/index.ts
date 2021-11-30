@@ -1,8 +1,8 @@
 import { nextTick } from 'vue'
 import { hasOwn } from '@vue/shared'
-import { addClass, getStyle, removeClass } from '@element-plus/utils/dom'
-import PopupManager from '@element-plus/utils/popup-manager'
-import isServer from '@element-plus/utils/isServer'
+import { addClass, getStyle, removeClass } from '@element-pro/utils/dom'
+import PopupManager from '@element-pro/utils/popup-manager'
+import isServer from '@element-pro/utils/isServer'
 import { createLoadingComponent } from './createLoadingComponent'
 
 import type { CSSProperties } from 'vue'

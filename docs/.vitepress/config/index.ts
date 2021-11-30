@@ -43,18 +43,18 @@ languages.forEach((lang) => {
 })
 
 export const config: UserConfig = {
-  title: 'Element Plus',
+  title: 'Element Pro',
   head,
   themeConfig: {
-    repo: 'element-plus/element-plus',
+    repo: 'element-pro/element-pro',
     docsDir: 'docs',
 
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
 
-    logo: '/images/element-plus-logo.svg',
-    logoSmall: '/images/element-plus-logo-small.svg',
+    logo: '/images/element-pro-logo.svg',
+    logoSmall: '/images/element-pro-logo-small.svg',
     sidebars,
     nav,
     agolia: {

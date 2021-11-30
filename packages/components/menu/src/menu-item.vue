@@ -55,9 +55,9 @@ import {
   toRef,
   reactive,
 } from 'vue'
-import ElTooltip from '@element-plus/components/tooltip'
-import { Effect } from '@element-plus/components/popper'
-import { throwError } from '@element-plus/utils/error'
+import ElTooltip from '@element-pro/components/tooltip'
+import { Effect } from '@element-pro/components/popper'
+import { throwError } from '@element-pro/utils/error'
 import useMenu from './use-menu'
 import { menuItemEmits, menuItemProps } from './menu-item'
 

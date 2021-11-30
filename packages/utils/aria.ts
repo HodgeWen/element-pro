@@ -1,4 +1,4 @@
-import type { Nullable } from '@element-plus/utils/types'
+import type { Nullable } from '@element-pro/utils/types'
 export const EVENT_CODE = {
   tab: 'Tab',
   enter: 'Enter',

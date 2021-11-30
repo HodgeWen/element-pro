@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { darken } from '@element-plus/utils/color'
+import { darken } from '@element-pro/utils/color'
 
 import type { MenuProps } from './menu'
 

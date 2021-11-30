@@ -158,40 +158,40 @@ import {
 import { isPromise } from '@vue/shared'
 import debounce from 'lodash/debounce'
 
+import { CircleClose, Check, ArrowDown } from '@element-plus/icons'
 import ElCascaderPanel, {
   CommonProps,
-} from '@element-plus/components/cascader-panel'
-import ElInput from '@element-plus/components/input'
-import ElPopper, { Effect } from '@element-plus/components/popper'
-import ElScrollbar from '@element-plus/components/scrollbar'
-import ElTag from '@element-plus/components/tag'
-import ElIcon from '@element-plus/components/icon'
+} from '@element-pro/components/cascader-panel'
+import ElInput from '@element-pro/components/input'
+import ElPopper, { Effect } from '@element-pro/components/popper'
+import ElScrollbar from '@element-pro/components/scrollbar'
+import ElTag from '@element-pro/components/tag'
+import ElIcon from '@element-pro/components/icon'
 
-import { elFormKey, elFormItemKey } from '@element-plus/tokens'
-import { ClickOutside as Clickoutside } from '@element-plus/directives'
-import { useLocale } from '@element-plus/hooks'
+import { elFormKey, elFormItemKey } from '@element-pro/tokens'
+import { ClickOutside as Clickoutside } from '@element-pro/directives'
+import { useLocale } from '@element-pro/hooks'
 
-import { EVENT_CODE, focusNode, getSibling } from '@element-plus/utils/aria'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
-import isServer from '@element-plus/utils/isServer'
-import { useGlobalConfig } from '@element-plus/utils/util'
+import { EVENT_CODE, focusNode, getSibling } from '@element-pro/utils/aria'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-pro/utils/constants'
+import isServer from '@element-pro/utils/isServer'
+import { useGlobalConfig } from '@element-pro/utils/util'
 import {
   addResizeListener,
   removeResizeListener,
-} from '@element-plus/utils/resize-event'
-import { isValidComponentSize } from '@element-plus/utils/validators'
-import { isKorean } from '@element-plus/utils/isDef'
-import { CircleClose, Check, ArrowDown } from '@element-plus/icons'
+} from '@element-pro/utils/resize-event'
+import { isValidComponentSize } from '@element-pro/utils/validators'
+import { isKorean } from '@element-pro/utils/isDef'
 
-import type { Options } from '@element-plus/components/popper'
+import type { Options } from '@element-pro/components/popper'
 import type { ComputedRef, PropType, Ref } from 'vue'
-import type { ElFormContext, ElFormItemContext } from '@element-plus/tokens'
+import type { ElFormContext, ElFormItemContext } from '@element-pro/tokens'
 import type {
   CascaderValue,
   CascaderNode,
   Tag,
-} from '@element-plus/components/cascader-panel'
-import type { ComponentSize } from '@element-plus/utils/types'
+} from '@element-pro/components/cascader-panel'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 type cascaderPanelType = InstanceType<typeof ElCascaderPanel>
 type popperType = InstanceType<typeof ElPopper>

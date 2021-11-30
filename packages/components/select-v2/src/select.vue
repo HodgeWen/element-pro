@@ -247,11 +247,11 @@
 
 <script lang="ts">
 import { defineComponent, provide, toRefs, reactive, vModelText } from 'vue'
-import { ClickOutside } from '@element-plus/directives'
-import ElPopper from '@element-plus/components/popper'
-import ElTag from '@element-plus/components/tag'
-import ElIcon from '@element-plus/components/icon'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
+import { ClickOutside } from '@element-pro/directives'
+import ElPopper from '@element-pro/components/popper'
+import ElTag from '@element-pro/components/tag'
+import ElIcon from '@element-pro/components/icon'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-pro/utils/constants'
 import ElSelectMenu from './select-dropdown.vue'
 import useSelect from './useSelect'
 import { selectV2InjectionKey } from './token'

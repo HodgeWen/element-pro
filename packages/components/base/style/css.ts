@@ -1,1 +1,1 @@
-import '@element-plus/theme-chalk/base.css'
+import '@element-pro/theme-chalk/base.css'

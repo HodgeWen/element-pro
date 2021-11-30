@@ -3,7 +3,7 @@ import { hasOwn } from '@vue/shared'
 import { markNodeData, NODE_KEY } from './util'
 import type TreeStore from './tree-store'
 
-import type { Nullable } from '@element-plus/utils/types'
+import type { Nullable } from '@element-pro/utils/types'
 import type {
   TreeNodeOptions,
   TreeNodeData,

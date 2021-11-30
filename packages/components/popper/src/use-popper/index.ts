@@ -6,8 +6,8 @@ import {
   isHTMLElement,
   isArray,
   isString,
-} from '@element-plus/utils/util'
-import PopupManager from '@element-plus/utils/popup-manager'
+} from '@element-pro/utils/util'
+import PopupManager from '@element-pro/utils/popup-manager'
 import usePopperOptions from './popper-options'
 
 import type {
@@ -16,7 +16,7 @@ import type {
   SetupContext,
   Ref,
 } from 'vue'
-import type { TimeoutHandle, Nullable } from '@element-plus/utils/types'
+import type { TimeoutHandle, Nullable } from '@element-pro/utils/types'
 import type {
   IPopperOptions,
   TriggerType,

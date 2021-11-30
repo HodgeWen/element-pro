@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import VPLink from '../common/vp-link.vue'
 import VPMarkdown from '../common/vp-markdown.vue'
-import { useLang } from '../../composables/lang'
 import { useLocale } from '../../composables/locale'
 import changelogLocale from '../../../i18n/component/changelog.json'
 
@@ -16,7 +15,7 @@ const loading = ref(true)
 const releases = ref<Release[]>([])
 const currentRelease = ref()
 const changelog = useLocale(changelogLocale)
-const lang = useLang()
+const lang = 'zh-CN'
 
 const onVersionChange = (val) => {
   const _releases = releases.value
@@ -26,7 +25,7 @@ const onVersionChange = (val) => {
 onMounted(async () => {
   try {
     const { data } = await axios.get<Release[]>(
-      'https://api.github.com/repos/element-plus/element-plus/releases'
+      'https://api.github.com/repos/element-pro/element-pro/releases'
     )
     releases.value = data
     currentRelease.value = data[0]

@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, getCurrentInstance, onMounted } from 'vue'
-import { ClickOutside } from '@element-plus/directives'
+import { ClickOutside } from '@element-pro/directives'
 import { useDropdown, initDropdownDomEvent } from './useDropdown'
 
 export default defineComponent({

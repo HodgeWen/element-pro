@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useLang } from '../composables/lang'
 import localeData from '../../i18n/pages/not-found.json'
 
-const lang = useLang()
+const lang = 'zh-CN'
 
-const locale = computed(() => localeData[lang.value])
+const locale = computed(() => localeData[lang])
 
 const goHome = () => {
-  window.location.href = `/${lang.value}/`
+  window.location.href = `/${lang}/`
 }
 </script>
 

@@ -1,9 +1,9 @@
 import { computed, getCurrentInstance, watch, onMounted } from 'vue'
 import { isFunction } from '@vue/shared'
-import { isBool } from '@element-plus/utils/util'
-import { UPDATE_MODEL_EVENT } from '@element-plus/utils/constants'
-import isServer from '@element-plus/utils/isServer'
-import { buildProps, definePropType } from '@element-plus/utils/props'
+import { isBool } from '@element-pro/utils/util'
+import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
+import isServer from '@element-pro/utils/isServer'
+import { buildProps, definePropType } from '@element-pro/utils/props'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 import type { Ref, ComponentPublicInstance, ExtractPropTypes } from 'vue'

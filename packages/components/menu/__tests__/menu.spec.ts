@@ -1,7 +1,7 @@
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { sleep } from '@element-plus/test-utils'
-import { rAF } from '@element-plus/test-utils/tick'
+import { sleep } from '@element-pro/test-utils'
+import { rAF } from '@element-pro/test-utils/tick'
 
 import Menu from '../src/menu'
 import MenuGroup from '../src/menu-item-group.vue'

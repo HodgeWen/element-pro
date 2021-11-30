@@ -42,7 +42,7 @@ import {
   watch,
   getCurrentInstance,
 } from 'vue'
-import { useLocale } from '@element-plus/hooks'
+import { useLocale } from '@element-pro/hooks'
 import TreeStore from './model/tree-store'
 import { getNodeKey as getNodeKeyUtil } from './model/util'
 import ElTreeNode from './tree-node.vue'
@@ -52,7 +52,7 @@ import { useKeydown } from './model/useKeydown'
 import type Node from './model/node'
 
 import type { ComponentInternalInstance, PropType, Component } from 'vue'
-import type { Nullable } from '@element-plus/utils/types'
+import type { Nullable } from '@element-pro/utils/types'
 import type {
   TreeComponentProps,
   TreeNodeData,

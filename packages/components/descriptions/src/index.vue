@@ -32,13 +32,13 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide } from 'vue'
-import { useGlobalConfig } from '@element-plus/utils/util'
-import { isValidComponentSize } from '@element-plus/utils/validators'
+import { useGlobalConfig } from '@element-pro/utils/util'
+import { isValidComponentSize } from '@element-pro/utils/validators'
 import DescriptionsRow from './descriptions-row.vue'
 import { elDescriptionsKey } from './token'
 
 import type { PropType } from 'vue'
-import type { ComponentSize } from '@element-plus/utils/types'
+import type { ComponentSize } from '@element-pro/utils/types'
 
 export default defineComponent({
   name: 'ElDescriptions',

@@ -1,4 +1,4 @@
-import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-slider.css'
-import '@element-plus/components/input-number/style/css'
-import '@element-plus/components/tooltip/style/css'
+import '@element-pro/components/base/style/css'
+import '@element-pro/theme-chalk/el-slider.css'
+import '@element-pro/components/input-number/style/css'
+import '@element-pro/components/tooltip/style/css'

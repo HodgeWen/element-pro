@@ -1,2 +1,2 @@
-import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-dropdown-menu.css'
+import '@element-pro/components/base/style/css'
+import '@element-pro/theme-chalk/el-dropdown-menu.css'

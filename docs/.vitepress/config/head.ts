@@ -10,7 +10,7 @@ export const head: HeadConfig[] = [
     'link',
     {
       rel: 'icon',
-      href: '/images/element-plus-logo-small.svg',
+      href: '/images/element-pro-logo-small.svg',
     },
   ],
   [

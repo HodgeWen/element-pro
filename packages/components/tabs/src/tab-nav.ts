@@ -14,15 +14,15 @@ import {
   useDocumentVisibility,
   useWindowFocus,
 } from '@vueuse/core'
-import { buildProps, definePropType, mutable } from '@element-plus/utils/props'
-import { EVENT_CODE } from '@element-plus/utils/aria'
-import { throwError } from '@element-plus/utils/error'
-import { ElIcon } from '@element-plus/components/icon'
 import { ArrowLeft, ArrowRight, Close } from '@element-plus/icons'
-import { tabsRootContextKey } from '@element-plus/tokens'
+import { buildProps, definePropType, mutable } from '@element-pro/utils/props'
+import { EVENT_CODE } from '@element-pro/utils/aria'
+import { throwError } from '@element-pro/utils/error'
+import { ElIcon } from '@element-pro/components/icon'
+import { tabsRootContextKey } from '@element-pro/tokens'
 import TabBar from './tab-bar.vue'
 import type { ExtractPropTypes, CSSProperties } from 'vue'
-import type { TabsPaneContext } from '@element-plus/tokens'
+import type { TabsPaneContext } from '@element-pro/tokens'
 export interface Scrollable {
   next?: boolean
   prev?: number

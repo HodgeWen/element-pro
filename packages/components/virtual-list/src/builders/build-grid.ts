@@ -12,9 +12,9 @@ import {
 } from 'vue'
 import { hasOwn } from '@vue/shared'
 
-import { isNumber, isString } from '@element-plus/utils/util'
-import isServer from '@element-plus/utils/isServer'
-import getScrollBarWidth from '@element-plus/utils/scrollbar-width'
+import { isNumber, isString } from '@element-pro/utils/util'
+import isServer from '@element-pro/utils/isServer'
+import getScrollBarWidth from '@element-pro/utils/scrollbar-width'
 
 import Scrollbar from '../components/scrollbar'
 import { useGridWheel } from '../hooks/use-grid-wheel'
@@ -34,7 +34,7 @@ import {
 } from '../defaults'
 
 import type { CSSProperties, VNode, VNodeChild } from 'vue'
-import type { StyleValue } from '@element-plus/utils/types'
+import type { StyleValue } from '@element-pro/utils/types'
 import type { GridConstructorProps, Alignment, ScrollbarExpose } from '../types'
 import type { VirtualizedGridProps } from '../props'
 

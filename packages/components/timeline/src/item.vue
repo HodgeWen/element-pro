@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { inject, defineComponent } from 'vue'
-import { ElIcon } from '@element-plus/components/icon'
+import { ElIcon } from '@element-pro/components/icon'
 
 import type { PropType, Component } from 'vue'
 

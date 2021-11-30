@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import ColorPicker from '../src/index.vue'
 import type { ComponentPublicInstance } from 'vue'
 
-import type { Nullable } from '@element-plus/utils/types'
+import type { Nullable } from '@element-pro/utils/types'
 
 const _mount = (template: string, data: () => { [key: string]: any }) => {
   const Component = defineComponent({

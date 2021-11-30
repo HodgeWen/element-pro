@@ -26,7 +26,7 @@ const props = defineProps({
 
 const globalMapper = {
   "'vue'": 'Vue',
-  "'element-plus'": 'ElementPlus',
+  "'element-pro'": 'ElementPro',
 }
 
 const js = computed(() => {
@@ -54,7 +54,7 @@ var Main = {
 };
 
 const app = Vue.createApp(Main);
-app.use(ElementPlus);
+app.use(ElementPro);
 app.mount("#app");
 `
 })
@@ -62,12 +62,12 @@ app.mount("#app");
 const data = computed(() => {
   return JSON.stringify({
     html: `<script src="//unpkg.com/vue@next"><${'/script'}>
-<script src="//unpkg.com/element-plus/dist/index.full.js"><${'/script'}>
+<script src="//unpkg.com/element-pro/dist/index.full.js"><${'/script'}>
 <div id="app">
   ${decodeURIComponent(props.html).trim()}
 </div>
 `,
-    css: `@import url("//unpkg.com/element-plus/dist/index.css");
+    css: `@import url("//unpkg.com/element-pro/dist/index.css");
 ${decodeURIComponent(props.css).trim()}
 `,
     js: js.value,

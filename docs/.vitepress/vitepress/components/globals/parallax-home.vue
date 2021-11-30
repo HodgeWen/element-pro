@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { useParallax, useThrottleFn, useEventListener } from '@vueuse/core'
-import { useLang } from '../../composables/lang'
+
 import homeLocale from '../../../i18n/pages/home.json'
-import sponsorLocale from '../../../i18n/component/sponsors-home.json'
 import type { CSSProperties } from 'vue'
 
 const target = ref<HTMLElement | null>(null)
 const parallax = reactive(useParallax(target))
 const jumbotronRedOffset = ref(0)
 const jumbotronRef = ref<HTMLElement | null>(null)
-const lang = useLang()
-const homeLang = computed(() => homeLocale[lang.value])
-const sponsors = computed(() => sponsorLocale[lang.value])
+
+const homeLang = computed(() => homeLocale['zh-CN'])
 
 const containerStyle: CSSProperties = {
   display: 'flex',
@@ -66,6 +64,8 @@ const handleScroll = useThrottleFn(() => {
   }
 }, 10)
 
+const lang = 'zh-CN'
+
 useEventListener(window, 'scroll', handleScroll)
 </script>
 
@@ -89,24 +89,7 @@ useEventListener(window, 'scroll', handleScroll)
         </div>
       </div>
     </div>
-    <div class="sponsors">
-      <a
-        v-for="(sponsor, i) in sponsors"
-        :key="i"
-        :class="['sponsor', sponsor.className]"
-        :href="sponsor.url"
-        target="_blank"
-      >
-        <img width="45" :src="sponsor.img" :alt="sponsor.name" />
-        <div>
-          <p>
-            Sponsored by
-            <span class="name">{{ sponsor.name }}</span>
-          </p>
-          <p>{{ sponsor.slogan }}</p>
-        </div>
-      </a>
-    </div>
+
     <div class="cards">
       <ul class="container">
         <li>
@@ -142,64 +125,26 @@ useEventListener(window, 'scroll', handleScroll)
     <div class="footer-main">
       <h4>{{ homeLang['10'] }}</h4>
       <a
-        href="https://github.com/element-plus/element-plus"
+        href="https://github.com/wenhongjie/element-pro"
         class="footer-main-link"
         target="_blank"
       >
         {{ homeLang['11'] }}
       </a>
       <a
-        href="https://github.com/element-plus/element-plus/releases"
+        href="https://github.com/wenhongjie/element-pro/releases"
         class="footer-main-link"
         target="_blank"
       >
         {{ homeLang['12'] }}
       </a>
-      <a
-        href="https://github.com/element-plus/element-plus-starter"
-        class="footer-main-link"
-        target="_blank"
-      >
-        {{ homeLang['13'] }}
-      </a>
+
       <a
         :href="`/${lang}/guide/theming`"
         class="footer-main-link"
         target="_blank"
       >
         {{ homeLang['14'] }}
-      </a>
-    </div>
-
-    <div class="footer-main">
-      <h4>{{ homeLang['19'] }}</h4>
-      <a
-        href="https://gitter.im/element-en/Lobby"
-        class="footer-main-link"
-        target="_blank"
-      >
-        {{ homeLang['15'] }}
-      </a>
-      <a
-        href="https://github.com/element-plus/element-plus/issues"
-        class="footer-main-link"
-        target="_blank"
-      >
-        {{ homeLang['16'] }}
-      </a>
-      <a
-        href="https://github.com/element-plus/element-plus/blob/dev/.github/CONTRIBUTING.en-US.md"
-        class="footer-main-link"
-        target="_blank"
-      >
-        {{ homeLang['17'] }}
-      </a>
-      <a
-        href="https://segmentfault.com/t/element-plus"
-        class="footer-main-link"
-        target="_blank"
-      >
-        {{ homeLang['18'] }}
       </a>
     </div>
   </footer>

@@ -4,7 +4,7 @@ import {
   IMAGE_SUCCESS,
   IMAGE_FAIL,
   mockImageEvent,
-} from '@element-plus/test-utils/mock'
+} from '@element-pro/test-utils/mock'
 import Image from '../src/image.vue'
 
 // firstly wait for image event

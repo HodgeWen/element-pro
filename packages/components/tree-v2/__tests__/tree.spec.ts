@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { NOOP } from '@vue/shared'
-import { makeMountFunc } from '@element-plus/test-utils/make-mount'
+import { makeMountFunc } from '@element-pro/test-utils/make-mount'
 import Tree from '../src/tree.vue'
 import type {
   TreeData,

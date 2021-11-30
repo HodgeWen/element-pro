@@ -1,4 +1,4 @@
-import { definePropType, buildProps } from '@element-plus/utils/props'
+import { definePropType, buildProps } from '@element-pro/utils/props'
 import type { ExtractPropTypes } from 'vue'
 
 export const iconProps = buildProps({

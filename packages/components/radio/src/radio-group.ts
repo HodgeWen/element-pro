@@ -1,5 +1,5 @@
-import { buildProps } from '@element-plus/utils/props'
-import { useFormItemProps } from '@element-plus/hooks'
+import { buildProps } from '@element-pro/utils/props'
+import { useFormItemProps } from '@element-pro/hooks'
 import { radioEmits } from './radio'
 import type { ExtractPropTypes } from '@vue/runtime-core'
 

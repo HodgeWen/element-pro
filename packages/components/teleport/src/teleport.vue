@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import isServer from '@element-plus/utils/isServer'
+import isServer from '@element-pro/utils/isServer'
 import { elTeleportProps } from './teleport'
 
 export default defineComponent({

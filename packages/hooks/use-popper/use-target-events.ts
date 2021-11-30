@@ -1,5 +1,5 @@
 import { computed, getCurrentInstance } from 'vue'
-import { isArray } from '@element-plus/utils/util'
+import { isArray } from '@element-pro/utils/util'
 
 export type TriggerType = 'click' | 'hover' | 'focus' | 'manual'
 export type Trigger = TriggerType | TriggerType[]

@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useData } from 'vitepress'
-import { useLang } from '../../composables/lang'
 import localeData from '../../../i18n/component/last-update-at.json'
 
 const { page } = useData()
-const lang = useLang()
+const lang = 'zh-CN'
 
 const prefix = computed(() => {
-  return localeData[lang.value].title
+  return localeData[lang].title
 })
 
 const datetime = ref('')
 onMounted(() => {
-  datetime.value = new Date(page.value.lastUpdated).toLocaleString(lang.value)
+  datetime.value = new Date(page.value.lastUpdated).toLocaleString(lang)
 })
 </script>
 

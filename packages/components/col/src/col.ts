@@ -1,5 +1,5 @@
 import { defineComponent, computed, inject, h, renderSlot } from 'vue'
-import { buildProps, definePropType, mutable } from '@element-plus/utils/props'
+import { buildProps, definePropType, mutable } from '@element-pro/utils/props'
 import type { ExtractPropTypes, CSSProperties } from 'vue'
 
 type SizeObject = {

@@ -75,14 +75,14 @@ import {
   nextTick,
 } from 'vue'
 import throttle from 'lodash/throttle'
+import { ArrowLeft, ArrowRight } from '@element-plus/icons'
 import {
   addResizeListener,
   removeResizeListener,
-} from '@element-plus/utils/resize-event'
-import { ElIcon } from '@element-plus/components/icon'
-import { ArrowLeft, ArrowRight } from '@element-plus/icons'
+} from '@element-pro/utils/resize-event'
+import { ElIcon } from '@element-pro/components/icon'
 
-import { debugWarn } from '@element-plus/utils/error'
+import { debugWarn } from '@element-pro/utils/error'
 import type {
   ICarouselProps,
   CarouselItem,

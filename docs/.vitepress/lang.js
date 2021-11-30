@@ -1,12 +1,10 @@
 ;(() => {
   const supportedLangs = window.supportedLangs
   const cacheKey = 'preferred_lang'
-  const defaultLang = 'en-US'
+  const defaultLang = 'zh-CN'
   // docs supported languages
   const langAlias = {
-    en: 'en-US',
-    fr: 'fr-FR',
-    es: 'es-ES',
+    zh: 'zh-CN',
   }
   let userPreferredLang = localStorage.getItem(cacheKey) || navigator.language
   const language =

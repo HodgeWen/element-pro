@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent, h } from 'vue'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-pro'
 
 export default defineComponent({
   setup() {

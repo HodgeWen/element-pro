@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { h, resolveComponent } from 'vue'
-import { ElDivider } from 'element-plus'
+import { ElDivider } from 'element-pro'
 export default {
   data() {
     return {

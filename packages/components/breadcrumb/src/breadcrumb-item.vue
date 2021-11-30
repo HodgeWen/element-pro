@@ -24,8 +24,8 @@ import {
   onMounted,
   getCurrentInstance,
 } from 'vue'
-import ElIcon from '@element-plus/components/icon'
-import { elBreadcrumbKey } from '@element-plus/tokens'
+import ElIcon from '@element-pro/components/icon'
+import { elBreadcrumbKey } from '@element-pro/tokens'
 import { breadcrumbItemProps } from './breadcrumb-item'
 
 import type { Router } from 'vue-router'

@@ -37,12 +37,12 @@
 <script lang="ts">
 import { computed, inject, defineComponent, Text, ref } from 'vue'
 import { useCssVar } from '@vueuse/core'
-import { ElIcon } from '@element-plus/components/icon'
-import { useFormItem, useGlobalConfig } from '@element-plus/hooks'
-import { buttonGroupContextKey } from '@element-plus/tokens'
 import { Loading } from '@element-plus/icons'
+import { ElIcon } from '@element-pro/components/icon'
+import { useFormItem, useGlobalConfig } from '@element-pro/hooks'
+import { buttonGroupContextKey } from '@element-pro/tokens'
 
-import { lighten, darken } from '@element-plus/utils/color'
+import { lighten, darken } from '@element-pro/utils/color'
 
 import { buttonEmits, buttonProps } from './button'
 

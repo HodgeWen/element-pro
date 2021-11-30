@@ -1,3 +1,3 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/dialog.scss'
-import '@element-plus/components/overlay/style/index'
+import '@element-pro/components/base/style'
+import '@element-pro/theme-chalk/src/dialog.scss'
+import '@element-pro/components/overlay/style/index'

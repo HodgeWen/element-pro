@@ -1,14 +1,14 @@
 import { hasOwn } from '@vue/shared'
 import { createPopper } from '@popperjs/core'
-import PopupManager from '@element-plus/utils/popup-manager'
-import { getValueByPath } from '@element-plus/utils/util'
-import { off, on } from '@element-plus/utils/dom'
+import PopupManager from '@element-pro/utils/popup-manager'
+import { getValueByPath } from '@element-pro/utils/util'
+import { off, on } from '@element-pro/utils/dom'
 
 import type {
   PopperInstance,
   IPopperOptions,
-} from '@element-plus/components/popper'
-import type { Indexable, Nullable } from '@element-plus/utils/types'
+} from '@element-pro/components/popper'
+import type { Indexable, Nullable } from '@element-pro/utils/types'
 import type { TableColumnCtx } from './table-column/defaults'
 
 export const getCell = function (event: Event): HTMLElement {

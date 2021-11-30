@@ -5,23 +5,18 @@ import {
   ensureStartingSlash,
   removeExtention as removeExtension,
 } from '../utils'
-import { useLang } from './lang'
 import { getSidebarConfig, getFlatSideBarLinks } from './sidebar'
 
 export function usePageNav() {
   const { page, theme } = useData()
-  const lang = useLang()
+  const lang = 'zh-CN'
 
   const path = computed(() => {
     return removeExtension(ensureStartingSlash(page.value.relativePath))
   })
 
   const candidates = computed(() => {
-    const config = getSidebarConfig(
-      theme.value.sidebars,
-      path.value,
-      lang.value
-    )
+    const config = getSidebarConfig(theme.value.sidebars, path.value, lang)
     return isArray(config) ? getFlatSideBarLinks(config) : []
   })
 

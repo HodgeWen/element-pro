@@ -1,4 +1,4 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/dropdown.scss'
-import '@element-plus/components/button/style/index'
-import '@element-plus/components/popper/style/index'
+import '@element-pro/components/base/style'
+import '@element-pro/theme-chalk/src/dropdown.scss'
+import '@element-pro/components/button/style/index'
+import '@element-pro/components/popper/style/index'
