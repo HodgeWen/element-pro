@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import { debugWarn } from '@element-pro/utils/error'
-import defaultLang from './lang/en'
+import defaultLang from './lang/zh-cn'
 
 export type TranslatePair = {
   [key: string]: string | string[] | TranslatePair
@@ -13,7 +13,7 @@ export type Language = {
 
 let lang: Language = defaultLang as Language
 
-let i18nHandler: null | ((...args: any[]) => string) = null
+let i18nHandler: null | ((...args: any[]) => string | undefined) = null
 
 export const i18n = (fn: (...args: any[]) => string) => {
   i18nHandler = fn
@@ -46,9 +46,9 @@ const defaultTranslator = (...args: any[]) => {
 export const t = (...args: any[]): string => {
   if (i18nHandler) {
     const translation = i18nHandler(...args)
-    return translation || defaultTranslator(...args)
+    return translation || defaultTranslator(...args) || ''
   }
-  return defaultTranslator(...args)
+  return defaultTranslator(...args) || ''
 }
 
 export const use = (l: Language): void => {
