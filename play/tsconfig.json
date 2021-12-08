@@ -6,9 +6,9 @@
     "lib": ["ESNext", "DOM"],
     "types": ["../typings/global"],
     "resolveJsonModule": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "baseUrl": ".",
-
+    "allowSyntheticDefaultImports": true
   },
   "include": ["**/*"]
 }

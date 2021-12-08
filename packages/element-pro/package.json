@@ -37,10 +37,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/element-pro/element-pro.git"
+    "url": "git+https://github.com/wenhongjie/element-pro.git"
   },
   "bugs": {
-    "url": "https://github.com/element-pro/element-pro/issues"
+    "url": "https://github.com/wenhongjie/element-pro/issues"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

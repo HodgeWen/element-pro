@@ -1,8 +1,6 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Inspect from 'vite-plugin-inspect'
 import glob from 'fast-glob'
 import { epRoot, pkgRoot, projRoot } from '../build/utils/paths'
@@ -14,7 +12,6 @@ export default defineConfig(async () => {
       cwd: path.resolve(projRoot, 'node_modules'),
     })
   ).map((dep) => dep.replace(/\.js$/, ''))
-
   return {
     resolve: {
       alias: [
@@ -31,14 +28,7 @@ export default defineConfig(async () => {
     server: {
       host: true,
     },
-    plugins: [
-      vue(),
-      Components({
-        include: `${__dirname}/**`,
-        resolvers: ElementPlusResolver({ importStyle: 'sass' }),
-      }),
-      Inspect(),
-    ],
+    plugins: [vue(), Inspect()],
 
     optimizeDeps: {
       include: [

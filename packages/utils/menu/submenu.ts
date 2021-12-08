@@ -2,8 +2,9 @@ import { EVENT_CODE, triggerEvent } from '../aria'
 import type MenuItem from './menu-item'
 
 class SubMenu {
-  public subMenuItems: NodeList
+  public subMenuItems!: NodeList
   public subIndex = 0
+
   constructor(public parent: MenuItem, public domNode: ParentNode) {
     this.subIndex = 0
     this.init()
@@ -26,31 +27,33 @@ class SubMenu {
 
   addListeners(): void {
     const parentNode = this.parent.domNode
-    Array.prototype.forEach.call(this.subMenuItems, (el: Element) => {
+
+    const strategies = {
+      [EVENT_CODE.down]: (e: KeyboardEvent) => {
+        this.gotoSubIndex(this.subIndex + 1)
+        return true
+      },
+      [EVENT_CODE.up]: (e: KeyboardEvent) => {
+        this.gotoSubIndex(this.subIndex - 1)
+        return true
+      },
+      [EVENT_CODE.tab]: (e: KeyboardEvent) => {
+        triggerEvent(parentNode, 'mouseleave')
+        return false
+      },
+      [EVENT_CODE.enter]: (e: KeyboardEvent) => {
+        e.currentTarget?.dispatchEvent(new Event('click'))
+        return true
+      },
+      [EVENT_CODE.space]: (e: KeyboardEvent) => {
+        e.currentTarget?.dispatchEvent(new Event('click'))
+        return true
+      },
+    }
+    Array.prototype.forEach.call(this.subMenuItems, (el: HTMLLIElement) => {
       el.addEventListener('keydown', (event: KeyboardEvent) => {
-        let prevDef = false
-        switch (event.code) {
-          case EVENT_CODE.down: {
-            this.gotoSubIndex(this.subIndex + 1)
-            prevDef = true
-            break
-          }
-          case EVENT_CODE.up: {
-            this.gotoSubIndex(this.subIndex - 1)
-            prevDef = true
-            break
-          }
-          case EVENT_CODE.tab: {
-            triggerEvent(parentNode as HTMLElement, 'mouseleave')
-            break
-          }
-          case EVENT_CODE.enter:
-          case EVENT_CODE.space: {
-            prevDef = true
-            ;(event.currentTarget as HTMLElement).click()
-            break
-          }
-        }
+        const prevDef = strategies[event.code](event)
+
         if (prevDef) {
           event.preventDefault()
           event.stopPropagation()

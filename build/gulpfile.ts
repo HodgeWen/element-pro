@@ -7,8 +7,9 @@ import { buildConfig } from './build-info'
 import type { TaskFunction } from 'gulp'
 import type { Module } from './build-info'
 
-const runTask = (name: string) =>
-  withTaskName(name, () => run(`pnpm run build ${name}`))
+const runTask = (name: string) => {
+  return withTaskName(name, () => run(`pnpm run build ${name}`))
+}
 
 export const copyFiles = () => {
   const copyTypings = async () => {
@@ -39,10 +40,11 @@ export const copyFullStyle = async () => {
 }
 
 export default series(
+  // 清除
   withTaskName('clean', () => run('pnpm run clean')),
 
   parallel(
-    runTask('buildModules'),
+    runTask('buildModules'), // 构建模块
     runTask('buildFullBundle'),
     runTask('generateTypesDefinitions'),
     runTask('buildHelper'),
@@ -57,6 +59,7 @@ export default series(
   parallel(copyTypesDefinitions, copyFiles)
 )
 
+/** 公开任务 */
 export * from './types-definitions'
 export * from './modules'
 export * from './full-bundle'

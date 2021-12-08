@@ -1,4 +1,4 @@
-<p align="center">Element Pro - 基于 element-pro 的增强版</p>
+<p align="center">Element Pro - 基于 element-plus 的增强版</p>
 
 - 💪 使用 Vue 3 Composition API 开发
 - 🔥 使用 TypeScript 开发
@@ -13,13 +13,7 @@
 
 ### 在线运行
 
-#### Try it with code sandbox (element-pro 在 sandbox 上的)
-
-[![Edit element-pro](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/element-pro-demo-dxtcr)
-
-#### Try it with our built-in playground (element-plus 官方的)
-
-[Playground](https://play.element-pro.org/)
+暂无
 
 ## 文档
 
