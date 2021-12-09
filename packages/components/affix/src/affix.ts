@@ -1,11 +1,9 @@
-import { buildProps, definePropType } from '@element-pro/utils/props'
-
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
 import type { ZIndexProperty } from 'csstype'
 
-export const affixProps = buildProps({
+export const affixProps = {
   zIndex: {
-    type: definePropType<ZIndexProperty>([Number, String]),
+    type: [Number, String] as PropType<ZIndexProperty>,
     default: 100,
   },
   target: {
@@ -17,11 +15,11 @@ export const affixProps = buildProps({
     default: 0,
   },
   position: {
-    type: String,
-    values: ['top', 'bottom'],
+    type: String as PropType<'top' | 'bottom'>,
     default: 'top',
   },
-} as const)
+}
+
 export type AffixProps = ExtractPropTypes<typeof affixProps>
 
 export const affixEmits = {
@@ -29,4 +27,5 @@ export const affixEmits = {
     typeof scrollTop === 'number' && typeof fixed === 'boolean',
   change: (fixed: boolean) => typeof fixed === 'boolean',
 }
+
 export type AffixEmits = typeof affixEmits

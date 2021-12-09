@@ -59,18 +59,6 @@ export function createGitHubUrl(
 
 export const isServer = typeof window === 'undefined'
 
-export function createCrowdinUrl(targetLang: string) {
-  let translateLang = ''
-  // for zh-CN zh-HK zh-TW, maybe later we will have cases like Chinese lang
-  // for now we just keep it as simple as possible.
-  if (targetLang.startsWith('zh-')) {
-    translateLang = targetLang.split('-').join('').toLocaleLowerCase()
-  } else {
-    translateLang = targetLang.split('-').shift().toLocaleLowerCase()
-  }
-  return `https://crowdin.com/translate/element-pro/all/en-${translateLang}`
-}
-
 export function insertLinkIcon(contentRef: any) {
   if (!inBrowser) return
   const links = Array.from(

@@ -1,4 +1,3 @@
-import { languages } from '../utils/lang'
 import { head } from './head'
 import { sidebars } from './sidebars'
 import { nav } from './nav'
@@ -34,14 +33,6 @@ const buildTransformers = () => {
 
 console.log(`DOC_ENV: ${process.env.DOC_ENV}`)
 
-const locales = {}
-languages.forEach((lang) => {
-  locales[`/${lang}`] = {
-    label: lang,
-    lang,
-  }
-})
-
 export const config: UserConfig = {
   title: 'Element Pro',
   head,
@@ -62,10 +53,7 @@ export const config: UserConfig = {
       appId: 'BH4D9OD16A',
     },
     features,
-    langs: languages,
   },
-
-  locales,
 
   markdown: {
     config: (md) => mdPlugin(md),

@@ -115,6 +115,7 @@ import ElIcon from '@element-pro/components/icon'
 import type { Placement } from '@element-pro/components/popper'
 import type { PropType } from 'vue'
 
+// --------------------
 export default defineComponent({
   name: 'ElAutocomplete',
   components: {
@@ -203,7 +204,8 @@ export default defineComponent({
     const activated = ref(false)
     const suggestionDisabled = ref(false)
     const loading = ref(false)
-    const inputRef = ref(null)
+    const inputRef = ref<null | typeof ElInput>(null)
+
     const regionRef = ref(null)
     const popper = ref(null)
 

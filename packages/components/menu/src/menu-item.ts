@@ -1,4 +1,4 @@
-import { buildProps, definePropType } from '@element-pro/utils/props'
+import { buildProps } from '@element-pro/utils/props'
 
 import type { ExtractPropTypes, PropType } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'

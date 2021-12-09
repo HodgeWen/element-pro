@@ -19,12 +19,7 @@ const themeEnabled = useFeatureFlag('theme')
 const { theme } = useData()
 
 const currentLink = computed(() => {
-  if (!inBrowser) return '/'
-  const existLangIndex = theme.value.langs.findIndex((lang) =>
-    window?.location?.pathname.startsWith(`/${lang}`)
-  )
-
-  return existLangIndex === -1 ? '/' : `/${theme.value.langs[existLangIndex]}/`
+  return '/'
 })
 </script>
 

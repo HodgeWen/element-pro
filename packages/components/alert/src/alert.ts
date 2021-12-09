@@ -1,10 +1,9 @@
-import { TypeComponentsMap } from '@element-pro/utils/icon'
-import { buildProps, keyOf } from '@element-pro/utils/props'
-import type { ExtractPropTypes } from 'vue'
+import type { TypeComponentsMap } from '@element-pro/utils/icon'
+import type { ExtractPropTypes, PropType } from 'vue'
 
 export type AlertEffect = 'light' | 'dark'
 
-export const alertProps = buildProps({
+export const alertProps = {
   title: {
     type: String,
     default: '',
@@ -14,8 +13,7 @@ export const alertProps = buildProps({
     default: '',
   },
   type: {
-    type: String,
-    values: keyOf(TypeComponentsMap),
+    type: String as PropType<keyof typeof TypeComponentsMap>,
     default: 'info',
   },
   closable: {
@@ -29,11 +27,10 @@ export const alertProps = buildProps({
   showIcon: Boolean,
   center: Boolean,
   effect: {
-    type: String,
-    values: ['light', 'dark'],
+    type: String as PropType<'light' | 'dark'>,
     default: 'light',
   },
-} as const)
+}
 export type AlertProps = ExtractPropTypes<typeof alertProps>
 
 export const alertEmits = {

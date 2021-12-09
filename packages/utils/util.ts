@@ -31,9 +31,14 @@ export function toObject<T>(arr: Array<T>): Record<string, T> {
   return res
 }
 
-export const getValueByPath = (obj, paths = ''): unknown => {
-  let ret: unknown = obj
-  paths.split('.').map((path) => {
+/**
+ * 根据对象路径获取值
+ * @param obj 对象
+ * @param paths 路径
+ */
+export const getValueByPath = <T = any>(obj: any, paths: string): T => {
+  let ret = obj
+  paths.split('.').forEach((path) => {
     ret = ret?.[path]
   })
   return ret
@@ -161,9 +166,11 @@ export function rafThrottle<T extends (...args: any) => any>(fn: T): T {
   } as T
 }
 
-export const clearTimer = (timer: Ref<TimeoutHandle>) => {
-  clearTimeout(timer.value)
-  timer.value = null
+export const clearTimer = (timer: Ref<TimeoutHandle | null>) => {
+  if (timer.value !== null) {
+    clearTimeout(timer.value)
+    timer.value = null
+  }
 }
 
 /**

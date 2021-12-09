@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import localeData from '../../i18n/pages/not-found.json'
-
-const lang = 'zh-CN'
-
-const locale = computed(() => localeData[lang])
+import notFoundData from '../../menus/pages/not-found.json'
 
 const goHome = () => {
-  window.location.href = `/${lang}/`
+  window.location.href = `/`
 }
 </script>
 
 <template>
-  <el-result icon="error" :title="locale.title" :sub-title="locale.desc">
+  <el-result
+    icon="error"
+    :title="notFoundData.title"
+    :sub-title="notFoundData.desc"
+  >
     <template #extra>
-      <el-button @click="goHome">{{ locale['button-title'] }}</el-button>
+      <el-button @click="goHome">{{ notFoundData['button-title'] }}</el-button>
     </template>
   </el-result>
 </template>

@@ -4,7 +4,7 @@ import { useClipboard } from '@vueuse/core'
 import { useToggle } from '../composables/toggle'
 import { useSourceCode } from '../composables/source-code'
 
-import demoBlockLocale from '../../i18n/component/demo-block.json'
+import demoBlock from '../../menus/component/demo-block.json'
 import GithubIcon from './icons/github.vue'
 import SourceCodeIcon from './icons/source-code.vue'
 import CodepenIcon from './icons/codepen.vue'
@@ -80,7 +80,6 @@ const formatPathDemos = computed(() => {
 })
 
 const codepenRef = ref()
-const locale = computed(() => demoBlockLocale[lang])
 const decodedDescription = computed(() =>
   props.description ? decodeURIComponent(props.description) : ''
 )
@@ -93,11 +92,11 @@ const copyCode = async () => {
   if (!vm) return
   const { $message } = vm.appContext.config.globalProperties
   if (!isSupported) {
-    $message.error(locale.value['copy-error'])
+    $message.error(demoBlock['copy-error'])
   }
   try {
     await copy()
-    $message.success(locale.value['copy-success'])
+    $message.success(demoBlock['copy-success'])
   } catch (e: any) {
     $message.error(e.message)
   }
@@ -118,24 +117,30 @@ const copyCode = async () => {
         :js-pre-processor="props.jsPreProcessor"
       />
       <div class="op-btns">
-        <ElTooltip :content="locale['edit-in-codepen']" :visible-arrow="false">
+        <ElTooltip
+          :content="demoBlock['edit-in-codepen']"
+          :visible-arrow="false"
+        >
           <ElIcon :size="20" class="op-btn">
             <CodepenIcon @click="onCodepenClicked" />
           </ElIcon>
         </ElTooltip>
-        <ElTooltip :content="locale['edit-on-github']" :visible-arrow="false">
+        <ElTooltip
+          :content="demoBlock['edit-on-github']"
+          :visible-arrow="false"
+        >
           <ElIcon :size="20" class="op-btn github">
             <a :href="demoSourceUrl" rel="noreferrer noopener" target="_blank">
               <GithubIcon />
             </a>
           </ElIcon>
         </ElTooltip>
-        <ElTooltip :content="locale['copy-code']" :visible-arrow="false">
+        <ElTooltip :content="demoBlock['copy-code']" :visible-arrow="false">
           <ElIcon :size="20" class="op-btn" @click="copyCode">
             <CopyIcon />
           </ElIcon>
         </ElTooltip>
-        <ElTooltip :content="locale['view-source']" :visible-arrow="false">
+        <ElTooltip :content="demoBlock['view-source']" :visible-arrow="false">
           <ElIcon :size="20" class="op-btn" @click="setSourceVisible">
             <SourceCodeIcon />
           </ElIcon>

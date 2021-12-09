@@ -1,4 +1,4 @@
-;(() => {
+~(() => {
   const saved = localStorage.getItem('preferred_theme')
   if (
     saved === 'auto'

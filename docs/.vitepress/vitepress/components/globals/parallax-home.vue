@@ -2,15 +2,13 @@
 import { ref, reactive, computed } from 'vue'
 import { useParallax, useThrottleFn, useEventListener } from '@vueuse/core'
 
-import homeLocale from '../../../i18n/pages/home.json'
+import home from '../../../menus/pages/home.json'
 import type { CSSProperties } from 'vue'
 
 const target = ref<HTMLElement | null>(null)
 const parallax = reactive(useParallax(target))
 const jumbotronRedOffset = ref(0)
 const jumbotronRef = ref<HTMLElement | null>(null)
-
-const homeLang = computed(() => homeLocale['zh-CN'])
 
 const containerStyle: CSSProperties = {
   display: 'flex',
@@ -73,8 +71,8 @@ useEventListener(window, 'scroll', handleScroll)
   <div ref="target" class="home-page">
     <div class="banner">
       <div class="banner-desc">
-        <h1>{{ homeLang['1'] }}</h1>
-        <p>{{ homeLang['2'] }}</p>
+        <h1>{{ home['1'] }}</h1>
+        <p>{{ home['2'] }}</p>
       </div>
     </div>
     <div ref="jumbotronRef" class="jumbotron">
@@ -95,27 +93,27 @@ useEventListener(window, 'scroll', handleScroll)
         <li>
           <div class="card">
             <img src="/images/guide.png" alt="" />
-            <h3>{{ homeLang['3'] }}</h3>
-            <p>{{ homeLang['4'] }}</p>
-            <a :href="`/${lang}/guide/design.html`">{{ homeLang['5'] }}</a>
+            <h3>{{ home['3'] }}</h3>
+            <p>{{ home['4'] }}</p>
+            <a :href="`/${lang}/guide/design.html`">{{ home['5'] }}</a>
           </div>
         </li>
         <li>
           <div class="card">
             <img src="/images/component.png" alt="" />
-            <h3>{{ homeLang['6'] }}</h3>
-            <p>{{ homeLang['7'] }}</p>
+            <h3>{{ home['6'] }}</h3>
+            <p>{{ home['7'] }}</p>
             <a :href="`/${lang}/component/layout.html`">
-              {{ homeLang['5'] }}
+              {{ home['5'] }}
             </a>
           </div>
         </li>
         <li>
           <div class="card">
             <img src="/images/resource.png" alt="" />
-            <h3>{{ homeLang['8'] }}</h3>
-            <p>{{ homeLang['9'] }}</p>
-            <a :href="`/${lang}/resource/index.html`"> {{ homeLang['5'] }} </a>
+            <h3>{{ home['8'] }}</h3>
+            <p>{{ home['9'] }}</p>
+            <a :href="`/${lang}/resource/index.html`"> {{ home['5'] }} </a>
           </div>
         </li>
       </ul>
@@ -123,20 +121,20 @@ useEventListener(window, 'scroll', handleScroll)
   </div>
   <footer class="footer">
     <div class="footer-main">
-      <h4>{{ homeLang['10'] }}</h4>
+      <h4>{{ home['10'] }}</h4>
       <a
         href="https://github.com/wenhongjie/element-pro"
         class="footer-main-link"
         target="_blank"
       >
-        {{ homeLang['11'] }}
+        {{ home['11'] }}
       </a>
       <a
         href="https://github.com/wenhongjie/element-pro/releases"
         class="footer-main-link"
         target="_blank"
       >
-        {{ homeLang['12'] }}
+        {{ home['12'] }}
       </a>
 
       <a
@@ -144,7 +142,7 @@ useEventListener(window, 'scroll', handleScroll)
         class="footer-main-link"
         target="_blank"
       >
-        {{ homeLang['14'] }}
+        {{ home['14'] }}
       </a>
     </div>
   </footer>

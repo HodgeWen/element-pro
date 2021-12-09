@@ -71,6 +71,7 @@ export default defineComponent({
   },
 
   props: menuItemProps,
+
   emits: menuItemEmits,
 
   setup(props, { emit }) {

@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { hyphenate } from '@vue/shared'
 import clipboardCopy from 'clipboard-copy'
 import { ElMessage } from 'element-pro'
 import * as Icons from '@element-plus/icons'
-import localeData from '../../../i18n/component/icons.json'
+import icons from '../../../menus/component/icons.json'
 
-const lang = 'zh-CN'
-const locale = computed(() => localeData[lang])
 const copyIcon = ref(true)
 
 const copyContent = async (content) => {
@@ -16,13 +14,13 @@ const copyContent = async (content) => {
 
     ElMessage({
       showClose: true,
-      message: locale.value['copy-success'],
+      message: icons['copy-success'],
       type: 'success',
     })
   } catch (e) {
     ElMessage({
       showClose: true,
-      message: locale.value['copy-error'],
+      message: icons['copy-error'],
       type: 'error',
     })
   }

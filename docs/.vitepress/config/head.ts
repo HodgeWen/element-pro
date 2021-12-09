@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { languages } from '../utils/lang'
 import { vpRoot } from '../utils/paths'
 import { features } from './features'
 import type { HeadConfig } from 'vitepress'
@@ -31,7 +30,7 @@ export const head: HeadConfig[] = [
     'script',
     {},
     `;(() => {
-      window.supportedLangs = ${JSON.stringify(languages)}
+      window.supportedLangs = ${JSON.stringify({})}
     })()`,
   ],
 

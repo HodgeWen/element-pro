@@ -275,7 +275,7 @@ export default defineComponent({
           const activeNode =
             menuElement.querySelector('.el-cascader-node.is-active') ||
             menuElement.querySelector('.el-cascader-node.in-active-path')
-          scrollIntoView(container, activeNode)
+          activeNode && scrollIntoView(container, activeNode)
         }
       })
     }

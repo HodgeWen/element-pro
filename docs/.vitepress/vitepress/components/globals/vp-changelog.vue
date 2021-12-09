@@ -3,8 +3,7 @@ import { onMounted, ref } from 'vue'
 import axios from 'axios'
 import VPLink from '../common/vp-link.vue'
 import VPMarkdown from '../common/vp-markdown.vue'
-import { useLocale } from '../../composables/locale'
-import changelogLocale from '../../../i18n/component/changelog.json'
+import changelog from '../../../menus/component/changelog.json'
 
 interface Release {
   id: number
@@ -14,7 +13,6 @@ interface Release {
 const loading = ref(true)
 const releases = ref<Release[]>([])
 const currentRelease = ref()
-const changelog = useLocale(changelogLocale)
 const lang = 'zh-CN'
 
 const onVersionChange = (val) => {

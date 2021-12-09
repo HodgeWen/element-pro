@@ -7,6 +7,7 @@
     zh: 'zh-CN',
   }
   let userPreferredLang = localStorage.getItem(cacheKey) || navigator.language
+  console.log(supportedLangs)
   const language =
     langAlias[userPreferredLang] ||
     (supportedLangs.includes(userPreferredLang)

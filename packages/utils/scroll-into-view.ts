@@ -1,25 +1,27 @@
 import isServer from './isServer'
 
+/**
+ * 使目标元素滚动至容器的可视区域
+ * @param container 容器
+ * @param selected 目标元素
+ * @returns
+ */
 export default function scrollIntoView(
   container: HTMLElement,
   selected: HTMLElement
-): void {
+) {
   if (isServer) return
+  console.log(1)
+  const offsetParents: HTMLElement[] = []
 
-  if (!selected) {
-    container.scrollTop = 0
-    return
-  }
-
-  const offsetParents = []
-  let pointer = selected.offsetParent
+  let pointer = selected.offsetParent as HTMLElement
   while (
     pointer !== null &&
     container !== pointer &&
     container.contains(pointer)
   ) {
     offsetParents.push(pointer)
-    pointer = (pointer as HTMLElement).offsetParent
+    pointer = pointer.offsetParent as HTMLElement
   }
   const top =
     selected.offsetTop +
