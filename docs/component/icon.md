@@ -23,16 +23,7 @@ Element Pro 提供了一套常用的图标集合。
 
 ## 安装
 
-### Using packaging manager
-
 ```shell
-# Choose a package manager you like.
-
-# NPM
-$ npm install @element-plus/icons
-# Yarn
-$ yarn add @element-plus/icons
-# pnpm
 $ pnpm install @element-plus/icons
 ```
 
@@ -40,7 +31,7 @@ $ pnpm install @element-plus/icons
 
 :::warning
 
-Because HTML standard has already defined a tag named [menu](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu), so you need to use an alias in order to render the icon, if you register `Menu` directly it will not work.
+因为 HTML 中已经定义了一个[menu](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu)标签, 所以 menu 得使用别名.
 
 :::
 
@@ -168,9 +159,9 @@ import { Edit, Share, Delete, Search, Loading } from '@element-plus/icons'
 ## Icon Attributes
 
 | 属性  | 说明                        | 类型                           | 可选值 | 默认值  |
-| ----- | --------------------------- | ------------------------------ | ------ | ------- | ------- |
+| ----- | --------------------------- | ------------------------------ | ------ | ------- |
 | color | svg 的 fill 颜色            | Pick\<CSSProperties, 'color'\> | -      | inherit |
-| size  | SVG 图标的大小，size x size | number/                        | string | -       | inherit |
+| size  | SVG 图标的大小，size x size | number \| string               | -      | inherit |
 
 ## Icon Slots
 

@@ -1,14 +1,9 @@
 ---
-title: 'A Vue 3 UI Framework'
-lang: zh-CN
+title: Vue 3 UI库
 page: true
+lang: zh-CN
 ---
 
-<script setup>
-
-if (typeof window !== 'undefined') {
-  const preferredLang = localStorage.getItem('preferred_lang') || 'zh-CN'
-  window.location.pathname = `/${preferredLang}/`
-}
-
-</script>
+<ClientOnly>
+  <ParallaxHome />
+</ClientOnly>

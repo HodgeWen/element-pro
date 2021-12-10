@@ -31,7 +31,7 @@ config-provider/button
 | ------ | ------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------------------------------- | ------- |
 | locale | 翻译文本对象                                                 | Object\<Language\>                   | [languages](https://github.com/element-pro/element-pro/tree/dev/packages/locale/lang) | English |
 | i18n   | 当该属性被提供时优先使用，返回 null 值时会回退至默认翻译器。 | Function\<(...args: []) =\> string\> | -                                                                                     | -       |
-| button | 按钮相关的配置[详细配置见下表](#button-attributes)           | ButtonGlobalConfig                   | -                                                                                     | 见下表  |
+| button | 按钮相关的配置[详细配置见下表](#button-属性)                 | ButtonGlobalConfig                   | -                                                                                     | 见下表  |
 
 ## Button 属性
 

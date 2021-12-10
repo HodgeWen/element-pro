@@ -65,14 +65,13 @@ const { copy, isSupported } = useClipboard({
 })
 
 const [sourceVisible, setSourceVisible] = useToggle()
-const lang = 'zh-CN'
+
 const demoSourceUrl = useSourceCode(toRef(props, 'path'))
 
 const formatPathDemos = computed(() => {
   const demos = {}
-
   Object.keys(props.demos).forEach((key) => {
-    demos[key.replace('../../examples/', '').replace('.vue', '')] =
+    demos[key.replace('../examples/', '').replace('.vue', '')] =
       props.demos[key].default
   })
 

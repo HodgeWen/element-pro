@@ -26,15 +26,7 @@ export const head: HeadConfig[] = [
       href: '//unpkg.com/nprogress@0.2.0/nprogress.css',
     },
   ],
-  [
-    'script',
-    {},
-    `;(() => {
-      window.supportedLangs = ${JSON.stringify({})}
-    })()`,
-  ],
 
-  ['script', {}, fs.readFileSync(path.resolve(vpRoot, 'lang.js'), 'utf-8')],
   [
     'script',
     {

@@ -1,10 +1,6 @@
 import { computed } from 'vue'
 import { useData } from 'vitepress'
-import {
-  isArray,
-  ensureStartingSlash,
-  removeExtention as removeExtension,
-} from '../utils'
+import { isArray, ensureStartingSlash, removeExtension } from '../utils'
 import { getSidebarConfig, getFlatSideBarLinks } from './sidebar'
 
 export function usePageNav() {
@@ -16,7 +12,7 @@ export function usePageNav() {
   })
 
   const candidates = computed(() => {
-    const config = getSidebarConfig(theme.value.sidebars, path.value, lang)
+    const config = getSidebarConfig(theme.value.sidebars, path.value)
     return isArray(config) ? getFlatSideBarLinks(config) : []
   })
 

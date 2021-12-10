@@ -1,11 +1,10 @@
 import { computed } from 'vue'
 import { useRoute, useData } from 'vitepress'
-import { isArray, ensureStartingSlash, removeExtention } from '../utils'
+import { isArray, ensureStartingSlash, removeExtension } from '../utils'
 
 export const useSidebar = () => {
   const route = useRoute()
   const { site, page } = useData()
-  const lang = 'zh-CN'
   if (!page.value) {
     return {
       sidebars: computed(() => []),
@@ -16,8 +15,7 @@ export const useSidebar = () => {
     if (page.value.frontmatter.sidebar === false) return []
     const sidebars = getSidebarConfig(
       site.value.themeConfig.sidebars,
-      route.data.relativePath,
-      lang
+      route.data.relativePath
     )
     return sidebars
   })
@@ -52,16 +50,16 @@ type Sidebar =
   | false
   | 'auto'
 
-export function getSidebarConfig(sidebar: Sidebar, path: string, lang: string) {
+export function getSidebarConfig(sidebar: Sidebar, path: string) {
   if (sidebar === false || Array.isArray(sidebar) || sidebar === 'auto') {
     return []
   }
-
+  // 加上斜杠
   path = ensureStartingSlash(path)
   for (const dir in sidebar) {
     // make sure the multi sidebar key starts with slash too
-    if (path.startsWith(ensureStartingSlash(`${lang}${dir}`))) {
-      return sidebar[dir][lang]
+    if (path.startsWith(ensureStartingSlash(`${dir}`))) {
+      return sidebar[dir]
     }
   }
   return []
@@ -75,7 +73,7 @@ export function getSidebarConfig(sidebar: Sidebar, path: string, lang: string) {
 export function getFlatSideBarLinks(sidebar) {
   return sidebar.reduce((links, item) => {
     if (item.link) {
-      links.push({ text: item.text, link: removeExtention(item.link) })
+      links.push({ text: item.text, link: removeExtension(item.link) })
     }
     if (isSideBarGroup(item)) {
       links = [...links, ...getFlatSideBarLinks(item.children)]
