@@ -1,37 +1,35 @@
 import { ref, computed, inject } from 'vue'
-import { buildProps } from '@element-pro/utils/props'
 import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
 import { isBool, isString, isNumber } from '@element-pro/utils/util'
 import { radioGroupKey } from '@element-pro/tokens'
-import { useFormItem, useFormItemProps } from '@element-pro/hooks'
+import { useFormItem, formCommonProps } from '@element-pro/hooks'
 import type { ExtractPropTypes, SetupContext } from 'vue'
 
-export const radioPropsBase = buildProps({
-  ...useFormItemProps,
+export const radioPropsBase = {
+  ...formCommonProps,
   label: {
     type: [String, Number, Boolean],
-    default: '',
-  },
-})
-export const radioProps = buildProps({
+    default: ''
+  }
+}
+export const radioProps = {
   ...radioPropsBase,
   modelValue: {
     type: [String, Number, Boolean],
-    default: '',
+    default: ''
   },
   name: {
     type: String,
-    default: '',
+    default: ''
   },
-  border: Boolean,
-} as const)
+  border: Boolean
+}
 export type RadioProps = ExtractPropTypes<typeof radioProps>
 
 export const radioEmits = {
   [UPDATE_MODEL_EVENT]: (val: string | number | boolean) =>
     isString(val) || isNumber(val) || isBool(val),
-  change: (val: string | number | boolean) =>
-    isString(val) || isNumber(val) || isBool(val),
+  change: (val: string | number | boolean) => isString(val) || isNumber(val) || isBool(val)
 }
 export type RadioEmits = typeof radioEmits
 
@@ -53,18 +51,13 @@ export const useRadio = (
         emit(UPDATE_MODEL_EVENT, val)
       }
       radioRef.value!.checked = props.modelValue === props.label
-    },
+    }
   })
 
-  const { size, disabled } = useFormItem({
-    size: computed(() => radioGroup?.size),
-    disabled: computed(() => radioGroup?.disabled),
-  })
+  const { size, disabled } = useFormItem(radioGroup || {})
   const focus = ref(false)
   const tabIndex = computed(() => {
-    return disabled.value || (isGroup.value && modelValue.value !== props.label)
-      ? -1
-      : 0
+    return disabled.value || (isGroup.value && modelValue.value !== props.label) ? -1 : 0
   })
 
   return {
@@ -75,6 +68,6 @@ export const useRadio = (
     size,
     disabled,
     tabIndex,
-    modelValue,
+    modelValue
   }
 }

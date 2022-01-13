@@ -1,22 +1,21 @@
 <template>
   <label
-    :id="id"
     class="el-checkbox"
     :class="[
-      checkboxSize ? 'el-checkbox--' + checkboxSize : '',
-      { 'is-disabled': isDisabled },
+      'el-checkbox--' + checkboxSize,
+      { 'is-disabled': checkboxDisabled },
       { 'is-bordered': border },
-      { 'is-checked': isChecked },
+      { 'is-checked': checked }
     ]"
-    :aria-controls="indeterminate ? controls : null"
+    :aria-controls="indeterminate ? controls : undefined"
   >
     <span
       class="el-checkbox__input"
       :class="{
-        'is-disabled': isDisabled,
-        'is-checked': isChecked,
+        'is-disabled': checkboxDisabled,
+        'is-checked': checked,
         'is-indeterminate': indeterminate,
-        'is-focus': focus,
+        'is-focus': focus
       }"
       :tabindex="indeterminate ? 0 : undefined"
       :role="indeterminate ? 'checkbox' : undefined"
@@ -24,93 +23,39 @@
     >
       <span class="el-checkbox__inner"></span>
       <input
-        v-if="trueLabel || falseLabel"
-        v-model="model"
+        :checked="checked"
         class="el-checkbox__original"
         type="checkbox"
         :aria-hidden="indeterminate ? 'true' : 'false'"
         :name="name"
         :tabindex="tabindex"
-        :disabled="isDisabled"
-        :true-value="trueLabel"
-        :false-value="falseLabel"
-        @change="handleChange"
-        @focus="focus = true"
-        @blur="focus = false"
-      />
-      <input
-        v-else
-        v-model="model"
-        class="el-checkbox__original"
-        type="checkbox"
-        :aria-hidden="indeterminate ? 'true' : 'false'"
-        :disabled="isDisabled"
-        :value="label"
-        :name="name"
-        :tabindex="tabindex"
+        :disabled="checkboxDisabled"
+        :true-value="trueValue"
+        :false-value="falseValue"
         @change="handleChange"
         @focus="focus = true"
         @blur="focus = false"
       />
     </span>
-    <span v-if="$slots.default || label" class="el-checkbox__label">
-      <slot></slot>
-      <template v-if="!$slots.default">{{ label }}</template>
+    <span v-if="$slots.default" class="el-checkbox__label">
+      <slot />
     </span>
   </label>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
-import { isValidComponentSize } from '@element-pro/utils/validators'
-import { useCheckbox } from './useCheckbox'
+import { defineComponent} from 'vue'
 
-import type { PropType } from 'vue'
-import type { ComponentSize } from '@element-pro/utils/types'
+import { elCheckboxEmits, elCheckboxProps } from './checkbox'
+import useCheckbox from './use-checkbox'
 
 export default defineComponent({
   name: 'ElCheckbox',
-  props: {
-    modelValue: {
-      type: [Boolean, Number, String],
-      default: () => undefined,
-    },
-    label: {
-      type: [String, Boolean, Number, Object],
-    },
-    indeterminate: Boolean,
-    disabled: Boolean,
-    checked: Boolean,
-    name: {
-      type: String,
-      default: undefined,
-    },
-    trueLabel: {
-      type: [String, Number],
-      default: undefined,
-    },
-    falseLabel: {
-      type: [String, Number],
-      default: undefined,
-    },
-    id: {
-      type: String,
-      default: undefined,
-    },
-    controls: {
-      type: String,
-      default: undefined,
-    },
-    border: Boolean,
-    size: {
-      type: String as PropType<ComponentSize>,
-      validator: isValidComponentSize,
-    },
-    tabindex: [String, Number],
-  },
-  emits: [UPDATE_MODEL_EVENT, 'change'],
-  setup(props) {
-    return useCheckbox(props)
-  },
+
+  props: elCheckboxProps,
+  emits: elCheckboxEmits,
+
+  setup(props, { emit }) {
+    return useCheckbox(props, { emit })
+  }
 })
 </script>

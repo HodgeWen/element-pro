@@ -1,27 +1,31 @@
 {
   "name": "@element-pro/docs",
   "version": "0.0.1",
+  "packageManager": "pnpm@6.23.2",
   "scripts": {
     "dev": "vitepress dev .",
     "build": "cross-env NODE_ENV=production && vitepress build .",
     "serve": "cross-env NODE_ENV=production && vitepress serve ."
   },
   "dependencies": {
-    "@vueuse/core": "7.2.2",
+    "@vueuse/core": "7.3.0",
     "axios": "0.24.0",
     "clipboard-copy": "4.0.1",
-    "element-pro": "workspace:*",
     "normalize.css": "8.0.1",
     "nprogress": "0.2.0",
-    "escape-html": "1.0.3"
+    "escape-html": "1.0.3",
+    "prismjs": "^1.25.0",
+    "@docsearch/css": "^3.0.0-alpha.42",
+    "@docsearch/js": "^3.0.0-alpha.42",
+    "@docsearch/react": "^3.0.0-alpha.42"
   },
   "devDependencies": {
     "@types/markdown-it": "12.2.3",
     "cross-env": "7.0.3",
-    "markdown-it": "12.2.0",
+    "markdown-it": "12.3.0",
     "markdown-it-container": "3.0.0",
     "vite-plugin-inspect": "0.3.11",
-    "vitepress": "0.20.4",
-    "vite": "2.7.1"
+    "vitepress": "0.20.5",
+    "vite": "2.7.2"
   }
 }

@@ -31,11 +31,7 @@ export default defineComponent({
       },
       default: undefined,
     },
-    // This API should be decaprecate since it's confusing with close-delay
-    openDelay: {
-      type: Number,
-      default: 0,
-    },
+
     visibleArrow: {
       type: Boolean,
       default: true,
@@ -76,7 +72,6 @@ export default defineComponent({
       $slots,
       content,
       manual,
-      openDelay,
       onUpdateVisible,
       showAfter,
       visibleArrow,
@@ -96,7 +91,7 @@ export default defineComponent({
         }, {}),
         ref: 'popper',
         manualMode: manual,
-        showAfter: openDelay || showAfter, // this is for mapping API due to we decided to rename the current openDelay API to showAfter for better readability,
+        showAfter,
         showArrow: visibleArrow,
         visible: modelValue,
         'onUpdate:visible': onUpdateVisible,

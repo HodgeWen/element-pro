@@ -36,8 +36,6 @@ export default defineComponent({
     if (!ctx.slots.trigger) {
       throwError(compName, 'Trigger must be provided')
     }
-    // this is a reference that we need to pass down to child component
-    // to obtain the child instance
 
     // return usePopper(props as IPopperOptions, ctx as SetupContext)
     const popperStates = usePopper(props, ctx)

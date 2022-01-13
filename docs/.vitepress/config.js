@@ -1,4 +1,4 @@
-require('sucrase/register/ts')
+import 'sucrase/register/ts'
 
-const { config } = require('./config/index')
-module.exports = config
+import { config } from './config/index'
+export default config

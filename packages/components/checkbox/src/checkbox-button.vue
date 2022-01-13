@@ -3,84 +3,66 @@
     class="el-checkbox-button"
     :class="[
       size ? 'el-checkbox-button--' + size : '',
-      { 'is-disabled': isDisabled },
-      { 'is-checked': isChecked },
-      { 'is-focus': focus },
+      { 'is-disabled': checkboxDisabled },
+      { 'is-checked': checked },
+      { 'is-focus': focus }
     ]"
     role="checkbox"
-    :aria-checked="isChecked"
-    :aria-disabled="isDisabled"
+    :aria-checked="checked"
+    :aria-disabled="checkboxDisabled"
   >
     <input
-      v-if="trueLabel || falseLabel"
-      v-model="model"
+      :checked="checked"
       class="el-checkbox-button__original"
       type="checkbox"
       :name="name"
       :tabindex="tabindex"
-      :disabled="isDisabled"
-      :true-value="trueLabel"
-      :false-value="falseLabel"
-      @change="handleChange"
-      @focus="focus = true"
-      @blur="focus = false"
-    />
-    <input
-      v-else
-      v-model="model"
-      class="el-checkbox-button__original"
-      type="checkbox"
-      :name="name"
-      :tabindex="tabindex"
-      :disabled="isDisabled"
-      :value="label"
+      :disabled="checkboxDisabled"
+      :true-value="trueValue"
+      :false-value="falseValue"
       @change="handleChange"
       @focus="focus = true"
       @blur="focus = false"
     />
 
     <span
-      v-if="$slots.default || label"
+      v-if="$slots.default"
       class="el-checkbox-button__inner"
-      :style="isChecked ? activeStyle : null"
+      :style="checked ? activeStyle : {}"
     >
-      <slot>{{ label }}</slot>
+      <slot></slot>
     </span>
   </label>
 </template>
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
-import { useCheckbox, useCheckboxGroup, useCheckboxProps } from './useCheckbox'
+import { elCheckboxEmits, elCheckboxProps } from './checkbox'
+import useCheckbox from './use-checkbox'
 
 export default defineComponent({
   name: 'ElCheckboxButton',
-  props: useCheckboxProps,
-  emits: [UPDATE_MODEL_EVENT, 'change'],
-  setup(props) {
-    const { focus, isChecked, isDisabled, size, model, handleChange } =
-      useCheckbox(props)
-    const { checkboxGroup } = useCheckboxGroup()
+
+  props: elCheckboxProps,
+  emits: elCheckboxEmits,
+
+  setup(props, { emit }) {
+    const checkbox = useCheckbox(props, { emit })
 
     const activeStyle = computed(() => {
-      const fillValue = checkboxGroup?.fill?.value ?? ''
+      const fillValue = checkbox.group?.fill?.value ?? ''
       return {
         backgroundColor: fillValue,
         borderColor: fillValue,
-        color: checkboxGroup?.textColor?.value ?? '',
-        boxShadow: fillValue ? `-1px 0 0 0 ${fillValue}` : null,
+        color: checkbox.group?.textColor?.value ?? '',
+        boxShadow: fillValue ? `-1px 0 0 0 ${fillValue}` : ''
       }
     })
 
     return {
-      focus,
-      isChecked,
-      isDisabled,
-      model,
-      handleChange,
-      activeStyle,
-      size,
+      ...useCheckbox(props, { emit }),
+
+      activeStyle
     }
-  },
+  }
 })
 </script>

@@ -25,6 +25,7 @@ export const TypeComponents = {
   CircleCloseFilled,
 }
 
+/** 操作类型相关图标映射 */
 export const TypeComponentsMap = {
   success: SuccessFilled,
   warning: WarningFilled,
@@ -32,8 +33,12 @@ export const TypeComponentsMap = {
   info: InfoFilled,
 }
 
+/** 检验组件相关图标映射 */
 export const ValidateComponentsMap = {
   validating: Loading,
   success: CircleCheck,
   error: CircleClose,
 }
+
+/** 校验状态 */
+export type ValidateStatus = keyof typeof ValidateComponentsMap

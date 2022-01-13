@@ -1,7 +1,4 @@
-#
 packages:
   - 'packages/**'
-  - '!packages/__mocks__'
   - docs
   - play
-  - '!**/__tests__/**'

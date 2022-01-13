@@ -10,11 +10,11 @@ import {
   isString,
   isFunction,
   looseEqual,
-  toRawType,
+  toRawType
 } from '@vue/shared'
 import isEqualWith from 'lodash/isEqualWith'
 import isServer from './isServer'
-import { debugWarn, throwError } from './error'
+import { throwError } from './error'
 
 import type { ComponentPublicInstance, CSSProperties, Ref } from 'vue'
 import type { TimeoutHandle, Nullable } from './types'
@@ -38,7 +38,7 @@ export function toObject<T>(arr: Array<T>): Record<string, T> {
  */
 export const getValueByPath = <T = any>(obj: any, paths: string): T => {
   let ret = obj
-  paths.split('.').forEach((path) => {
+  paths.split('.').forEach(path => {
     ret = ret?.[path]
   })
   return ret
@@ -84,7 +84,7 @@ export function getPropByPath(
   return {
     o: tempObj,
     k: key,
-    v: value,
+    v: value
   }
 }
 
@@ -103,7 +103,7 @@ export const escapeRegexpString = (value = ''): string =>
 // Use native Array.find, Array.findIndex instead
 
 // coerce truthy value to array
-export const coerceTruthyValueToArray = (arr) => {
+export const coerceTruthyValueToArray = (arr: any) => {
   if (!arr && arr !== 0) {
     return []
   }
@@ -119,13 +119,13 @@ export const isFirefox = function (): boolean {
 }
 
 export const autoprefixer = function (style: CSSProperties): CSSProperties {
-  const rules = ['transform', 'transition', 'animation']
-  const prefixes = ['ms-', 'webkit-']
-  rules.forEach((rule) => {
+  const rules = ['transform', 'transition', 'animation'] as const
+  const prefixes = ['ms-', 'webkit-'] as const
+  rules.forEach(rule => {
     const value = style[rule]
     if (rule && value) {
-      prefixes.forEach((prefix) => {
-        style[prefix + rule] = value
+      prefixes.forEach(prefix => {
+        ;(style as any)[prefix + rule] = value
       })
     }
   })
@@ -146,7 +146,7 @@ export {
   capitalize,
   camelize,
   looseEqual,
-  extend,
+  extend
 }
 
 export const isBool = (val: unknown): val is boolean => typeof val === 'boolean'
@@ -204,11 +204,11 @@ export function isEmpty(val: unknown) {
   return false
 }
 
-export function arrayFlat(arr: unknown[]) {
-  return arr.reduce((acm: unknown[], item) => {
-    const val = Array.isArray(item) ? arrayFlat(item) : item
-    return acm.concat(val)
-  }, [])
+export function arrayFlat(arr: any[]) {
+  return arr.reduce((acc, cur) => {
+    acc = acc.concat(Array.isArray(cur) ? arrayFlat(cur) : cur)
+    return acc
+  }, [] as any[])
 }
 
 export function deduplicate<T>(arr: T[]) {
@@ -216,13 +216,10 @@ export function deduplicate<T>(arr: T[]) {
 }
 
 export function addUnit(value: string | number) {
-  if (isString(value)) {
+  if (isString(value) && value.endsWith('px')) {
     return value
-  } else if (isNumber(value)) {
-    return `${value}px`
   }
-  debugWarn(SCOPE, 'binding value must be a string or number')
-  return ''
+  return `${value}px`
 }
 
 /**
@@ -236,9 +233,7 @@ export function addUnit(value: string | number) {
  */
 export function isEqualWithFunction(obj: any, other: any) {
   return isEqualWith(obj, other, (objVal, otherVal) => {
-    return isFunction(objVal) && isFunction(otherVal)
-      ? `${objVal}` === `${otherVal}`
-      : undefined
+    return isFunction(objVal) && isFunction(otherVal) ? `${objVal}` === `${otherVal}` : undefined
   })
 }
 
@@ -248,10 +243,39 @@ export function isEqualWithFunction(obj: any, other: any) {
  * @returns (val: T) => void
  */
 
-export const refAttacher = <T extends HTMLElement | ComponentPublicInstance>(
-  ref: Ref<T>
-) => {
+export const refAttacher = <T extends HTMLElement | ComponentPublicInstance>(ref: Ref<T>) => {
   return (val: T) => {
     ref.value = val
   }
+}
+
+/**
+ * 获取数组的最后一个元素, 或字符串的最后一个字符
+ * @param value 数组或字符串
+ */
+export function last<T>(arr: T[]): T | undefined
+export function last(str: string): string | undefined
+export function last(value: any[] | string): any {
+  return value[value.length - 1]
+}
+
+/**
+ * 获取值的类型
+ * @param value 值
+ */
+export function getType(value: any) {
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase() as
+    | 'object'
+    | 'array'
+    | 'string'
+    | 'number'
+    | 'blob'
+    | 'date'
+    | 'undefined'
+    | 'function'
+    | 'boolean'
+    | 'file'
+    | 'formdata'
+    | 'symbol'
+    | 'promise'
 }

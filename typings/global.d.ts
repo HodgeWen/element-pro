@@ -1,6 +1,7 @@
 // GlobalComponents for Volar
 declare module 'vue' {
   export interface GlobalComponents {
+
     ElAffix: typeof import('element-pro')['ElAffix']
     ElAlert: typeof import('element-pro')['ElAlert']
     ElAside: typeof import('element-pro')['ElAside']
@@ -39,6 +40,7 @@ declare module 'vue' {
     ElFooter: typeof import('element-pro')['ElFooter']
     ElForm: typeof import('element-pro')['ElForm']
     ElFormItem: typeof import('element-pro')['ElFormItem']
+    ElGrid:  typeof import('element-pro')['ElGrid']
     ElHeader: typeof import('element-pro')['ElHeader']
     ElIcon: typeof import('element-pro')['ElIcon']
     ElImage: typeof import('element-pro')['ElImage']

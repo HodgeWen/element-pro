@@ -15,6 +15,7 @@
         </div>
       </div>
     </el-col>
+
     <el-col :span="6" :xs="{ span: 12 }">
       <div class="demo-color-box-group">
         <div

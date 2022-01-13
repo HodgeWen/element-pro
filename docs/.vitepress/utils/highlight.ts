@@ -4,7 +4,7 @@ import escapeHtml from 'escape-html'
 import prism from 'prismjs'
 
 // prism is listed as actual dep so it's ok to require
-const loadLanguages = require('prismjs/components/index')
+import loadLanguages from 'prismjs/components/index'
 
 // required to make embedded highlighting work...
 loadLanguages(['markup', 'css', 'javascript'])

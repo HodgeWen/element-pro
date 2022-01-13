@@ -47,9 +47,10 @@ checkbox/intermediate
 
 :::
 
-## 可选项目数量的限制
+## 最大可选数量的限制
 
-使用 `min` 和 `max` 属性能够限制可以被勾选的项目的数量。
+使用 `max` 属性能够限制可以被勾选的项目的数量。
+对element-plus的改进: 去除最小数量限制, 以至于交互非常怪异, 此需求可使用表单的校验功能去做.
 
 :::demo
 
@@ -109,7 +110,6 @@ checkbox/with-border
 | model-value / v-model | 绑定值                                     | array   | —                     | —       |
 | size                  | 多选框组尺寸                               | string  | medium / small / mini | —       |
 | disabled              | 是否禁用                                   | boolean | —                     | false   |
-| min                   | 可被勾选的 checkbox 的最小数量             | number  | —                     | —       |
 | max                   | 可被勾选的 checkbox 的最大数量             | number  | —                     | —       |
 | text-color            | 按钮形式的 Checkbox 激活时的文本颜色       | string  | —                     | #ffffff |
 | fill                  | 按钮形式的 Checkbox 激活时的填充色和边框色 | string  | —                     | #409EFF |

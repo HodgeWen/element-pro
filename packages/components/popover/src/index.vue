@@ -69,12 +69,10 @@ export default defineComponent({
   },
   emits,
   setup(props, ctx) {
-    if (props.visible && !ctx.slots.reference) {
+    if (props.visible && !ctx.slots.trigger) {
       debugWarn(
         NAME,
-        `
-        You cannot init popover without given reference
-      `
+        '\n请提供一个触发器来触发popover'
       )
     }
     const states = usePopover(props, ctx)
@@ -83,15 +81,17 @@ export default defineComponent({
   },
   render() {
     const { $slots } = this
-    const trigger = $slots.reference ? $slots.reference() : null
+    const trigger = $slots.trigger ? $slots.trigger() : null
+
 
     const title = renderIf(
       !!this.title,
       'div',
       _hoist,
-      toDisplayString(this.title),
+      toDisplayString(this.title), // 子元素
       PatchFlags.TEXT
     )
+
 
     const content = renderSlot($slots, 'default', {}, () => [
       createTextVNode(toDisplayString(this.content), PatchFlags.TEXT),
@@ -111,6 +111,7 @@ export default defineComponent({
       visibility,
       tabindex,
     } = this
+
 
     const kls = [
       this.content ? 'el-popover--plain' : '',

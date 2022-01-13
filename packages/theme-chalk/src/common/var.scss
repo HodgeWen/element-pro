@@ -16,16 +16,16 @@ $colors: map.deep-merge(
     'white': #ffffff,
     'black': #000000,
     'primary': (
-      'base': #409eff,
+      'base': #3377ff, //#409eff,
     ),
     'success': (
-      'base': #67c23a,
+      'base': #70c91a //#67c23a,
     ),
     'warning': (
-      'base': #e6a23c,
+      'base': #ffb23f //#e6a23c,
     ),
     'danger': (
-      'base': #f56c6c,
+      'base': #ff6969 //#f56c6c,
     ),
     'error': (
       'base': #f56c6c,

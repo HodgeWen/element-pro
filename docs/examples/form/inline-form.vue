@@ -1,6 +1,6 @@
 <template>
-  <el-form :inline="true" :model="formInline" class="demo-form-inline">
-    <el-form-item label="Approved by">
+  <el-form inline :model="formInline" :rules="rules" class="demo-form-inline">
+    <el-form-item label="Approved by" prop="user">
       <el-input v-model="formInline.user" placeholder="Approved by"></el-input>
     </el-form-item>
     <el-form-item label="Activity zone">
@@ -21,14 +21,18 @@ export default {
     return {
       formInline: {
         user: '',
-        region: '',
+        region: ''
       },
+
+      rules: {
+        user: [{ required: true }]
+      }
     }
   },
   methods: {
     onSubmit() {
       console.log('submit!')
-    },
-  },
+    }
+  }
 }
 </script>

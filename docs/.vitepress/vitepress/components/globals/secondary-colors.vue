@@ -10,7 +10,7 @@
             :key="key"
             class="bg-secondary-sub-item"
             :style="{
-              background: tintColor(getColorValue(type), (key + 8) / 10),
+              background: tintColor(getColorValue(type), (key + 8) / 10)
             }"
           ></div>
         </div>
@@ -19,7 +19,8 @@
   </el-row>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
+
 import { defineComponent, markRaw } from 'vue'
 
 export default defineComponent({
@@ -42,16 +43,14 @@ export default defineComponent({
     }
 
     const getColorValue = (type: string) => {
-      return getComputedStyle(document.documentElement).getPropertyValue(
-        `--el-color-${type}`
-      )
+      return getComputedStyle(document.documentElement).getPropertyValue(`--el-color-${type}`)
     }
 
     return {
       colorsType: markRaw(['success', 'warning', 'danger', 'info']),
       getColorValue,
-      tintColor,
+      tintColor
     }
-  },
+  }
 })
 </script>

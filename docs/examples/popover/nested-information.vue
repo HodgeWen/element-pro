@@ -1,6 +1,6 @@
 <template>
-  <el-popover placement="right" :width="400" trigger="click">
-    <template #reference>
+  <el-popover  placement="right" :width="400" trigger="click">
+    <template #trigger>
       <el-button>Click to activate</el-button>
     </template>
     <el-table :data="gridData">

@@ -38,11 +38,11 @@ export default defineComponent({
     const state = reactive({
       shortcuts: [
         {
-          text: 'Today',
+          text: '此刻',
           value: new Date(),
         },
         {
-          text: 'Yesterday',
+          text: '昨日此刻',
           value: () => {
             const date = new Date()
             date.setTime(date.getTime() - 3600 * 1000 * 24)
@@ -50,7 +50,7 @@ export default defineComponent({
           },
         },
         {
-          text: 'A week ago',
+          text: '一周前此刻',
           value: () => {
             const date = new Date()
             date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)

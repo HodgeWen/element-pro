@@ -1,23 +1,22 @@
-import { buildProps } from '@element-pro/utils/props'
-import { useFormItemProps } from '@element-pro/hooks'
+import { formCommonProps } from '@element-pro/hooks'
 import { radioEmits } from './radio'
-import type { ExtractPropTypes } from '@vue/runtime-core'
+import type { ExtractPropTypes } from 'vue'
 
-export const radioGroupProps = buildProps({
-  ...useFormItemProps,
+export const radioGroupProps = {
+  ...formCommonProps,
   modelValue: {
     type: [String, Number, Boolean],
-    default: '',
+    default: ''
   },
   fill: {
     type: String,
-    default: '',
+    default: ''
   },
   textColor: {
     type: String,
-    default: '',
-  },
-} as const)
+    default: ''
+  }
+}
 export type RadioGroupProps = ExtractPropTypes<typeof radioGroupProps>
 
 export const radioGroupEmits = radioEmits

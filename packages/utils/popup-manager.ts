@@ -1,9 +1,10 @@
 import isServer from './isServer'
 import * as configs from './config'
-import { addClass, removeClass, on } from './dom'
+import { addClass, removeClass } from './dom'
 import { EVENT_CODE } from './aria'
 
 import type { Ref } from 'vue'
+import { last } from './util'
 interface Instance {
   closeOnClickModal: Ref<boolean>
   closeOnPressEscape: Ref<boolean>
@@ -44,11 +45,12 @@ const onModalClick = () => {
 }
 
 let hasModal = false
-let zIndex: number
+let zIndex: number = -1
 
-const getModal = function (): HTMLElement {
-  if (isServer) return
+const getModal = (): HTMLElement | null => {
+  if (isServer) return null
   let modalDom = PopupManager.modalDom
+
   if (modalDom) {
     hasModal = true
   } else {
@@ -56,14 +58,14 @@ const getModal = function (): HTMLElement {
     modalDom = document.createElement('div')
     PopupManager.modalDom = modalDom
 
-    on(modalDom, 'touchmove', onTouchMove)
-    on(modalDom, 'click', onModalClick)
+    modalDom.addEventListener('touchmove', onTouchMove)
+    modalDom.addEventListener('click', onModalClick)
   }
 
   return modalDom
 }
 
-const instances = {}
+const instances: Record<string, any> = {}
 
 const PopupManager: IPopupManager = {
   modalFade: true,
@@ -105,7 +107,8 @@ const PopupManager: IPopupManager = {
 
   openModal(id, zIndex, dom, modalClass, modalFade) {
     if (isServer) return
-    if (!id || zIndex === undefined) return
+
+    if (!id || zIndex === -1) return
     this.modalFade = modalFade
 
     const modalStack = this.modalStack
@@ -118,6 +121,7 @@ const PopupManager: IPopupManager = {
     }
 
     const modalDom = getModal()
+    if (!modalDom) return
 
     addClass(modalDom, 'v-modal')
     if (this.modalFade && !hasModal) {
@@ -125,7 +129,7 @@ const PopupManager: IPopupManager = {
     }
     if (modalClass) {
       const classArr = modalClass.trim().split(/\s+/)
-      classArr.forEach((item) => addClass(modalDom, item))
+      classArr.forEach(item => addClass(modalDom, item))
     }
     setTimeout(() => {
       removeClass(modalDom, 'v-modal-enter')
@@ -149,18 +153,20 @@ const PopupManager: IPopupManager = {
   closeModal(id) {
     const modalStack = this.modalStack
     const modalDom = getModal()
+    if (!modalDom) return
 
     if (modalStack.length > 0) {
-      const topItem = modalStack[modalStack.length - 1]
+      const topItem = last(modalStack)!
+
       if (topItem.id === id) {
         if (topItem.modalClass) {
           const classArr = topItem.modalClass.trim().split(/\s+/)
-          classArr.forEach((item) => removeClass(modalDom, item))
+          classArr.forEach(item => removeClass(modalDom, item))
         }
 
         modalStack.pop()
         if (modalStack.length > 0) {
-          modalDom.style.zIndex = modalStack[modalStack.length - 1].zIndex
+          modalDom.style.zIndex = String(last(modalStack)!.zIndex)
         }
       } else {
         for (let i = modalStack.length - 1; i >= 0; i--) {
@@ -187,36 +193,37 @@ const PopupManager: IPopupManager = {
         removeClass(modalDom, 'v-modal-leave')
       }, 200)
     }
-  },
+  }
 }
 
 Object.defineProperty(PopupManager, 'zIndex', {
   configurable: true,
   get() {
-    if (zIndex === undefined) {
+    if (zIndex === -1) {
       zIndex = (configs.getConfig('zIndex') as number) || 2000
     }
     return zIndex
   },
   set(value) {
     zIndex = value
-  },
+  }
 })
 
-const getTopPopup = function () {
-  if (isServer) return
-  if (PopupManager.modalStack.length > 0) {
-    const topPopup = PopupManager.modalStack[PopupManager.modalStack.length - 1]
-    if (!topPopup) return
-    const instance = PopupManager.getInstance(topPopup.id)
+/**
+ * 获取最顶层弹框
+ * @returns
+ */
+const getTopPopup = () => {
+  const topPopup = PopupManager.modalStack[PopupManager.modalStack.length - 1]
+  if (isServer || !topPopup) return null
 
-    return instance
-  }
+  const instance = PopupManager.getInstance(topPopup.id)
+  return instance
 }
 
 if (!isServer) {
-  // handle `esc` key when the popup is shown
-  on(window, 'keydown', function (event: KeyboardEvent) {
+  // esc按键关闭
+  window.addEventListener('keydown', event => {
     if (event.code === EVENT_CODE.esc) {
       const topPopup = getTopPopup()
 

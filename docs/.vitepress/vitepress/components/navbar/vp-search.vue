@@ -87,6 +87,7 @@ function initialize(userOptions: any) {
 
       transformItems: (items: DocSearchHit[]) => {
         return items.map((item) => {
+
           return Object.assign({}, item, {
             url: getRelativePath(item.url),
           })

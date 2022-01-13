@@ -1,11 +1,7 @@
 {
-  "private": true,
+  "name": "element-refactor",
   "packageManager": "pnpm@6.23.2",
-  "workspaces": [
-    "packages/*",
-    "play",
-    "docs"
-  ],
+  "version": "1.0.0",
   "engines": {
     "node": ">= 16"
   },
@@ -21,46 +17,34 @@
     "build": "gulp --require sucrase/register/ts -f build/gulpfile.ts",
     "build:theme": "pnpm run build -C packages/theme-chalk",
     "format": "prettier --write .",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 && pretty-quick --check --branch dev",
-    "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch dev",
     "docs:dev": "pnpm run -C docs dev",
     "docs:build": "pnpm run -C docs build",
     "docs:serve": "pnpm run -C docs serve",
     "docs:gen-locale": "pnpm run -C docs gen-locale",
-    "docs:crowdin-credentials": "pnpm run -C docs crowdin-credentials",
     "prepare": "husky install",
     "postinstall": "pnpm gen:version",
     "preinstall": "npx only-allow pnpm -y"
   },
+  "license": "MIT",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "lint-staged": {
-    "*.{vue,js,ts,jsx,tsx}": "eslint --fix"
-  },
-  "browserslist": [
-    "> 1%",
-    "not ie 11",
-    "not op_mini all"
-  ],
   "peerDependencies": {
-    "vue": "^3.2.0"
+    "vue": "^3.2.26"
   },
   "dependencies": {
-    "@element-pro/components": "workspace:*",
     "@element-pro/directives": "workspace:*",
     "@element-pro/hooks": "workspace:*",
-    "@element-plus/icons": "^0.0.11",
-    "@element-pro/locale": "workspace:*",
-    "@element-pro/test-utils": "workspace:*",
     "@element-pro/theme-chalk": "workspace:*",
     "@element-pro/tokens": "workspace:*",
     "@element-pro/utils": "workspace:*",
+    "@element-pro/locale": "workspace:*",
+    "@element-pro/components": "workspace:*",
     "@popperjs/core": "^2.10.2",
+    "@vue/shared": "^3.2.26",
     "@vueuse/core": "^7.0.0",
-    "async-validator": "^4.0.7",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "memoize-one": "^6.0.0",
@@ -69,6 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
+    "@element-plus/icons": "^0.0.11",
     "@pnpm/find-workspace-packages": "3.1.26",
     "@pnpm/logger": "4.0.0",
     "@pnpm/types": "7.6.0",
@@ -77,49 +62,35 @@
     "@rollup/plugin-replace": "3.0.0",
     "@sucrase/jest-plugin": "2.2.0",
     "@types/gulp": "4.0.9",
-    "@types/jest": "27.0.2",
-    "@types/lodash": "4.14.177",
+    "@types/jest": "^27.0.3",
+    "@types/lodash": "4.14.178",
     "@types/sass": "1.43.1",
-    "@types/through2": "2.0.36",
-    "@typescript-eslint/eslint-plugin": "5.4.0",
-    "@typescript-eslint/parser": "5.4.0",
-    "@vue/compiler-sfc": "3.2.22",
+    "@vue/compiler-sfc": "3.2.26",
     "@vue/test-utils": "2.0.0-rc.16",
-    "chalk": "4.1.2",
-    "components-helper": "1.0.4",
+    "chalk": "^4.1.2",
+    "components-helper": "^1.0.5",
     "cz-conventional-changelog": "3.3.0",
-    "esbuild": "0.14.0",
-    "eslint": "8.3.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-define-config": "1.2.0",
-    "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-vue": "8.1.1",
+    "esbuild": "^0.13.15",
     "expect-type": "0.13.0",
     "fast-glob": "3.2.7",
     "gulp": "4.0.2",
     "gulp-typescript": "6.0.0-alpha.1",
     "husky": "7.0.4",
-    "jest": "26.6.3",
-    "lint-staged": "12.1.2",
-    "prettier": "2.5.0",
-    "pretty-quick": "3.1.2",
+    "jest": "^27.4.5",
     "resize-observer-polyfill": "1.5.1",
     "rimraf": "3.0.2",
-    "rollup": "2.60.1",
+    "rollup": "^2.61.1",
     "rollup-plugin-css-only": "3.1.0",
     "rollup-plugin-esbuild": "4.7.2",
     "rollup-plugin-filesize": "9.1.1",
     "rollup-plugin-vue": "6.0.0",
-    "sass": "1.43.5",
+    "sass": "^1.45.0",
     "sucrase": "3.20.3",
-    "through2": "4.0.2",
-    "ts-jest": "26.5.6",
+    "ts-jest": "^27.1.1",
     "ts-morph": "13.0.2",
-    "typescript": "4.5.2",
-    "vue": "3.2.24",
-    "vue-jest": "5.0.0-alpha.10",
+    "typescript": "^4.5.4",
+    "vue": "^3.2.26",
     "vue-router": "4.0.12",
-    "vue-tsc": "0.29.6"
+    "vue-tsc": "0.29.8"
   }
 }

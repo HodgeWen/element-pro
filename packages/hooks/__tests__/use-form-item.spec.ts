@@ -1,7 +1,7 @@
 import { h, provide } from 'vue'
 import { NOOP } from '@vue/shared'
 import { mount } from '@vue/test-utils'
-import { ElButton } from '@element-pro/components'
+import { ElButton } from 'element-pro'
 import {
   elFormKey,
   elFormItemKey,

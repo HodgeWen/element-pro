@@ -3,7 +3,7 @@
     <el-col :span="10" :xs="{ span: 12 }">
       <div class="demo-color-box" :style="{ background: primary }">
         Brand Color
-        <div class="value">#409EFF</div>
+        <div class="value">{{primary}}</div>
         <div
           class="bg-color-sub"
           :style="{ background: tintColor(primary, 0.9) }"
@@ -25,7 +25,7 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    const primary = ref('#409EFF')
+    const primary = ref('#3377ff')
     const tintColor = (c: string, tint: number) => {
       const color = c.replace('#', '')
       let red = parseInt(color.slice(0, 2), 16)

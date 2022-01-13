@@ -1,240 +1,189 @@
 <template>
-  <form
+  <el-grid
+    tag="form"
     class="el-form"
-    :class="[
-      labelPosition ? 'el-form--label-' + labelPosition : '',
-      { 'el-form--inline': inline },
-    ]"
+    :cols="cols || 1"
+    :class="[labelPosition ? 'el-form--label-' + labelPosition : '']"
   >
-    <slot></slot>
-  </form>
+    <component v-for="node of getSlots()" :is="node" />
+  </el-grid>
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  provide,
-  reactive,
-  ref,
-  toRefs,
-  watch,
-} from 'vue'
+import { ElFormItem, ElGrid } from '@element-pro/components'
+import { cloneVNode, computed, defineComponent, h, provide, shallowReactive } from 'vue'
 import { elFormKey } from '@element-pro/tokens'
-import { debugWarn } from '@element-pro/utils/error'
-import type { ValidateFieldsError } from 'async-validator'
+import type { ElFormItemContext as FormItemCtx } from '@element-pro/tokens'
+import { elFormComponents, elFormProps } from './form'
+import { omit } from 'lodash'
+import type { ElFormRules } from './form'
+import { validators } from './form-validator'
 
-import type { PropType } from 'vue'
-import type { ComponentSize } from '@element-pro/utils/types'
-import type { FormRulesMap } from './form.type'
-import type {
-  ElFormItemContext as FormItemCtx,
-  ValidateFieldCallback,
-} from '@element-pro/tokens'
-
-function useFormLabelWidth() {
-  const potentialLabelWidthArr = ref([])
-  const autoLabelWidth = computed(() => {
-    if (!potentialLabelWidthArr.value.length) return '0'
-    const max = Math.max(...potentialLabelWidthArr.value)
-    return max ? `${max}px` : ''
-  })
-
-  function getLabelWidthIndex(width: number) {
-    const index = potentialLabelWidthArr.value.indexOf(width)
-    if (index === -1) {
-      debugWarn('Form', `unexpected width ${width}`)
-    }
-    return index
-  }
-
-  function registerLabelWidth(val: number, oldVal: number) {
-    if (val && oldVal) {
-      const index = getLabelWidthIndex(oldVal)
-      potentialLabelWidthArr.value.splice(index, 1, val)
-    } else if (val) {
-      potentialLabelWidthArr.value.push(val)
-    }
-  }
-
-  function deregisterLabelWidth(val: number) {
-    const index = getLabelWidthIndex(val)
-    index > -1 && potentialLabelWidthArr.value.splice(index, 1)
-  }
-
-  return {
-    autoLabelWidth,
-    registerLabelWidth,
-    deregisterLabelWidth,
-  }
-}
-
-export interface Callback {
-  (isValid?: boolean, invalidFields?: ValidateFieldsError): void
-}
+type RuleType = keyof ElFormRules[string]
 
 export default defineComponent({
   name: 'ElForm',
-  props: {
-    model: Object,
-    rules: Object as PropType<FormRulesMap>,
-    labelPosition: String,
-    labelWidth: {
-      type: [String, Number],
-      default: '',
-    },
-    labelSuffix: {
-      type: String,
-      default: '',
-    },
-    inline: Boolean,
-    inlineMessage: Boolean,
-    statusIcon: Boolean,
-    showMessage: {
-      type: Boolean,
-      default: true,
-    },
-    size: String as PropType<ComponentSize>,
-    disabled: Boolean,
-    validateOnRuleChange: {
-      type: Boolean,
-      default: true,
-    },
-    hideRequiredAsterisk: {
-      type: Boolean,
-      default: false,
-    },
-    scrollToError: Boolean,
+
+  components: {
+    ElGrid
   },
+
+  props: elFormProps,
   emits: ['validate'],
-  setup(props, { emit }) {
-    const fields: FormItemCtx[] = []
 
-    watch(
-      () => props.rules,
-      () => {
-        fields.forEach((field) => {
-          field.evaluateValidationEnabled()
+  setup(props, { emit, slots }) {
+    const formItems: Record<string, FormItemCtx> = {}
+
+    // 默认表单值
+    const defaultFormValues = computed(() => {
+      let result: Record<string, any> = {}
+      if (props.model) {
+        Object.keys(props.model).forEach(name => {
+          result[name] = props.model![name].value
         })
+      }
+      return result
+    })
 
-        if (props.validateOnRuleChange) {
-          validate(() => ({}))
+    // 表单值
+    const formValues = computed(() => {
+      return shallowReactive({ ...defaultFormValues.value })
+    })
+
+    // 校验规则
+    const formRules = computed(() => {
+      let result: ElFormRules = {}
+      if (props.model) {
+        Object.keys(props.model).forEach(name => {
+          result[name] = omit(props.model![name], ['value'])
+        })
+      }
+      return result
+    })
+
+    const getSlots = () => {
+      let _formValues = formValues.value
+      const vNodeList = slots.default?.(_formValues) || []
+
+      return vNodeList.map(node => {
+        if (typeof node.type === 'object' && elFormComponents.has((node.type as any).name)) {
+          const { label, field, tips } = node.props || {}
+
+          if (!field) return node
+
+          const update = (value: any) => {
+            _formValues[field] = value
+          }
+          return h(
+            ElFormItem,
+            {
+              label,
+              field,
+              tips
+            },
+            () => {
+              let cloned = cloneVNode(node, {
+                modelValue: _formValues[field],
+                'onUpdate:modelValue': update
+              })
+              return cloned
+            }
+          )
         }
-      }
-    )
 
-    const addField = (field: FormItemCtx) => {
-      if (field) {
-        fields.push(field)
-      }
+        return node
+      })
     }
 
-    const removeField = (field: FormItemCtx) => {
-      if (field.prop) {
-        fields.splice(fields.indexOf(field), 1)
-      }
+    // 添加和删除表单项
+    const addFormItem = (name: string, formItem: FormItemCtx) => {
+      formItems[name] = formItem
+    }
+    const deleteFormItem = (name: string) => {
+      delete formItems[name]
+    }
+
+    const resetField = (field: string) => {
+      formValues.value[field] = defaultFormValues.value[field]
     }
 
     const resetFields = () => {
-      if (!props.model) {
-        debugWarn('Form', 'model is required for resetFields to work.')
-        return
-      }
-      fields.forEach((field) => {
-        field.resetField()
-      })
+      Object.values(formItems).forEach(formItem => formItem.reset())
     }
 
-    const clearValidate = (props: string | string[] = []) => {
-      const fds = props.length
-        ? typeof props === 'string'
-          ? fields.filter((field) => props === field.prop)
-          : fields.filter((field) => props.indexOf(field.prop) > -1)
-        : fields
-      fds.forEach((field) => {
-        field.clearValidate()
-      })
+    // 清除校验
+    const clearValidate = (fields?: string | string[]) => {
+      if (!fields) {
+        Object.values(formItems).forEach(formItem => formItem.clearValidate())
+      } else if (typeof fields === 'string') {
+        formItems[fields].clearValidate()
+      } else {
+        fields.forEach(field => formItems[field].clearValidate())
+      }
     }
 
-    const validate = (callback?: Callback) => {
-      if (!props.model) {
-        debugWarn('Form', 'model is required for validate to work!')
-        return
-      }
+    /**
+     * 单个字段校验
+     * @param field 需要校验的字段
+     */
+    const validateField = async (field: string) => {
+      let value = formValues.value[field]
+      let rule = formRules.value[field]
+      const ruleTypes = Object.keys(rule)
 
-      let promise: Promise<boolean> | undefined
-      // if no callback, return promise
-      if (typeof callback !== 'function') {
-        promise = new Promise((resolve, reject) => {
-          callback = function (valid, invalidFields) {
-            if (valid) {
-              resolve(true)
-            } else {
-              reject(invalidFields)
-            }
-          }
-        })
-      }
+      let i = -1,
+        len = ruleTypes.length
 
-      if (fields.length === 0) {
-        callback(true)
-      }
-      let valid = true
-      let count = 0
-      let invalidFields = {}
-      let firstInvalidFields
-      for (const field of fields) {
-        field.validate('', (message, field) => {
-          if (message) {
-            valid = false
-            firstInvalidFields || (firstInvalidFields = field)
-          }
-          invalidFields = { ...invalidFields, ...field }
-          if (++count === fields.length) {
-            callback(valid, invalidFields)
-          }
-        })
-      }
-      if (!valid && props.scrollToError) {
-        scrollToField(Object.keys(firstInvalidFields)[0])
-      }
-      return promise
-    }
+      while (++i < len) {
+        let ruleType = ruleTypes[i] as RuleType
 
-    const validateField = (
-      props: string | string[],
-      cb: ValidateFieldCallback
-    ) => {
-      props = [].concat(props)
-      const fds = fields.filter((field) => props.indexOf(field.prop) !== -1)
-      if (!fields.length) {
-        debugWarn('Form', 'please pass correct props!')
-        return
-      }
-
-      fds.forEach((field) => {
-        field.validate('', cb)
-      })
-    }
-
-    const scrollToField = (prop: string) => {
-      fields.forEach((item) => {
-        if (item.prop === prop) {
-          item.$el.scrollIntoView()
+        // 自定义校验器
+        if (ruleType === 'validator') {
+          let errMsg = await rule.validator?.(value, formValues.value, rule)
+          if (errMsg) return errMsg
+        } else {
+          // 预置校验
+          let errMsg = validators[ruleType](value, rule[ruleType] as any)
+          if (errMsg) return errMsg
         }
-      })
+      }
+
+      return null
     }
 
-    const elForm = reactive({
-      ...toRefs(props),
-      resetFields,
-      clearValidate,
-      validateField,
+    /** 校验 */
+    const validate = async (fields?: string | string[]) => {
+      if (!fields || Array.isArray(fields)) {
+        const allValidation = await Promise.all(
+          (Array.isArray(fields) ? fields : Object.keys(formItems)).map(name =>
+            formItems[name].validate()
+          )
+        )
+        return allValidation.every(valid => valid)
+      }
+      if (typeof fields === 'string') {
+        return formItems[fields].validate()
+      }
+
+      return true
+    }
+
+    const setValue = (values: Record<string, any>) => {
+      for (const key in values) {
+        formValues.value[key] = values[key]
+      }
+    }
+
+    const elForm = {
+      props,
+
+      formRules,
+      resetField,
       emit,
-      addField,
-      removeField,
-      ...useFormLabelWidth(),
-    })
+      addFormItem,
+      deleteFormItem,
+      validateField
+    }
 
     provide(elFormKey, elForm)
 
@@ -242,9 +191,9 @@ export default defineComponent({
       validate, // export
       resetFields,
       clearValidate,
-      validateField,
-      scrollToField,
+      getSlots,
+      setValue
     }
-  },
+  }
 })
 </script>

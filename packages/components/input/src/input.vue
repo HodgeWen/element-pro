@@ -1,8 +1,7 @@
 <template>
   <div
-    v-show="type !== 'hidden'"
     :class="[
-      type === 'textarea' ? 'el-textarea' : 'el-input',
+      'el-input',
       inputSize ? 'el-input--' + inputSize : '',
       {
         'is-disabled': inputDisabled,
@@ -11,151 +10,107 @@
         'el-input-group--append': $slots.append,
         'el-input-group--prepend': $slots.prepend,
         'el-input--prefix': $slots.prefix || prefixIcon,
-        'el-input--suffix':
-          $slots.suffix || suffixIcon || clearable || showPassword,
-        'el-input--suffix--password-clear': clearable && showPassword,
+        'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword,
+        'el-input--suffix--password-clear': clearable && showPassword
       },
-      $attrs.class,
+      $attrs.class
     ]"
     :style="containerStyle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
-    <!-- input -->
-    <template v-if="type !== 'textarea'">
-      <!-- prepend slot -->
-      <div v-if="$slots.prepend" class="el-input-group__prepend">
-        <slot name="prepend" />
-      </div>
+    <!-- prepend slot -->
+    <div v-if="$slots.prepend" class="el-input-group__prepend">
+      <slot name="prepend" />
+    </div>
 
-      <input
-        ref="input"
-        class="el-input__inner"
-        v-bind="attrs"
-        :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
-        :disabled="inputDisabled"
-        :readonly="readonly"
-        :autocomplete="autocomplete"
-        :tabindex="tabindex"
-        :aria-label="label"
-        :placeholder="placeholder"
-        :style="inputStyle"
-        @compositionstart="handleCompositionStart"
-        @compositionupdate="handleCompositionUpdate"
-        @compositionend="handleCompositionEnd"
-        @input="handleInput"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
-        @keydown="handleKeydown"
-      />
+    <input
+      ref="input"
+      class="el-input__inner"
+      v-bind="attrs"
+      :type="showPassword ? (passwordVisible ? 'text' : 'password') : 'text'"
+      :disabled="inputDisabled"
+      :readonly="readonly"
+      :autocomplete="autocomplete"
+      :tabindex="tabindex"
+      :aria-label="label"
+      :placeholder="placeholder"
+      :style="inputStyle"
+      @compositionstart="handleCompositionStart"
+      @compositionupdate="handleCompositionUpdate"
+      @compositionend="handleCompositionEnd"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @change="handleChange"
+      @keydown="handleKeydown"
+    />
 
-      <!-- prefix slot -->
-      <span v-if="$slots.prefix || prefixIcon" class="el-input__prefix">
-        <span class="el-input__prefix-inner">
-          <slot name="prefix"></slot>
-          <el-icon v-if="prefixIcon" class="el-input__icon">
-            <component :is="prefixIcon" />
-          </el-icon>
-        </span>
-      </span>
-
-      <!-- suffix slot -->
-      <span v-if="suffixVisible" class="el-input__suffix">
-        <span class="el-input__suffix-inner">
-          <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
-            <slot name="suffix"></slot>
-            <el-icon v-if="suffixIcon" class="el-input__icon">
-              <component :is="suffixIcon" />
-            </el-icon>
-          </template>
-          <el-icon
-            v-if="showClear"
-            class="el-input__icon el-input__clear"
-            @mousedown.prevent
-            @click="clear"
-          >
-            <circle-close />
-          </el-icon>
-          <el-icon
-            v-if="showPwdVisible"
-            class="el-input__icon el-input__clear"
-            @click="handlePasswordVisible"
-          >
-            <icon-view />
-          </el-icon>
-          <span v-if="isWordLimitVisible" class="el-input__count">
-            <span class="el-input__count-inner">
-              {{ textLength }} / {{ attrs.maxlength }}
-            </span>
-          </span>
-        </span>
-        <el-icon
-          v-if="validateState && validateIcon"
-          class="el-input__icon el-input__validateIcon"
-        >
-          <component :is="validateIcon" />
+    <!-- prefix slot -->
+    <span v-if="$slots.prefix || prefixIcon" class="el-input__prefix">
+      <span class="el-input__prefix-inner">
+        <slot name="prefix"></slot>
+        <el-icon v-if="prefixIcon" class="el-input__icon">
+          <component :is="prefixIcon" />
         </el-icon>
       </span>
+    </span>
 
-      <!-- append slot -->
-      <div v-if="$slots.append" class="el-input-group__append">
-        <slot name="append" />
-      </div>
-    </template>
-
-    <!-- textarea -->
-    <template v-else>
-      <textarea
-        ref="textarea"
-        class="el-textarea__inner"
-        v-bind="attrs"
-        :tabindex="tabindex"
-        :disabled="inputDisabled"
-        :readonly="readonly"
-        :autocomplete="autocomplete"
-        :style="computedTextareaStyle"
-        :aria-label="label"
-        :placeholder="placeholder"
-        @compositionstart="handleCompositionStart"
-        @compositionupdate="handleCompositionUpdate"
-        @compositionend="handleCompositionEnd"
-        @input="handleInput"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @change="handleChange"
-        @keydown="handleKeydown"
-      />
-      <span v-if="isWordLimitVisible" class="el-input__count">
-        {{ textLength }} / {{ attrs.maxlength }}
+    <!-- suffix slot -->
+    <span v-if="suffixVisible" class="el-input__suffix">
+      <span class="el-input__suffix-inner">
+        <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
+          <slot name="suffix"></slot>
+          <el-icon v-if="suffixIcon" class="el-input__icon">
+            <component :is="suffixIcon" />
+          </el-icon>
+        </template>
+        <el-icon
+          v-if="showClear"
+          class="el-input__icon el-input__clear"
+          @mousedown.prevent
+          @click="clear"
+        >
+          <circle-close />
+        </el-icon>
+        <el-icon
+          v-if="showPwdVisible"
+          class="el-input__icon el-input__clear"
+          @click="handlePasswordVisible"
+        >
+          <icon-view />
+        </el-icon>
+        <span v-if="isWordLimitVisible" class="el-input__count">
+          <span class="el-input__count-inner"> {{ textLength }} / {{ attrs.maxlength }} </span>
+        </span>
       </span>
-    </template>
+    </span>
+
+    <!-- append slot -->
+    <div v-if="$slots.append" class="el-input-group__append">
+      <slot name="append" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import {
   defineComponent,
-  inject,
   computed,
   watch,
   nextTick,
   getCurrentInstance,
   ref,
-  shallowRef,
   onMounted,
   onUpdated,
+shallowRef
 } from 'vue'
 import { CircleClose, View as IconView } from '@element-plus/icons'
 import { ElIcon } from '@element-pro/components/icon'
-import { ValidateComponentsMap } from '@element-pro/utils/icon'
-import { elFormKey, elFormItemKey } from '@element-pro/tokens'
 import { useAttrs, useFormItem } from '@element-pro/hooks'
 import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
-import { isObject } from '@element-pro/utils/util'
-import isServer from '@element-pro/utils/isServer'
+
 import { isKorean } from '@element-pro/utils/isDef'
-import { calcTextareaHeight } from './calc-textarea-height'
 import { inputProps, inputEmits } from './input'
 
 import type { StyleValue } from '@element-pro/utils/types'
@@ -164,12 +119,11 @@ type TargetElement = HTMLInputElement | HTMLTextAreaElement
 
 const PENDANT_MAP = {
   suffix: 'append',
-  prefix: 'prepend',
+  prefix: 'prepend'
 } as const
 
 export default defineComponent({
   name: 'ElInput',
-
   components: { ElIcon, CircleClose, IconView },
 
   inheritAttrs: false,
@@ -181,36 +135,21 @@ export default defineComponent({
     const instance = getCurrentInstance()!
     const attrs = useAttrs()
 
-    const elForm = inject(elFormKey, undefined)
-    const elFormItem = inject(elFormItemKey, undefined)
+    const { size: inputSize, disabled: inputDisabled, elFormItem } = useFormItem(props)
 
-    const { size: inputSize, disabled: inputDisabled } = useFormItem({})
+    const input = shallowRef<HTMLInputElement>()
 
-    const input = ref<HTMLInputElement>()
-    const textarea = ref<HTMLTextAreaElement>()
     const focused = ref(false)
     const hovering = ref(false)
     const isComposing = ref(false)
     const passwordVisible = ref(false)
-    const _textareaCalcStyle = shallowRef(props.inputStyle)
 
-    const inputOrTextarea = computed(() => input.value || textarea.value)
+    const inputOrTextarea = computed(() => input.value)
 
-    const needStatusIcon = computed(() => elForm?.statusIcon ?? false)
-    const validateState = computed(() => elFormItem?.validateState || '')
-    const validateIcon = computed(
-      () => ValidateComponentsMap[validateState.value]
-    )
     const containerStyle = computed(() => rawAttrs.style as StyleValue)
-    const computedTextareaStyle = computed<StyleValue>(() => [
-      props.inputStyle,
-      _textareaCalcStyle.value,
-      { resize: props.resize },
-    ])
+
     const nativeInputValue = computed(() =>
-      props.modelValue === null || props.modelValue === undefined
-        ? ''
-        : String(props.modelValue)
+      props.modelValue === null || props.modelValue === undefined ? '' : String(props.modelValue)
     )
     const showClear = computed(
       () =>
@@ -231,7 +170,7 @@ export default defineComponent({
       () =>
         props.showWordLimit &&
         !!attrs.value.maxlength &&
-        (props.type === 'text' || props.type === 'textarea') &&
+        !props.password &&
         !inputDisabled.value &&
         !props.readonly &&
         !props.showPassword
@@ -240,27 +179,8 @@ export default defineComponent({
     const inputExceed = computed(
       () =>
         // show exceed style if length of initial value greater then maxlength
-        !!isWordLimitVisible.value &&
-        textLength.value > Number(attrs.value.maxlength)
+        !!isWordLimitVisible.value && textLength.value > Number(attrs.value.maxlength)
     )
-
-    const resizeTextarea = () => {
-      const { type, autosize } = props
-
-      if (isServer || type !== 'textarea') return
-
-      if (autosize) {
-        const minRows = isObject(autosize) ? autosize.minRows : undefined
-        const maxRows = isObject(autosize) ? autosize.maxRows : undefined
-        _textareaCalcStyle.value = {
-          ...calcTextareaHeight(textarea.value!, minRows, maxRows),
-        }
-      } else {
-        _textareaCalcStyle.value = {
-          minHeight: calcTextareaHeight(textarea.value!).minHeight,
-        }
-      }
-    }
 
     const setNativeInputValue = () => {
       const input = inputOrTextarea.value
@@ -271,10 +191,8 @@ export default defineComponent({
     const calcIconOffset = (place: 'prefix' | 'suffix') => {
       const { el } = instance.vnode
       if (!el) return
-      const elList: HTMLSpanElement[] = Array.from(
-        el.querySelectorAll(`.el-input__${place}`)
-      )
-      const target = elList.find((item) => item.parentNode === el)
+      const elList: HTMLSpanElement[] = Array.from(el.querySelectorAll(`.el-input__${place}`))
+      const target = elList.find(item => item.parentNode === el)
 
       if (!target) return
 
@@ -337,7 +255,7 @@ export default defineComponent({
       focused.value = false
       emit('blur', event)
       if (props.validateEvent) {
-        elFormItem?.validate?.('blur')
+        elFormItem?.validate()
       }
     }
 
@@ -383,43 +301,23 @@ export default defineComponent({
         !!props.suffixIcon ||
         showClear.value ||
         props.showPassword ||
-        isWordLimitVisible.value ||
-        (!!validateState.value && needStatusIcon.value)
+        isWordLimitVisible.value
     )
 
     watch(
       () => props.modelValue,
       () => {
-        nextTick(resizeTextarea)
         if (props.validateEvent) {
-          elFormItem?.validate?.('change')
+          elFormItem?.validate()
         }
       }
     )
 
-    // native input value is set explicitly
-    // do not use v-model / :value in template
-    // see: https://github.com/ElemeFE/element/issues/14521
     watch(nativeInputValue, () => setNativeInputValue())
-
-    // when change between <input> and <textarea>,
-    // update DOM dependent value and styles
-    // https://github.com/ElemeFE/element/issues/14857
-    watch(
-      () => props.type,
-      () => {
-        nextTick(() => {
-          setNativeInputValue()
-          resizeTextarea()
-          updateIconOffset()
-        })
-      }
-    )
 
     onMounted(() => {
       setNativeInputValue()
       updateIconOffset()
-      nextTick(resizeTextarea)
     })
 
     onUpdated(() => {
@@ -442,13 +340,9 @@ export default defineComponent({
 
     return {
       input,
-      textarea,
       attrs,
       inputSize,
-      validateState,
-      validateIcon,
       containerStyle,
-      computedTextareaStyle,
       inputDisabled,
       showClear,
       showPwdVisible,
@@ -460,7 +354,6 @@ export default defineComponent({
       inputOrTextarea,
       suffixVisible,
 
-      resizeTextarea,
       handleInput,
       handleChange,
       handleFocus,
@@ -476,7 +369,8 @@ export default defineComponent({
       onMouseLeave,
       onMouseEnter,
       handleKeydown,
+      c: console
     }
-  },
+  }
 })
 </script>

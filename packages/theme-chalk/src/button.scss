@@ -97,6 +97,32 @@
     --el-button-hover-border-color: var(--el-color-primary);
   }
 
+  @include when(text-button) {
+    border-color: transparent;
+    color: var(--el-color-primary);
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover,
+    &:focus {
+      color: var(--el-color-primary-light-2);
+      border-color: transparent;
+      background-color: transparent;
+    }
+    &:active {
+      color: mix($color-black, $color-primary, $button-active-shade-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    &.is-disabled,
+    &.is-disabled:hover,
+    &.is-disabled:focus {
+      border-color: transparent;
+    }
+  }
+
   @include when(active) {
     color: var(--el-button-active-text-color);
     border-color: var(
@@ -118,7 +144,7 @@
       border-color: var(--el-button-disabled-border-color);
     }
 
-    &.#{$namespace}-button--text {
+    &.is-text-button {
       background-color: transparent;
     }
 
@@ -194,29 +220,5 @@
     }
   }
 
-  @include m(text) {
-    border-color: transparent;
-    color: var(--el-color-primary);
-    background: transparent;
-    padding-left: 0;
-    padding-right: 0;
 
-    &:hover,
-    &:focus {
-      color: var(--el-color-primary-light-2);
-      border-color: transparent;
-      background-color: transparent;
-    }
-    &:active {
-      color: mix($color-black, $color-primary, $button-active-shade-percent);
-      border-color: transparent;
-      background-color: transparent;
-    }
-
-    &.is-disabled,
-    &.is-disabled:hover,
-    &.is-disabled:focus {
-      border-color: transparent;
-    }
-  }
 }

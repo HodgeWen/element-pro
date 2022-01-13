@@ -11,7 +11,6 @@ export default function scrollIntoView(
   selected: HTMLElement
 ) {
   if (isServer) return
-  console.log(1)
   const offsetParents: HTMLElement[] = []
 
   let pointer = selected.offsetParent as HTMLElement

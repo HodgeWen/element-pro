@@ -1,8 +1,15 @@
-export function calcColorChannels(c: string) {
-  let rawColor = c.trim().replace('#', '')
+/**
+ * 将十六进制颜色转化为RGB格式的对象
+ * @param color 十六进制颜色字符串
+ */
+export function calcColorChannels(color: string) {
+  color = color.trim() // 解决vue-use useCssVar的bug
+  if (![3, 4, 7].includes(color.length)) {
+    throw Error('颜色格式有误')
+  }
+  let rawColor = color.replace('#', '')
   if (/^[0-9a-fA-F]{3}$/.test(rawColor)) {
-    rawColor =
-      rawColor[0].repeat(2) + rawColor[1].repeat(2) + rawColor[2].repeat(2)
+    rawColor = rawColor.split('').map(s => s + s).join('')
   }
   if (/^[0-9a-fA-F]{6}$/.test(rawColor)) {
     return {
@@ -18,19 +25,21 @@ export function calcColorChannels(c: string) {
   }
 }
 
+/**
+ * 混合颜色 - mixColor('#fff', 1) -> rgb(0, 0, 0)
+ * @param color 十六进制颜色
+ * @param percent 百分比, 范围 -1 ~ 1, > 0 颜色更暗 反之越亮
+ */
 export function mixColor(color: string, percent = 0.2) {
   let { red, green, blue } = calcColorChannels(color)
   if (percent > 0) {
-    // shade given color
-    red *= 1 - percent
-    green *= 1 - percent
-    blue *= 1 - percent
+    let p = 1 - percent
+    red *= p, green *= p, blue *= p
   } else {
-    // tint given color
-    const value = Math.abs(percent)
-    red += (255 - red) * Math.abs(percent)
-    green += (255 - green) * value
-    blue += (255 - blue) * value
+    const p = Math.abs(percent)
+    red += (255 - red) * p
+    green += (255 - green) * p
+    blue += (255 - blue) * p
   }
   return `rgb(${Math.round(red)}, ${Math.round(green)}, ${Math.round(blue)})`
 }

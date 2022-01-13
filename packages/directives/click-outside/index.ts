@@ -1,4 +1,3 @@
-import { on } from '@element-pro/utils/dom'
 import isServer from '@element-pro/utils/isServer'
 
 import type {
@@ -22,8 +21,11 @@ const nodeList: FlushList = new Map()
 let startClick: MouseEvent
 
 if (!isServer) {
-  on(document, 'mousedown', (e: MouseEvent) => (startClick = e))
-  on(document, 'mouseup', (e: MouseEvent) => {
+  document.addEventListener('mousedown', (e) => {
+    startClick = e
+  })
+
+  document.addEventListener('mouseup', (e) => {
     for (const handlers of nodeList.values()) {
       for (const { documentHandler } of handlers) {
         documentHandler(e, startClick)
@@ -80,12 +82,10 @@ function createDocumentHandler(
 
 const ClickOutside: ObjectDirective = {
   beforeMount(el: HTMLElement, binding: DirectiveBinding) {
-    // there could be multiple handlers on the element
-    if (!nodeList.has(el)) {
-      nodeList.set(el, [])
-    }
 
-    nodeList.get(el).push({
+    nodeList.set(el, [])
+
+    nodeList.get(el)?.push({
       documentHandler: createDocumentHandler(el, binding),
       bindingFn: binding.value,
     })

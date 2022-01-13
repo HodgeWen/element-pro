@@ -6,7 +6,7 @@
     trigger="hover"
     content="this is content, this is content, this is content"
   >
-    <template #reference>
+    <template #trigger>
       <el-button>Hover to activate</el-button>
     </template>
   </el-popover>
@@ -18,7 +18,7 @@
     trigger="click"
     content="this is content, this is content, this is content"
   >
-    <template #reference>
+    <template #trigger>
       <el-button>Click to activate</el-button>
     </template>
   </el-popover>
@@ -31,7 +31,7 @@
     trigger="focus"
     content="this is content, this is content, this is content"
   >
-    <template #reference>
+    <template #trigger>
       <el-button>Focus to activate</el-button>
     </template>
   </el-popover>
@@ -44,7 +44,7 @@
     trigger="manual"
     content="this is content, this is content, this is content"
   >
-    <template #reference>
+    <template #trigger>
       <el-button @click="visible = !visible">Manual to activate</el-button>
     </template>
   </el-popover>

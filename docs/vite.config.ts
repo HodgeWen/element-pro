@@ -42,7 +42,6 @@ export default defineConfig({
       '@element-plus/icons',
       'dayjs',
       'memoize-one',
-      'async-validator',
       'lodash',
       '@popperjs/core',
       'normalize-wheel-es',

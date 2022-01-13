@@ -11,7 +11,7 @@ lang: zh-CN
 
 Input 为受控组件，它 **总会显示 Vue 绑定值**。
 
-在正常情况下，`input` 的输入事件应该被正常响应。 它的处理程序应该更新组件的绑定值 (或使用 `v-model`)。 否则，输入框的值将不会改变。
+在正常情况下，`input` 的输入事件应该被正常响应。 它的处理程序应该更新组件的绑定值 (或使用 `v-model`)。 否则，输入框的值将不会改变
 
 不支持 `v-model` 修饰符。
 
@@ -137,22 +137,22 @@ input/length-limiting
 
 ## Input 属性
 
-| 属性                 | 说明                                                                                                   | 类型               | 可选值                                                                                                                               | 默认值 |
-| -------------------- | ------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| type                 | 类型                                                                                                   | string             | text，textarea 和其他[原生 input 的 type 值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text   |
-| modelValue / v-model | 绑定值                                                                                                 | string / number    | —                                                                                                                                    | —      |
-| maxlength            | 最大输入长度                                                                                           | string / number    | —                                                                                                                                    | —      |
-| minlength            | 原生属性，最小输入长度                                                                                 | number             | —                                                                                                                                    | —      |
-| show-word-limit      | 是否显示输入字数统计，只在 `type = "text"` 或 `type = "textarea"` 时有效                               | boolean            | —                                                                                                                                    | false  |
-| placeholder          | 输入框占位文本                                                                                         | string             | —                                                                                                                                    | —      |
-| clearable            | 是否可清空                                                                                             | boolean            | —                                                                                                                                    | false  |
-| show-password        | 是否显示切换密码图标                                                                                   | boolean            | —                                                                                                                                    | false  |
-| disabled             | 是否禁用                                                                                               | boolean            | —                                                                                                                                    | false  |
+| 属性                 | 说明                                               | 类型               | 可选值                      | 默认值 |
+| -------------------- | ------------------------------------------------- | ------------------ | -------------------------- | ------ |
+| type                 | 类型                                               | string             | text，textarea 和其他[原生 input 的 type 值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types) | text    |
+| modelValue / v-model | 绑定值                                             | string / number    | —                           | —      |
+| maxlength            | 最大输入长度                                         | string / number    | —                           | —      |
+| minlength            | 原生属性，最小输入长度                                 | number             | —                          | —      |
+| show-word-limit      | 显示输入字数统计，`type = "text" | "textarea"` 时有效 | boolean            | —                           | false  |
+| placeholder          | 输入框占位文本                                       | string             | —                          | —      |
+| clearable            | 是否可清空                                          | boolean            | —                           | false  |
+| show-password        | 是否显示切换密码图标                                   | boolean            | —                         | false  |
+| disabled             | 是否禁用                                            | boolean            | —                          | false  |
 | size                 | 输入框尺寸，只在 `type !="textarea"` 时有效                                                            | string             | medium / small / mini                                                                                                                | —      |
 | prefix-icon          | 自定义前缀图标                                                                                         | string / Component | —                                                                                                                                    | —      |
 | suffix-icon          | 自定义后缀图标                                                                                         | string / Component | —                                                                                                                                    | —      |
 | rows                 | 输入框行数，只对 `type="textarea"` 有效                                                                | number             | —                                                                                                                                    | 2      |
-| autosize             | textarea 高度是否自适应，只在 `type="textarea"` 时生效。 可接受一个对象，如 { minRows: 2, maxRows: 6 } | boolean / object   | —                                                                                                                                    | false  |
+| autosize             | textarea 高度是否自适应，只在 `type="textarea"` 时生效。 可接受一个对象，如 ({ minRows: 2, maxRows: 6 }) | boolean / object   | —                                                                                                                                    | false  |
 | autocomplete         | 原生属性，自动补全                                                                                     | string             | —                                                                                                                                    | off    |
 | name                 | 原生属性                                                                                               | string             | —                                                                                                                                    | —      |
 | readonly             | 原生属性，是否只读                                                                                     | boolean            | —                                                                                                                                    | false  |
@@ -165,7 +165,7 @@ input/length-limiting
 | label                | 输入框关联的 label 文字                                                                                | string             | —                                                                                                                                    | —      |
 | tabindex             | 输入框的 tabindex                                                                                      | string / number    | -                                                                                                                                    | -      |
 | validate-event       | 输入时是否触发表单的校验                                                                               | boolean            | -                                                                                                                                    | true   |
-| input-style          | input 元素或 textarea 元素的 style                                                                     | object             | -                                                                                                                                    | {}     |
+| input-style          | input 元素或 textarea 元素的 style                                                                     | object             | -                                                                                                                                    | -     |
 
 ## Input 插槽
 

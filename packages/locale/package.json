@@ -7,6 +7,5 @@
   "unpkg": "index.js",
   "jsdelivr": "index.js",
   "types": "index.d.ts",
-  "license": "MIT",
-  "gitHead": "c69724230befa8fede0e6b9c37fb0b7e39fd7cdd"
+  "license": "MIT"
 }

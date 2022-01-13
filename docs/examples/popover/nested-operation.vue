@@ -9,7 +9,7 @@
         >confirm</el-button
       >
     </div>
-    <template #reference>
+    <template #trigger>
       <el-button @click="visible = true">Delete</el-button>
     </template>
   </el-popover>

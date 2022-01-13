@@ -19,7 +19,7 @@
         {{ title }}
       </div>
       <div class="el-popconfirm__action">
-        <el-button size="mini" :type="cancelButtonType" @click="cancel">
+        <el-button size="mini" text :type="cancelButtonType" @click="cancel">
           {{ finalCancelButtonText }}
         </el-button>
         <el-button size="mini" :type="confirmButtonType" @click="confirm">

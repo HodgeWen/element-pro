@@ -4,10 +4,7 @@ import { ElAutocomplete } from '@element-pro/components/autocomplete'
 import { ElAvatar } from '@element-pro/components/avatar'
 import { ElBacktop } from '@element-pro/components/backtop'
 import { ElBadge } from '@element-pro/components/badge'
-import {
-  ElBreadcrumb,
-  ElBreadcrumbItem,
-} from '@element-pro/components/breadcrumb'
+import { ElBreadcrumb, ElBreadcrumbItem } from '@element-pro/components/breadcrumb'
 import { ElButton, ElButtonGroup } from '@element-pro/components/button'
 import { ElCalendar } from '@element-pro/components/calendar'
 import { ElCard } from '@element-pro/components/card'
@@ -15,69 +12,41 @@ import { ElCarousel, ElCarouselItem } from '@element-pro/components/carousel'
 import { ElCascader } from '@element-pro/components/cascader'
 import { ElCascaderPanel } from '@element-pro/components/cascader-panel'
 import { ElCheckTag } from '@element-pro/components/check-tag'
-import {
-  ElCheckbox,
-  ElCheckboxButton,
-  ElCheckboxGroup,
-} from '@element-pro/components/checkbox'
+import { ElCheckbox, ElCheckboxButton, ElCheckboxGroup } from '@element-pro/components/checkbox'
 import { ElCol } from '@element-pro/components/col'
 import { ElCollapse, ElCollapseItem } from '@element-pro/components/collapse'
 import { ElCollapseTransition } from '@element-pro/components/collapse-transition'
 import { ElColorPicker } from '@element-pro/components/color-picker'
 import { ElConfigProvider } from '@element-pro/components/config-provider'
-import {
-  ElContainer,
-  ElAside,
-  ElFooter,
-  ElHeader,
-  ElMain,
-} from '@element-pro/components/container'
+import { ElContainer, ElAside, ElFooter, ElHeader, ElMain } from '@element-pro/components/container'
 import { ElDatePicker } from '@element-pro/components/date-picker'
-import {
-  ElDescriptions,
-  ElDescriptionsItem,
-} from '@element-pro/components/descriptions'
+import { ElDescriptions, ElDescriptionsItem } from '@element-pro/components/descriptions'
 import { ElDialog } from '@element-pro/components/dialog'
 import { ElDivider } from '@element-pro/components/divider'
 import { ElDrawer } from '@element-pro/components/drawer'
-import {
-  ElDropdown,
-  ElDropdownItem,
-  ElDropdownMenu,
-} from '@element-pro/components/dropdown'
+import { ElDropdown, ElDropdownItem, ElDropdownMenu } from '@element-pro/components/dropdown'
 import { ElEmpty } from '@element-pro/components/empty'
 import { ElForm, ElFormItem } from '@element-pro/components/form'
+import { ElGrid } from '@element-pro/components/grid'
 import { ElIcon } from '@element-pro/components/icon'
 import { ElImage } from '@element-pro/components/image'
 import { ElImageViewer } from '@element-pro/components/image-viewer'
 import { ElInput } from '@element-pro/components/input'
 import { ElInputNumber } from '@element-pro/components/input-number'
 import { ElLink } from '@element-pro/components/link'
-import {
-  ElMenu,
-  ElMenuItem,
-  ElMenuItemGroup,
-} from '@element-pro/components/menu'
+import { ElMenu, ElMenuItem, ElMenuItemGroup } from '@element-pro/components/menu'
 import { ElPageHeader } from '@element-pro/components/page-header'
 import { ElPagination } from '@element-pro/components/pagination'
 import { ElPopconfirm } from '@element-pro/components/popconfirm'
 import { ElPopover } from '@element-pro/components/popover'
 import { ElPopper } from '@element-pro/components/popper'
 import { ElProgress } from '@element-pro/components/progress'
-import {
-  ElRadio,
-  ElRadioButton,
-  ElRadioGroup,
-} from '@element-pro/components/radio'
+import { ElRadio, ElRadioButton, ElRadioGroup } from '@element-pro/components/radio'
 import { ElRate } from '@element-pro/components/rate'
 import { ElResult } from '@element-pro/components/result'
 import { ElRow } from '@element-pro/components/row'
 import { ElScrollbar } from '@element-pro/components/scrollbar'
-import {
-  ElSelect,
-  ElOption,
-  ElOptionGroup,
-} from '@element-pro/components/select'
+import { ElSelect, ElOption, ElOptionGroup } from '@element-pro/components/select'
 import { ElSelectV2 } from '@element-pro/components/select-v2'
 import { ElSkeleton, ElSkeletonItem } from '@element-pro/components/skeleton'
 import { ElSlider } from '@element-pro/components/slider'
@@ -87,6 +56,7 @@ import { ElSwitch } from '@element-pro/components/switch'
 import { ElTable, ElTableColumn } from '@element-pro/components/table'
 import { ElTabs, ElTabPane } from '@element-pro/components/tabs'
 import { ElTag } from '@element-pro/components/tag'
+import { ElTextarea } from '@element-pro/components/textarea'
 import { ElTimePicker } from '@element-pro/components/time-picker'
 import { ElTimeSelect } from '@element-pro/components/time-select'
 import { ElTimeline, ElTimelineItem } from '@element-pro/components/timeline'
@@ -140,6 +110,7 @@ export default [
   ElEmpty,
   ElForm,
   ElFormItem,
+  ElGrid,
   ElIcon,
   ElImage,
   ElImageViewer,
@@ -178,6 +149,7 @@ export default [
   ElTabs,
   ElTabPane,
   ElTag,
+  ElTextarea,
   ElTimePicker,
   ElTimeSelect,
   ElTimeline,
@@ -186,5 +158,5 @@ export default [
   ElTransfer,
   ElTree,
   ElTreeV2,
-  ElUpload,
+  ElUpload
 ]

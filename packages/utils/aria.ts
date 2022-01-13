@@ -1,4 +1,6 @@
-import type { Nullable } from '@element-pro/utils/types'
+import type { Nullable } from './types'
+
+/** 事件code */
 export const EVENT_CODE = {
   tab: 'Tab',
   enter: 'Enter',
@@ -12,6 +14,7 @@ export const EVENT_CODE = {
   backspace: 'Backspace',
 }
 
+/** 可聚焦的元素选择器 */
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`
 
 /**
@@ -25,6 +28,11 @@ export const isVisible = (element: HTMLElement) => {
   return computed.position === 'fixed' ? false : element.offsetParent !== null
 }
 
+/**
+ * 得到某个元素下所有可聚焦的元素
+ * @param element 父元素
+ * @returns
+ */
 export const obtainAllFocusableElements = (
   element: HTMLElement
 ): HTMLElement[] => {
@@ -135,7 +143,7 @@ export const getSibling = (
   return siblings[index + distance] || null
 }
 
-export const focusNode = (el) => {
+export const focusNode = (el: HTMLElement) => {
   if (!el) return
   el.focus()
   !isLeaf(el) && el.click()

@@ -1,4 +1,6 @@
-export default {
+import { Locale } from "./types"
+
+const zhCN: Locale = {
   name: 'zh-cn',
   el: {
     colorpicker: {
@@ -34,7 +36,7 @@ export default {
       month10: '10 月',
       month11: '11 月',
       month12: '12 月',
-      // week: '周次',
+      week: '周次',
       weeks: {
         sun: '日',
         mon: '一',
@@ -121,3 +123,4 @@ export default {
     },
   },
 }
+export default zhCN

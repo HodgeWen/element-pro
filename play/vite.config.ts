@@ -34,7 +34,6 @@ export default defineConfig(async () => {
       include: [
         '@vue/shared',
         '@vueuse/core',
-        'async-validator',
         'memoize-one',
         'normalize-wheel-es',
         '@popperjs/core',

@@ -1,35 +1,15 @@
-import { useFormItemProps } from '@element-pro/hooks'
-import { buildProps, definePropType } from '@element-pro/utils/props'
-import type { ExtractPropTypes, Component } from 'vue'
+import { formCommonProps } from '@element-pro/hooks'
+import { ColorType } from '@element-pro/utils/types'
+import type { ExtractPropTypes, Component, PropType } from 'vue'
 import type button from './button.vue'
 
-export const buttonType = [
-  'default',
-  'primary',
-  'success',
-  'warning',
-  'info',
-  'danger',
-  'text',
-  '',
-] as const
-export const buttonSize = ['', 'large', 'medium', 'small', 'mini'] as const
-export const buttonNativeType = ['button', 'submit', 'reset'] as const
-
-export const buttonProps = buildProps({
-  ...useFormItemProps,
-  type: {
-    type: String,
-    values: buttonType,
-    default: '',
-  },
-  icon: {
-    type: definePropType<string | Component>([String, Object]),
-    default: '',
-  },
+export const buttonProps = {
+  ...formCommonProps,
+  type: String as PropType<ColorType>,
+  text: Boolean,
+  icon: Object as PropType<Component>,
   nativeType: {
-    type: String,
-    values: buttonNativeType,
+    type: String as PropType<ButtonNativeType>,
     default: 'button',
   },
   loading: Boolean,
@@ -38,10 +18,7 @@ export const buttonProps = buildProps({
   round: Boolean,
   circle: Boolean,
   color: String,
-  autoInsertSpace: {
-    type: Boolean,
-  },
-} as const)
+}
 
 export interface ButtonConfigContext {
   autoInsertSpace?: boolean
@@ -54,7 +31,7 @@ export const buttonEmits = {
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>
 export type ButtonEmits = typeof buttonEmits
 
-export type ButtonType = ButtonProps['type']
-export type ButtonNativeType = ButtonProps['nativeType']
+export type ButtonType = ColorType
+export type ButtonNativeType = 'button' | 'submit' | 'reset'
 
 export type ButtonInstance = InstanceType<typeof button>

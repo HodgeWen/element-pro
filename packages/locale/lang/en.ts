@@ -1,4 +1,6 @@
-export default {
+import { Locale } from "./types"
+
+const enUS: Locale = {
   name: 'en',
   el: {
     colorpicker: {
@@ -121,3 +123,5 @@ export default {
     },
   },
 }
+
+export default enUS

@@ -355,4 +355,4 @@ createApp(App).use(ElementPro)
 }
 ```
 
-如果不清楚 `babel-plugin-component` 是什么，请参考 [快速上手](/zh-CN/guide/quickstart.html) 一节。 更多 `element-theme` 用法请参考[项目仓库](https://github.com/ElementUI/element-theme)。
+如果不清楚 `babel-plugin-component` 是什么，请参考 [快速上手](/guide/quickstart.html) 一节。 更多 `element-theme` 用法请参考[项目仓库](https://github.com/ElementUI/element-theme)。

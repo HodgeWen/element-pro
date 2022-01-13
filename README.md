@@ -63,8 +63,8 @@ $ pnpm dev
 </template>
 
 <script setup lang="ts">
-// 确保你开发的组件在 @element-pro/components/index.ts 被导出
-import { ComponentYouAreDeveloping } from '@element-pro/components'
+// 确保你开发的组件在 element-pro/index.ts 被导出
+import { ComponentYouAreDeveloping } from 'element-pro'
 </script>
 ```
 

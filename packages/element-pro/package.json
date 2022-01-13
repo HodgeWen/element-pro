@@ -43,13 +43,11 @@
     "url": "https://github.com/wenhongjie/element-pro/issues"
   },
   "peerDependencies": {
-    "vue": "^3.2.0"
+    "vue": "^3.2.26"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
-    "@popperjs/core": "^2.10.2",
+    "@popperjs/core": "^2.11.0",
     "@vueuse/core": "^7.0.0",
-    "async-validator": "^4.0.7",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "memoize-one": "^6.0.0",

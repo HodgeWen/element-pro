@@ -28,7 +28,9 @@
   </el-row>
 
   <el-row>
-    <el-button :icon="Search" circle></el-button>
+    <el-button circle>
+      <Search style="width: 14px; height: 14px; vertical-align: top; font-size: 14px;" />
+    </el-button>
     <el-button type="primary" :icon="Edit" circle></el-button>
     <el-button type="success" :icon="Check" circle></el-button>
     <el-button type="info" :icon="Message" circle></el-button>

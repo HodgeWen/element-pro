@@ -1,16 +1,16 @@
 <template>
   <div class="demo-date-picker">
     <div class="block">
-      <span class="demonstration">Default</span>
-      <el-date-picker v-model="value1" type="date" placeholder="Pick a day">
+      <span class="demonstration">默认</span>
+      <el-date-picker v-model="value1" type="date" placeholder="选择日期">
       </el-date-picker>
     </div>
     <div class="block">
-      <span class="demonstration">Picker with quick options</span>
+      <span class="demonstration">使用快速选项</span>
       <el-date-picker
         v-model="value2"
         type="date"
-        placeholder="Pick a day"
+        placeholder="选择日期"
         :disabled-date="disabledDate"
         :shortcuts="shortcuts"
       >
@@ -30,11 +30,11 @@ export default defineComponent({
       },
       shortcuts: [
         {
-          text: 'Today',
+          text: '今天',
           value: new Date(),
         },
         {
-          text: 'Yesterday',
+          text: '昨天',
           value: () => {
             const date = new Date()
             date.setTime(date.getTime() - 3600 * 1000 * 24)
@@ -42,7 +42,7 @@ export default defineComponent({
           },
         },
         {
-          text: 'A week ago',
+          text: '一周前',
           value: () => {
             const date = new Date()
             date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)

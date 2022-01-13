@@ -5,90 +5,80 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  watch,
-  provide,
-  nextTick,
-  toRefs,
-} from 'vue'
+import { defineComponent, watch, provide, nextTick } from 'vue'
 import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
 import { isValidComponentSize } from '@element-pro/utils/validators'
-import { useCheckboxGroup } from './useCheckbox'
 
 import type { PropType } from 'vue'
 import type { ComponentSize } from '@element-pro/utils/types'
+import { useFormItem } from '@element-pro/hooks'
 
 export default defineComponent({
   name: 'ElCheckboxGroup',
 
   props: {
     modelValue: {
-      type: [Object, Boolean, Array],
-      default: () => undefined,
+      type: Array,
+      default: () => []
     },
     disabled: Boolean,
-    min: {
-      type: Number,
-      default: undefined,
-    },
+
     max: {
       type: Number,
-      default: undefined,
+      default: undefined
     },
     size: {
       type: String as PropType<ComponentSize>,
-      validator: isValidComponentSize,
+      validator: isValidComponentSize
     },
     fill: {
       type: String,
-      default: undefined,
+      default: undefined
     },
     textColor: {
       type: String,
-      default: undefined,
-    },
+      default: undefined
+    }
   },
 
   emits: [UPDATE_MODEL_EVENT, 'change'],
 
-  setup(props, ctx) {
-    const { elFormItem, elFormItemSize, ELEMENT } = useCheckboxGroup()
-    const checkboxGroupSize = computed(
-      () => props.size || elFormItemSize.value || ELEMENT.size
-    )
+  setup(props, { emit }) {
+    const {
+      elFormItem,
+      size: elCheckboxGroupSize,
+      disabled: elCheckboxGroupDisabled
+    } = useFormItem(props)
 
-    const changeEvent = (value) => {
-      ctx.emit(UPDATE_MODEL_EVENT, value)
+    const handleChange = (checked: boolean, value: any) => {
+      const { modelValue } = props
+      let result: any[]
+      if (checked) {
+        result = modelValue.concat(value)
+      } else {
+        let i = modelValue.findIndex(mv => mv === value)
+        result = modelValue.slice(0, i).concat(modelValue.slice(i + 1))
+      }
+      emit(UPDATE_MODEL_EVENT, result)
       nextTick(() => {
-        ctx.emit('change', value)
+        emit('change', result)
       })
     }
 
-    const modelValue = computed({
-      get() {
-        return props.modelValue
-      },
-      set(val) {
-        changeEvent(val)
-      },
-    })
-
     provide('CheckboxGroup', {
       name: 'ElCheckboxGroup',
-      modelValue,
-      ...toRefs(props),
-      checkboxGroupSize,
-      changeEvent,
+      props,
+      elCheckboxGroupSize,
+      elCheckboxGroupDisabled,
+      handleChange
     })
 
     watch(
       () => props.modelValue,
       () => {
-        elFormItem.validate?.('change')
+        elFormItem?.validate()
       }
     )
-  },
+  }
 })
 </script>

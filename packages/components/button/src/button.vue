@@ -1,19 +1,8 @@
 <template>
   <button
     ref="buttonRef"
-    :class="[
-      'el-button',
-      buttonType ? 'el-button--' + buttonType : '',
-      buttonSize ? 'el-button--' + buttonSize : '',
-      {
-        'is-disabled': buttonDisabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-circle': circle,
-      },
-    ]"
-    :disabled="buttonDisabled || loading"
+    :class="buttonClass"
+    :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
     :style="buttonStyle"
@@ -25,21 +14,16 @@
     <el-icon v-else-if="icon">
       <component :is="icon" />
     </el-icon>
-    <span
-      v-if="$slots.default"
-      :class="{ 'el-button__text--expand': shouldAddSpace }"
-    >
-      <slot></slot>
-    </span>
+    <slot></slot>
   </button>
 </template>
 
 <script lang="ts">
-import { computed, inject, defineComponent, Text, ref } from 'vue'
+import { computed, inject, defineComponent, ref, CSSProperties } from 'vue'
 import { useCssVar } from '@vueuse/core'
 import { Loading } from '@element-plus/icons'
 import { ElIcon } from '@element-pro/components/icon'
-import { useFormItem, useGlobalConfig } from '@element-pro/hooks'
+import { useFormItem } from '@element-pro/hooks'
 import { buttonGroupContextKey } from '@element-pro/tokens'
 
 import { lighten, darken } from '@element-pro/utils/color'
@@ -60,39 +44,18 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const buttonRef = ref()
     const buttonGroupContext = inject(buttonGroupContextKey, undefined)
-    const globalConfig = useGlobalConfig()
-    const autoInsertSpace = computed(() => {
-      return props.autoInsertSpace ?? globalConfig?.button.autoInsertSpace
-    })
 
-    // add space between two characters in Chinese
-    const shouldAddSpace = computed(() => {
-      const defaultSlot = slots.default?.()
-      if (autoInsertSpace.value && defaultSlot?.length === 1) {
-        const slot = defaultSlot[0]
-        if (slot?.type === Text) {
-          const text = slot.children
-          return /^\p{Unified_Ideograph}{2}$/u.test(text as string)
-        }
-      }
-      return false
-    })
-
-    const {
-      form,
-      size: buttonSize,
-      disabled: buttonDisabled,
-    } = useFormItem({
-      size: computed(() => buttonGroupContext?.size),
+    const { form, size, disabled } = useFormItem(props, {
+      size: buttonGroupContext?.size,
     })
     const buttonType = computed(
       () => props.type || buttonGroupContext?.type || 'default'
     )
 
-    // calculate hover & active color by color
+    // 计算悬浮和点击样式
     const typeColor = useCssVar(`--el-color-${props.type}`)
     const buttonStyle = computed(() => {
-      let styles = {}
+      let styles: Record<string, any> = {}
 
       const buttonColor = props.color || typeColor.value
 
@@ -121,7 +84,7 @@ export default defineComponent({
           }
         }
 
-        if (buttonDisabled.value) {
+        if (disabled.value) {
           const disabledButtonColor = lighten(buttonColor, 0.5)
           styles['--el-button-disabled-bg-color'] = disabledButtonColor
           styles['--el-button-disabled-border-color'] = disabledButtonColor
@@ -129,6 +92,24 @@ export default defineComponent({
       }
 
       return styles
+    })
+
+    // 得到按钮样式
+    const buttonClass = computed(() => {
+      let result = `el-button el-button--${buttonType.value} el-button--${size.value}`
+
+      let status: string = [
+        ['is-disabled', disabled.value],
+        ['is-loading', props.loading],
+        ['is-plain', props.plain],
+        ['is-round', props.round],
+        ['is-circle', props.circle],
+        ['is-text-button', props.text]
+      ]
+        .filter((item) => item[1])
+        .map((item) => item[0])
+        .join(' ')
+      return result + ' ' + status
     })
 
     const handleClick = (evt: MouseEvent) => {
@@ -141,12 +122,11 @@ export default defineComponent({
     return {
       buttonRef,
       buttonStyle,
+      buttonClass,
 
-      buttonSize,
+      size,
       buttonType,
-      buttonDisabled,
-
-      shouldAddSpace,
+      disabled,
 
       handleClick,
     }

@@ -78,12 +78,22 @@ export const getFirstValidNode = (
   }
 }
 
+/**
+ * 是否渲染一个元素
+ * @param condition 渲染条件
+ * @param node 渲染的元素标签名或者一个VNode
+ * @param props 属性
+ * @param children 子元素
+ * @param patchFlag 渲染标记
+ * @param patchProps
+ * @returns
+ */
 export function renderIf(
   condition: boolean,
   node: VNodeTypes,
   props: any,
   children?: Children,
-  patchFlag?: number,
+  patchFlag?: PatchFlags,
   patchProps?: string[]
 ) {
   return condition

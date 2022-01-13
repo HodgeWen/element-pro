@@ -1,80 +1,80 @@
 import { isString } from '@vue/shared'
-import { useFormItemProps } from '@element-pro/hooks'
-import { buildProps, definePropType, mutable } from '@element-pro/utils/props'
+import { formCommonProps } from '@element-pro/hooks'
 import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
 import type { StyleValue } from '@element-pro/utils/types'
-import type { ExtractPropTypes, Component } from 'vue'
+import type { ExtractPropTypes, Component, PropType } from 'vue'
 
 type AutoSize = { minRows?: number; maxRows?: number } | boolean
 
-export const inputProps = buildProps({
-  ...useFormItemProps,
+export const inputProps = {
+  ...formCommonProps,
   modelValue: {
-    type: definePropType<string | number | null | undefined>(undefined),
-    default: '',
+    type: [String, Number] as PropType<string | number | null | undefined>,
+    default: ''
   },
-  type: {
-    type: String,
-    default: 'text',
+  password: {
+    type: Boolean
   },
   resize: {
-    type: String,
-    values: ['none', 'both', 'horizontal', 'vertical'],
+    type: String as PropType<'none' | 'both' | 'horizontal' | 'vertical'>,
+    default: 'none'
   },
   autosize: {
-    type: definePropType<AutoSize>([Boolean, Object]),
-    default: false,
+    type: [Boolean, Object] as PropType<AutoSize>,
+    default: false
   },
   autocomplete: {
     type: String,
-    default: 'off',
+    default: 'off'
   },
   placeholder: {
     type: String,
+    default: '请输入'
   },
   form: {
     type: String,
-    default: '',
+    default: ''
   },
   readonly: {
     type: Boolean,
-    default: false,
+    default: false
   },
   clearable: {
     type: Boolean,
-    default: false,
+    default: false
   },
   showPassword: {
     type: Boolean,
-    default: false,
+    default: false
   },
   showWordLimit: {
     type: Boolean,
-    default: false,
+    default: false
   },
+  // TODO 应该 只能传入组件, 同时应该考虑到动态表单的
   suffixIcon: {
-    type: definePropType<string | Component>([String, Object]),
-    default: '',
+    type: [String, Object] as PropType<string | Component>,
+    default: ''
   },
   prefixIcon: {
-    type: definePropType<string | Component>([String, Object]),
-    default: '',
+    type: [String, Object] as PropType<string | Component>,
+    default: ''
   },
   label: {
-    type: String,
+    type: String
   },
   tabindex: {
-    type: [Number, String],
+    type: [Number, String]
   },
   validateEvent: {
     type: Boolean,
-    default: true,
+    default: true
   },
   inputStyle: {
-    type: definePropType<StyleValue>([Object, Array, String]),
-    default: () => mutable({} as const),
-  },
-} as const)
+    type: [Object, Array, String] as PropType<StyleValue>,
+    default: () => ({})
+  }
+}
 export type InputProps = ExtractPropTypes<typeof inputProps>
 
 export const inputEmits = {
@@ -89,6 +89,6 @@ export const inputEmits = {
   keydown: (evt: KeyboardEvent) => evt instanceof KeyboardEvent,
   compositionstart: (evt: CompositionEvent) => evt instanceof CompositionEvent,
   compositionupdate: (evt: CompositionEvent) => evt instanceof CompositionEvent,
-  compositionend: (evt: CompositionEvent) => evt instanceof CompositionEvent,
+  compositionend: (evt: CompositionEvent) => evt instanceof CompositionEvent
 }
 export type InputEmits = typeof inputEmits
