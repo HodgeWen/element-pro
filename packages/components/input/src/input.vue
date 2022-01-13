@@ -16,8 +16,8 @@
       $attrs.class
     ]"
     :style="containerStyle"
-    @mouseenter="onMouseEnter"
-    @mouseleave="onMouseLeave"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <!-- prepend slot -->
     <div v-if="$slots.prepend" class="el-input-group__prepend">
@@ -36,9 +36,7 @@
       :aria-label="label"
       :placeholder="placeholder"
       :style="inputStyle"
-      @compositionstart="handleCompositionStart"
-      @compositionupdate="handleCompositionUpdate"
-      @compositionend="handleCompositionEnd"
+      v-on="compositionHandlers"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -103,14 +101,12 @@ import {
   ref,
   onMounted,
   onUpdated,
-shallowRef
+  shallowRef
 } from 'vue'
 import { CircleClose, View as IconView } from '@element-plus/icons'
 import { ElIcon } from '@element-pro/components/icon'
-import { useAttrs, useFormItem } from '@element-pro/hooks'
+import { useAttrs, useFormItem, usePreventComposition } from '@element-pro/hooks'
 import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
-
-import { isKorean } from '@element-pro/utils/isDef'
 import { inputProps, inputEmits } from './input'
 
 import type { StyleValue } from '@element-pro/utils/types'
@@ -141,7 +137,6 @@ export default defineComponent({
 
     const focused = ref(false)
     const hovering = ref(false)
-    const isComposing = ref(false)
     const passwordVisible = ref(false)
 
     const inputOrTextarea = computed(() => input.value)
@@ -217,11 +212,7 @@ export default defineComponent({
 
       // should not emit input during composition
       // see: https://github.com/ElemeFE/element/issues/10516
-      if (isComposing.value) return
-
-      // hack for https://github.com/ElemeFE/element/issues/8548
-      // should remove the following line when we don't support IE
-      if (value === nativeInputValue.value) return
+      if (composing.value) return
 
       emit(UPDATE_MODEL_EVENT, value)
       emit('input', value)
@@ -230,6 +221,8 @@ export default defineComponent({
       // see: https://github.com/ElemeFE/element/issues/12850
       nextTick(setNativeInputValue)
     }
+
+    const { composing, ...compositionHandlers } = usePreventComposition(handleInput)
 
     const handleChange = (event: Event) => {
       emit('change', (event.target as TargetElement).value)
@@ -263,26 +256,6 @@ export default defineComponent({
       inputOrTextarea.value?.select()
     }
 
-    const handleCompositionStart = (event: CompositionEvent) => {
-      emit('compositionstart', event)
-      isComposing.value = true
-    }
-
-    const handleCompositionUpdate = (event: CompositionEvent) => {
-      emit('compositionupdate', event)
-      const text = (event.target as HTMLInputElement)?.value
-      const lastCharacter = text[text.length - 1] || ''
-      isComposing.value = !isKorean(lastCharacter)
-    }
-
-    const handleCompositionEnd = (event: CompositionEvent) => {
-      emit('compositionend', event)
-      if (isComposing.value) {
-        isComposing.value = false
-        handleInput(event)
-      }
-    }
-
     const clear = () => {
       emit(UPDATE_MODEL_EVENT, '')
       emit('change', '')
@@ -313,7 +286,7 @@ export default defineComponent({
       }
     )
 
-    watch(nativeInputValue, () => setNativeInputValue())
+    watch(nativeInputValue, setNativeInputValue)
 
     onMounted(() => {
       setNativeInputValue()
@@ -324,12 +297,12 @@ export default defineComponent({
       nextTick(updateIconOffset)
     })
 
-    const onMouseLeave = (evt: MouseEvent) => {
+    const handleMouseLeave = (evt: MouseEvent) => {
       hovering.value = false
       emit('mouseleave', evt)
     }
 
-    const onMouseEnter = (evt: MouseEvent) => {
+    const handleMouseEnter = (evt: MouseEvent) => {
       hovering.value = true
       emit('mouseenter', evt)
     }
@@ -358,18 +331,15 @@ export default defineComponent({
       handleChange,
       handleFocus,
       handleBlur,
-      handleCompositionStart,
-      handleCompositionUpdate,
-      handleCompositionEnd,
+      compositionHandlers,
       handlePasswordVisible,
       clear,
       select,
       focus,
       blur,
-      onMouseLeave,
-      onMouseEnter,
-      handleKeydown,
-      c: console
+      handleMouseLeave,
+      handleMouseEnter,
+      handleKeydown
     }
   }
 })

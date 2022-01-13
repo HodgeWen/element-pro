@@ -4,7 +4,6 @@ import { UPDATE_MODEL_EVENT } from '@element-pro/utils/constants'
 import type { StyleValue } from '@element-pro/utils/types'
 import type { ExtractPropTypes, Component, PropType } from 'vue'
 
-type AutoSize = { minRows?: number; maxRows?: number } | boolean
 
 export const inputProps = {
   ...formCommonProps,
@@ -15,14 +14,6 @@ export const inputProps = {
   password: {
     type: Boolean
   },
-  resize: {
-    type: String as PropType<'none' | 'both' | 'horizontal' | 'vertical'>,
-    default: 'none'
-  },
-  autosize: {
-    type: [Boolean, Object] as PropType<AutoSize>,
-    default: false
-  },
   autocomplete: {
     type: String,
     default: 'off'
@@ -30,10 +21,6 @@ export const inputProps = {
   placeholder: {
     type: String,
     default: '请输入'
-  },
-  form: {
-    type: String,
-    default: ''
   },
   readonly: {
     type: Boolean,
@@ -51,7 +38,7 @@ export const inputProps = {
     type: Boolean,
     default: false
   },
-  // TODO 应该 只能传入组件, 同时应该考虑到动态表单的
+  // TODO 应该 只能传入组件, 同时应该考虑到动态表单的设计
   suffixIcon: {
     type: [String, Object] as PropType<string | Component>,
     default: ''

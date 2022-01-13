@@ -6,22 +6,23 @@ export type ModelValue = string | number | any[] | boolean
 export interface ElFormModelItem {
   /** 表单默认值 */
   value?: any;
+  trigger?: 'change' | 'blur';
 
   /** 必填 */
-  required?: boolean
+  required?: boolean | [boolean, string]
   /** 指定长度 */
-  len?: number;
+  len?: number | [number, string];
   /** 最小值或最小长度 */
-  min?: number;
+  min?: number | [number, string];
   /** 最大值或最大长度 */
-  max?: number;
+  max?: number | [number, string];
   /** 匹配正则表达式 */
-  match?: RegExp
+  match?: RegExp | [RegExp, string]
   /** 自定义验证器 */
   validator?(value: any, model: Record<string, any>, rule: ElFormRules[string]): string | Promise<string>
 }
 
-export type ElFormRules = Record<string, Omit<ElFormModelItem, 'value'>>
+export type ElFormRules = Record<string, Omit<ElFormModelItem, 'value' | 'trigger'>>
 
 
 export type ElFormModel = Record<string, ElFormModelItem>

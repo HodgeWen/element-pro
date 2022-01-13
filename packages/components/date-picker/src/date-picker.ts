@@ -12,7 +12,7 @@ import {
   CommonPicker,
   DEFAULT_FORMATS_DATE,
   DEFAULT_FORMATS_DATEPICKER,
-  timePickerDefaultProps,
+  timePickerDefaultProps
 } from '@element-pro/components/time-picker'
 import DatePickPanel from './date-picker-com/panel-date-pick.vue'
 import DateRangePickPanel from './date-picker-com/panel-date-range.vue'
@@ -45,22 +45,22 @@ export default defineComponent({
   props: {
     ...timePickerDefaultProps,
     type: {
-      type: String as PropType<IDatePickerType>,
-      default: 'date',
-    },
+      type: String as PropType<UnionsTypeOmit<IDatePickerType, 'dates'>>,
+      default: 'date'
+    }
   },
   emits: ['update:modelValue'],
   setup(props, ctx) {
     provide('ElPopperOptions', props.popperOptions)
     provide(ROOT_PICKER_INJECTION_KEY, {
-      ctx,
+      ctx
     })
-    const commonPicker = ref(null)
+    const commonPicker = ref<any>(null)
     const refProps = {
       ...props,
       focus: () => {
         commonPicker.value?.handleFocus()
-      },
+      }
     }
     ctx.expose(refProps)
     return () => {
@@ -68,7 +68,8 @@ export default defineComponent({
       // pick props.format or provide default value here before spreading
       const format =
         props.format ??
-        (DEFAULT_FORMATS_DATEPICKER[props.type] || DEFAULT_FORMATS_DATE)
+        (DEFAULT_FORMATS_DATEPICKER[props.type] ||
+          DEFAULT_FORMATS_DATE)
       return h(
         CommonPicker,
         {
@@ -76,14 +77,13 @@ export default defineComponent({
           format,
           type: props.type,
           ref: commonPicker,
-          'onUpdate:modelValue': (value) =>
-            ctx.emit('update:modelValue', value),
+          'onUpdate:modelValue': (value: any) => ctx.emit('update:modelValue', value)
         },
         {
-          default: (scopedProps) => h(getPanel(props.type), scopedProps),
-          'range-separator': () => renderSlot(ctx.slots, 'range-separator'),
+          default: (scopedProps: any) => h(getPanel(props.type), scopedProps),
+          'range-separator': () => renderSlot(ctx.slots, 'range-separator')
         }
       )
     }
-  },
+  }
 })

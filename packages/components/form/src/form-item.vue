@@ -21,7 +21,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onBeforeUnmount, onMounted, ref, nextTick, provide } from 'vue'
+import {
+  computed,
+  defineComponent,
+  inject,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  nextTick,
+  provide
+} from 'vue'
 import { elFormItemKey, elFormKey } from '@element-pro/tokens'
 import type { CSSProperties } from 'vue'
 import { addUnit } from '@element-pro/utils/util'
@@ -70,7 +79,7 @@ export default defineComponent({
     })
 
     const validate = async () => {
-      if (!props.field || !elForm) return Promise.resolve(null)
+      if (!props.field || !elForm) return null
       let errMsg = await elForm?.validateField(props.field)
       validateMessage.value = errMsg || ''
       return !errMsg
@@ -94,8 +103,7 @@ export default defineComponent({
       // $el: formItemRef,
       reset,
       clearValidate,
-      validate,
-
+      validate
     }
 
     provide(elFormItemKey, elFormItem)

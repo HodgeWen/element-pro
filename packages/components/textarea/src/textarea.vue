@@ -11,9 +11,7 @@
       :style="computedTextareaStyle"
       :aria-label="label"
       :placeholder="placeholder"
-      @compositionstart="onCompositionStart"
-      @compositionupdate="onCompositionUpdate"
-      @compositionend="onCompositionEnd"
+      v-on="compositionHandlers"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
@@ -45,10 +43,8 @@ export default defineComponent({
   emits: textareaEmits,
 
   setup(props, { emit }) {
-
     const { size: textareaSize, disabled: textareaDisabled, elFormItem } = useFormItem(props)
     const textareaRef = shallowRef<HTMLTextAreaElement>()
-
 
     // 同步组件原生值, 使其受控
     const syncNativeValue = () => {

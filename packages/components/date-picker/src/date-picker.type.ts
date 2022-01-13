@@ -32,8 +32,7 @@ export interface DateCell {
 }
 
 interface DatePickerContext {
-  ctx: SetupContext
+  ctx: SetupContext<'update:modelValue'[]>
 }
 
-export const ROOT_PICKER_INJECTION_KEY: InjectionKey<DatePickerContext> =
-  Symbol()
+export const ROOT_PICKER_INJECTION_KEY: InjectionKey<DatePickerContext> = Symbol()

@@ -55,7 +55,7 @@ export default defineComponent({
       let result: ElFormRules = {}
       if (props.model) {
         Object.keys(props.model).forEach(name => {
-          result[name] = omit(props.model![name], ['value'])
+          result[name] = omit(props.model![name], ['value', 'trigger'])
         })
       }
       return result
@@ -159,10 +159,11 @@ export default defineComponent({
             formItems[name].validate()
           )
         )
-        return allValidation.every(valid => valid)
+        return allValidation.every(valid => valid) ? Promise.resolve(true) : Promise.reject(false)
       }
       if (typeof fields === 'string') {
-        return formItems[fields].validate()
+        let valid = await formItems[fields].validate()
+        return valid ? Promise.resolve(true) : Promise.reject(false)
       }
 
       return true
@@ -172,6 +173,10 @@ export default defineComponent({
       for (const key in values) {
         formValues.value[key] = values[key]
       }
+    }
+
+    const getValue = () => {
+      return formValues.value
     }
 
     const elForm = {
@@ -192,7 +197,8 @@ export default defineComponent({
       resetFields,
       clearValidate,
       getSlots,
-      setValue
+      setValue,
+      getValue
     }
   }
 })

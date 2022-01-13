@@ -8,104 +8,101 @@ import type { ComponentSize } from '@element-pro/utils/types'
 export const timePickerDefaultProps = {
   name: {
     type: [Array, String],
-    default: '',
+    default: ''
   },
   popperClass: {
     type: String,
-    default: '',
+    default: ''
   },
   format: {
-    type: String,
+    type: String
   },
   valueFormat: {
-    type: String as PropType<string>,
+    type: String as PropType<string>
   },
-  type: {
-    type: String,
-    default: '',
-  },
+
   clearable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   clearIcon: {
     type: [String, Object] as PropType<string | Component>,
-    default: CircleClose,
+    default: CircleClose
   },
   editable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   prefixIcon: {
     type: [String, Object] as PropType<string | Component>,
-    default: '',
+    default: ''
   },
   size: {
     type: String as PropType<ComponentSize>,
-    validator: isValidComponentSize,
+    validator: isValidComponentSize
   },
   readonly: {
     type: Boolean,
-    default: false,
+    default: false
   },
   disabled: {
     type: Boolean,
-    default: false,
+    default: false
   },
   placeholder: {
     type: String,
-    default: '',
+    default: ''
   },
   popperOptions: {
     type: Object as PropType<Partial<Options>>,
-    default: () => ({}),
+    default: () => ({})
   },
   modelValue: {
     type: [Date, Array, String] as PropType<string | Date | Date[]>,
-    default: '',
+    default: ''
   },
   rangeSeparator: {
     type: String,
-    default: '-',
+    default: '-'
   },
   startPlaceholder: String,
   endPlaceholder: String,
   defaultValue: {
-    type: [Date, Array] as PropType<Date | Date[]>,
+    type: [Date, Array] as PropType<Date | Date[]>
   },
   defaultTime: {
-    type: [Date, Array] as PropType<Date | Date[]>,
+    type: [Date, Array] as PropType<Date | Date[]>
   },
   isRange: {
     type: Boolean,
-    default: false,
+    default: false
   },
   disabledHours: {
-    type: Function,
+    type: Function
   },
   disabledMinutes: {
-    type: Function,
+    type: Function
   },
   disabledSeconds: {
-    type: Function,
+    type: Function
   },
   disabledDate: {
-    type: Function,
+    type: Function
   },
   cellClassName: {
-    type: Function,
+    type: Function
   },
   shortcuts: {
     type: Array,
-    default: () => [],
+    default: () => []
   },
   arrowControl: {
     type: Boolean,
-    default: false,
+    default: false
   },
   validateEvent: {
     type: Boolean,
-    default: true,
+    default: true
   },
-  unlinkPanels: Boolean,
+  unlinkPanels: Boolean
 }
