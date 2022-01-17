@@ -1,6 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import Inspect from 'vite-plugin-inspect'
 import glob from 'fast-glob'
 import { epRoot, pkgRoot, projRoot } from '../build/utils/paths'
@@ -28,7 +29,7 @@ export default defineConfig(async () => {
     server: {
       host: true,
     },
-    plugins: [vue(), Inspect()],
+    plugins: [vue(), vueJsx(), Inspect()],
 
     optimizeDeps: {
       include: [
