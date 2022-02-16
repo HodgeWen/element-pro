@@ -19,7 +19,7 @@ export const docRoot = resolve(projRoot, 'docs')
 /** dist */
 export const buildOutput = resolve(projRoot, 'dist')
 /** dist/element-pro */
-export const epOutput = buildOutput
+export const epOutput = resolve(buildOutput, 'element-pro')
 
 export const projPackage = resolve(projRoot, 'package.json')
 export const compPackage = resolve(compRoot, 'package.json')

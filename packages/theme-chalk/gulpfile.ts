@@ -24,11 +24,11 @@ function buildThemeChalk() {
     .pipe(autoprefixer({ cascade: false }))
     .pipe(
       cleanCSS({}, (details) => {
-        console.log(
-          `${chalk.cyan(details.name)}: ${chalk.yellow(
-            details.stats.originalSize / 1000
-          )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`
-        )
+        // console.log(
+        //   `${chalk.cyan(details.name)}: ${chalk.yellow(
+        //     details.stats.originalSize / 1000
+        //   )} KB -> ${chalk.green(details.stats.minifiedSize / 1000)} KB`
+        // )
       })
     )
     .pipe(

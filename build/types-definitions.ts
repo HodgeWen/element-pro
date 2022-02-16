@@ -29,7 +29,7 @@ export const generateTypesDefinitions = async () => {
       paths: {
         '@element-pro/*': ['packages/*'],
       },
-      skipLibCheck: true,
+      skipLibCheck: true,xw
     },
     tsConfigFilePath: TSCONFIG_PATH,
     skipAddingFilesFromTsConfig: true,

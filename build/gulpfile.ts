@@ -7,11 +7,14 @@ import { buildConfig } from './build-info'
 import type { TaskFunction } from 'gulp'
 import type { Module } from './build-info'
 
-const runTask = (name: string) => {
-  return withTaskName(name, () => run(`pnpm run build ${name}`))
-}
+import { generateTypesDefinitions } from './types-definitions'
+import { buildModules } from './modules'
+import { buildFullBundle } from './full-bundle'
+import { buildHelper } from './helper'
 
-export const copyFiles = () => {
+
+// 文件拷贝
+const copyFiles = () => {
   const copyTypings = async () => {
     const src = path.resolve(projRoot, 'typings', 'global.d.ts')
     await run(`cp ${src} ${epOutput}`)
@@ -20,11 +23,12 @@ export const copyFiles = () => {
   return Promise.all([
     run(`cp ${epPackage} ${path.join(epOutput, 'package.json')}`),
     run(`cp README.md ${epOutput}`),
-    copyTypings(),
+    copyTypings()
   ])
 }
 
-export const copyTypesDefinitions: TaskFunction = (done) => {
+// 拷贝类型定义文件
+const copyTypesDefinitions: TaskFunction = done => {
   const src = `${buildOutput}/types/`
   const copy = (module: Module) =>
     withTaskName(`copyTypes:${module}`, () =>
@@ -34,33 +38,31 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
   return parallel(copy('esm'), copy('cjs'))(done)
 }
 
-export const copyFullStyle = async () => {
+// 拷贝所有的样式
+const copyFullStyle = async () => {
   await run(`mkdir -p ${epOutput}/dist`)
   await run(`cp ${epOutput}/theme-chalk/index.css ${epOutput}/dist/index.css`)
 }
 
+const clean = () => run('pnpm run clean')
+
+const buildThemeChalk = () => {
+  return run('pnpm run -C packages/theme-chalk build')
+}
+
 export default series(
   // 清除
-  withTaskName('clean', () => run('pnpm run clean')),
+  clean,
 
+  // 构建
   parallel(
-    runTask('buildModules'), // 构建模块
-    runTask('buildFullBundle'),
-    runTask('generateTypesDefinitions'),
-    runTask('buildHelper'),
-    series(
-      withTaskName('buildThemeChalk', () =>
-        run('pnpm run -C packages/theme-chalk build')
-      ),
-      copyFullStyle
-    )
+    buildModules, // 构建模块
+    // buildFullBundle, // 构建完整包
+    generateTypesDefinitions, // 生成类型文件
+    buildHelper, // 生成帮助文件
+    series(buildThemeChalk, copyFullStyle) // 构建样式
   ),
 
+  // 拷贝
   parallel(copyTypesDefinitions, copyFiles)
 )
-
-/** 公开任务 */
-export * from './types-definitions'
-export * from './modules'
-export * from './full-bundle'
-export * from './helper'

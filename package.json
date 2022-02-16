@@ -35,13 +35,13 @@
     "vue": "^3.2.26"
   },
   "dependencies": {
+    "@element-pro/components": "workspace:*",
     "@element-pro/directives": "workspace:*",
     "@element-pro/hooks": "workspace:*",
+    "@element-pro/locale": "workspace:*",
     "@element-pro/theme-chalk": "workspace:*",
     "@element-pro/tokens": "workspace:*",
     "@element-pro/utils": "workspace:*",
-    "@element-pro/locale": "workspace:*",
-    "@element-pro/components": "workspace:*",
     "@popperjs/core": "^2.10.2",
     "@vue/shared": "^3.2.26",
     "@vueuse/core": "^7.0.0",
@@ -64,6 +64,7 @@
     "@types/gulp": "4.0.9",
     "@types/jest": "^27.0.3",
     "@types/lodash": "4.14.178",
+    "@types/rollup-plugin-css-only": "^3.1.0",
     "@types/sass": "1.43.1",
     "@vue/compiler-sfc": "3.2.26",
     "@vue/test-utils": "2.0.0-rc.16",

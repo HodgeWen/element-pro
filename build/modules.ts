@@ -26,7 +26,7 @@ export const buildModules = async () => {
     input,
     plugins: [
       await ElementPlusAlias(),
-      css(),
+      css() as any,
       vue({ target: 'browser' }),
       nodeResolve({
         extensions: ['.mjs', '.js', '.json', '.ts'],
